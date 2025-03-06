@@ -1,0 +1,21 @@
+Eng              ;CN         ;REF                     ;NOT
+$𝐜𝐚𝐭$         ;小範疇記號 ;\ref{NotofArtinAlg}     ;例如 $𝐦𝐨𝐝_A$ 是有限表現 $A$-模範疇.
+$𝐂𝐚𝐭$         ;大範疇記號 ;\ref{NotofArtinAlg}     ;例如 $𝐌𝐨𝐝_A$ 是一般的 $A$-模範疇.
+Radical          ;根         ;\ref{Rad}, \ref{RadMod} ;符號 $\mathrm{Rad}$, 也就是 Jacobson radical.
+Top              ;頂         ;\ref{Top}, \ref{RadMod} ;符號 $\mathrm{Top}$, 極大半單商 (\cite{Braden_2011} 稱之 cosocle).
+Superfluous      ;盈餘       ;\ref{superfluous}       ;加上等於沒加, 類似中山引理.
+Cosuperfluous    ;餘盈餘     ;\ref{cosuperfluous}     ;盈餘的對偶. 使用``本性擴張''表述更便捷.
+Socle            ;基座       ;???                     ;符號 $\mathrm{Soc}$, 極大半單子.
+Bottom           ;底         ;???                     ;符號 $\mathrm{Bot}$, 存粹爲了對偶表述而定義之.
+Tilting Module   ;斜置模     ;\ref{tilting}                     ;慣用符號 $T$
+Cogenerator      ;餘生成元   ;\ref{ChaMod}            ;$X$ 是餘生成子, 當且僅當 $(-, X)$ 忠實.
+Charactor module ;特征模     ;\ref{ChaMod}            ;$M$ 的特征模即 $(M, ℚ / ℤ)$.
+Admissible Ideal ;容許理想   ;\ref{admissibleideal}   ;增速可控, $J^2 ⊆ I ⊆ J^k$.
+Dual             ;對偶       ;\ref{Ddual}             ;反變函子 $D(-) := (-, k)_A$.
+Transpose        ;轉置       ;\ref{tdual}             ;反變函子 $(-)^t := (-, A)_A$.
+Nakayama functor ;中山函子   ;\ref{Nakayama}          ;$ν (X) = D ∘ (X^t) = X ⊗ DA$.
+AR Transpose     ;AR 轉置    ;\ref{Tr}                ;$\mathrm{Tr}(\mathrm{coker}(f)) = \mathrm{coker}(f^t)$. 穩定等價!
+Quiver;箭圖;\ref{quiver};要件 $(Q_0 , Q_1, s, t)$. 
+Torsion pair; 扭對; \ref{torsionpari}; $(ℱ , 𝒯)$, 其中 $(T,F)=0$ 垂直閉. 
+Resolution; 消解 (解消); \ref{resol}; 投射分解的推廣. 
+Coresolution; 餘消解 (餘解消); \ref{resol}; 內射分解的推廣. 

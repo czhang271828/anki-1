@@ -1,0 +1,185 @@
+\begin{definition}[模之 Radical]\label{RadMod}
+    給定子模 $N ≤ M$, 以下是 $N = \mathrm{Rad}(M)$ 的等價定義. \parnote{Rad 模}
+    \begin{enumerate}
+        \item $N = M ⋅ \mathrm{Rad}(A)$; 
+        \item $N$ 是 $M$ 的極大子模的交; \parnote{min-max}
+        \item $M / N$ 是 $M$ 的極大半單商模. 
+    \end{enumerate}
+    類似地定義 $\mathrm{Top}(M) := M / \mathrm{Rad}(M)$. 
+\end{definition}
+
+\begin{remark}
+    $\mathrm{Rad}$ 是 $\mathrm{id}$ 的加法子函子, $\mathrm{Top}$ 是 $\mathrm{id}$ 的加法商函子. 
+\end{remark}
+
+\begin{definition}[盈餘]\label{superfluous}  
+    稱 $L ⊆ M$ 是盈餘的, 當且僅當對一切 $N ⊆ M$, $(L + N = M) ⟺ (N = M)$. \parnote{中山引理}
+
+    更範疇化的解釋: $L ⊆ M$ 可以左向延拓成子模的 PBPO 方塊, 當且僅當 $N ⊆ M$ 取等號, 即, 
+\begin{equation}
+    % https://q.uiver.app/#q=WzAsOCxbMSwxLCJNIl0sWzEsMCwiTCJdLFswLDEsIk4iXSxbMCwwLCI/Il0sWzMsMCwiTCJdLFs0LDEsIk0iXSxbMywxLCJNIl0sWzQsMCwiTCJdLFszLDEsIlxcc3Vic2V0ZXEgIiwzLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMCwiXFxzdWJzZXRlcSAiLDMseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMywyLCJcXHN1YnNldGVxICIsMyx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDAsIlxcc3Vic2V0ZXEgIiwzLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsMCwiXFxzdWJzdGFja3tcXHRleHR7UEJ9XFxcXFxcdGV4dHtQT319IiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzcsNSwiXFxzdWJzZXRlcSIsMyx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDYsIlxcc3Vic2V0ZXEiLDMseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCw3LCIiLDMseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs2LDUsIiIsMyx7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzksMTQsIiIsMyx7InNob3J0ZW4iOnsic291cmNlIjozMCwidGFyZ2V0IjozMH0sInN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dXQ==
+\begin{tikzcd}[ampersand replacement=\&]
+	{?} \& L \&\& L \& L \\
+	N \& M \&\& M \& M
+	\arrow["{\subseteq }"{marking, allow upside down}, draw=none, from=1-1, to=1-2]
+	\arrow["{\subseteq }"{marking, allow upside down}, draw=none, from=1-1, to=2-1]
+	\arrow["\begin{array}{c} \substack{\text{PB}\\\text{PO}} \end{array}"{description}, draw=none, from=1-1, to=2-2]
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{\subseteq }"{marking, allow upside down}, draw=none, from=1-2, to=2-2]
+	\arrow[equals, from=1-4, to=1-5]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "\subseteq"{marking, allow upside down}, draw=none, from=1-4, to=2-4]
+	\arrow["\subseteq"{marking, allow upside down}, draw=none, from=1-5, to=2-5]
+	\arrow["{\subseteq }"{marking, allow upside down}, draw=none, from=2-1, to=2-2]
+	\arrow[equals, from=2-4, to=2-5]
+	\arrow[shorten <=19pt, shorten >=19pt, Rightarrow, 2tail reversed, from=0, to=1]
+\end{tikzcd}.
+\end{equation}
+\end{definition}
+
+\begin{remark}
+    $\mathrm{Rad}(M)$ 是最大的盈餘模, 類似``皇次子'' (組合的第二比較量, 第一處 syzygy, 等等). 
+\end{remark}
+
+\begin{example}[更精細的滿-單分解]\label{Topggid}
+    模的表現由生成元與生成關係決定. 在本文約定下, 任意模都是某一 $A^n$ 的商. 容易發現
+    \begin{pinked}
+        $f : M → N$ 是滿射, 當且僅當誘導的 $\mathrm{Top}(f) : \mathrm{Top}(M) → \mathrm{Top}(N)$ 是滿射. 
+    \end{pinked}\parnote{Top:\\保, 返滿}
+    滿-單分解之``滿'', 可以分解作生成元的滿射(先)與生成關係的滿射(後). 如極小投射表現, 談論這一分解的函子性暫無意義. 
+\end{example}
+
+\begin{definition}[極小滿態射]
+    稱滿態射 $p : X ↠ Y$ 是極小满态射, 當且僅當以下等價條件成立. \parnote{極小滿}
+    \begin{enumerate}
+        \item 對任意 $f : A → X$, 複合 $p ∘ f$ 滿當且僅當 $f$ 滿. \parnote{$p ∘(-)$ 保, 返滿}
+        \item $\ker p ⊆ X$ 是 superfluous 的子模.
+        \item 上述``滿-滿-單''分解必然是``同構-滿-同構''. \parnote{僅商去生成關係}
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[投射蓋] 
+    稱 $P(M) ↠ M$ 是投射蓋, 當且僅當這是投射模出發的極小滿態射.
+    \begin{enumerate}
+        \item 投射蓋 $=$ 極少生成元自由張成的模. 此處的極小生成元可以選取 $\mathrm{Top}(M)$ 的提升.
+        \item 若 $Q ↠ M$ 是投射模出發的滿態射, 則 $P(M)$ 是 $Q$ 的直和项.
+        \item 將 $M$ 視作 $P(M)$ 的商集, 則 $\mathrm{Top}(M) = \mathrm{Top}(P(M))$.  
+        \item $P = P(M)$, 當且僅當 $M$ 同構於 $P ≥ M ≥ \mathrm{Top}(P)$. \parnote{極大被商模}
+    \end{enumerate}
+
+\begin{pinked}
+    投射蓋即最小的待商的投射模, 通過 $\mathrm{Top}$ 定位. 商去的子對象均是組合意義下的小量, 含於 $\mathrm{Rad}$.
+\end{pinked}
+\end{definition}
+
+\begin{definition}[兩大基本對偶]\label{Ddual}\label{tdual}
+    $(-, A)_A, (-, k)_k : 𝐦𝐨𝐝_A → 𝐦𝐨𝐝_{A^{\mathrm{op}}}$ 是反變函子. 
+\end{definition}
+
+\begin{remark}
+    簡單地記 $D := (-, k)_k$. 不區分 $D$ 與 $D^{\mathrm{op}}$. \parnote{$D$}
+\end{remark}
+
+\begin{definition}[餘盈餘]\label{cosuperfluous}
+    稱商模 $M \overset{-/∼} ↠$ 是餘盈餘的, 當且僅當商集的 PBPO 方塊蘊含等號: 
+    \begin{equation}
+        % https://q.uiver.app/#q=WzAsOCxbMSwxLCI/Il0sWzEsMCwiTiJdLFswLDEsIkwiXSxbMCwwLCJNIl0sWzMsMCwiTSJdLFs0LDEsIkwiXSxbMywxLCJMIl0sWzQsMCwiTSJdLFszLDEsIlxcb3ZlcnNldCB7LS9cXHNpbX0gXFx0d29oZWFkcmlnaHRhcnJvdyIsMyx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDAsIlxcb3ZlcnNldCB7LS9cXHNpbX0gXFx0d29oZWFkcmlnaHRhcnJvdyIsMyx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDIsIlxcb3ZlcnNldCB7LS9cXHNpbX0gXFx0d29oZWFkcmlnaHRhcnJvdyIsMyx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDAsIlxcb3ZlcnNldCB7LS9cXHNpbX0gXFx0d29oZWFkcmlnaHRhcnJvdyIsMyx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDAsIlxcc3Vic3RhY2t7XFx0ZXh0e1BCfVxcXFxcXHRleHR7UE99fSIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs3LDUsIlxcb3ZlcnNldCB7LS9cXHNpbX0gXFx0d29oZWFkcmlnaHRhcnJvdyIsMyx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDYsIlxcb3ZlcnNldCB7LS9cXHNpbX0gXFx0d29oZWFkcmlnaHRhcnJvdyIsMyx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDcsIiIsMyx7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzYsNSwiIiwzLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbOSwxNCwiIiwzLHsic2hvcnRlbiI6eyJzb3VyY2UiOjMwLCJ0YXJnZXQiOjMwfSwic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiYXJyb3doZWFkIn19fV1d
+\begin{tikzcd}[ampersand replacement=\&]
+	M \& N \&\& M \& M \\
+	L \& {?} \&\& L \& L
+	\arrow["{\overset {-/\sim} \twoheadrightarrow}"{marking, allow upside down}, draw=none, from=1-1, to=1-2]
+	\arrow["{\overset {-/\sim} \twoheadrightarrow}"{marking, allow upside down}, draw=none, from=1-1, to=2-1]
+	\arrow["\begin{array}{c} \substack{\text{PB}\\\text{PO}} \end{array}"{description}, draw=none, from=1-1, to=2-2]
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{\overset {-/\sim} \twoheadrightarrow}"{marking, allow upside down}, draw=none, from=1-2, to=2-2]
+	\arrow[equals, from=1-4, to=1-5]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "{\overset {-/\sim} \twoheadrightarrow}"{marking, allow upside down}, draw=none, from=1-4, to=2-4]
+	\arrow["{\overset {-/\sim} \twoheadrightarrow}"{marking, allow upside down}, draw=none, from=1-5, to=2-5]
+	\arrow["{\overset {-/\sim} \twoheadrightarrow}"{marking, allow upside down}, draw=none, from=2-1, to=2-2]
+	\arrow[equals, from=2-4, to=2-5]
+	\arrow[shorten <=19pt, shorten >=19pt, Rightarrow, 2tail reversed, from=0, to=1]
+\end{tikzcd}.
+    \end{equation}
+    換言之, 稱商模 $M ↠ N$ 餘盈餘, 當且僅當 $(\mathrm{lcm}(N,L) = M) ⟺ (N = M)$.  
+\end{definition}
+
+\begin{pinked}
+    盈餘子模: 雞肋的子對象 (生成元); 餘盈餘商模: 雞肋的商對象 (等價關係). 
+\end{pinked}
+
+\begin{definition}[本性擴張]
+    若將餘盈餘模視作``內部滿射'', 對應的``內部單射 ($\ker$)''稱作本性擴張. 
+\end{definition}
+
+\begin{theorem}
+    $K ⊆ M$ 是本性擴張, 當且僅當 $M$ 的任意非零子模與 $K$ 恆有非零交. \parnote{對等表述: 本性擴張, 餘盈餘}
+    \begin{proof}
+        $⇒$ 向: 假定 $K ⊆ M$ 本性擴張, 且存在非零子模 $M_0 ⊆ M$ 使得 $K ∩ M_0 = 0$, 則 $% https://q.uiver.app/#q=WzAsNCxbMCwwLCJNIl0sWzEsMCwiXFxmcmFjIE1LIl0sWzAsMSwiXFxmcmFjIE0ge01fMH0iXSxbMSwxLCJcXGZyYWMgTSB7SyArIE1fMH0iXSxbMCwxXSxbMCwyXSxbMSwzXSxbMiwzXV0=
+        \begin{tikzcd}[ampersand replacement=\&, sep = small]
+            M \& {\frac MK} \\
+            {\frac M {M_0}} \& {\frac M {K + M_0}}
+            \arrow[from=1-1, to=1-2]
+            \arrow[from=1-1, to=2-1]
+            \arrow[from=1-2, to=2-2]
+            \arrow[from=2-1, to=2-2]
+        \end{tikzcd}$ 是推出拉回, 此時 $M_0 = 0$ 導出矛盾. $⇐$ 向: 假定 $M$ 的任意非零子模與 $K$ 恆有非零交, 但存在推出拉回方塊 $% https://q.uiver.app/#q=WzAsNCxbMCwwLCJNIl0sWzEsMCwiXFxmcmFjIE1LIl0sWzAsMSwiXFxmcmFjIE0gQSJdLFsxLDEsIlxcZnJhYyBNIHtCfSJdLFswLDFdLFswLDIsIlxcbmVxICIsMl0sWzEsM10sWzIsM11d
+        \begin{tikzcd}[ampersand replacement=\&, sep = small]
+            M \& {\frac MK} \\
+            {\frac M A} \& {\frac M {B}}
+            \arrow[from=1-1, to=1-2]
+            \arrow["{\neq }"', from=1-1, to=2-1]
+            \arrow[from=1-2, to=2-2]
+            \arrow[from=2-1, to=2-2]
+        \end{tikzcd}$, 依照商集結構知 $K ∩ A = 0$, 此時 $K$ 與非零子模 $A$ 有零交, 矛盾. 
+    \end{proof}
+    \begin{pinked}
+        簡單地說, 餘盈餘恰是本性擴張的商!
+    \end{pinked}
+\end{theorem}
+
+\begin{remark}
+    常用例子: $ℤ ⊆ ℚ$ 是 $ℤ$-模範疇的本性擴張. 作爲收尾, \textbf{內射模的本性擴張是平凡的}. 
+\end{remark}
+
+\begin{definition}[模之 $\mathrm{Soc}$]
+    $\mathrm{Soc}$ 是與 $\mathrm{Top}$ 對標的概念: 極大半單子模, 即所有不可分解對象的極大半單子的直和. 
+\end{definition}
+
+\begin{pinked}
+    \begin{remark}
+        改用對等表述: 極大半單子模, 就是極小本性子模. 
+    \end{remark}
+\end{pinked}
+
+\begin{definition}[極小單態射, 內射包等]
+    仿照 \ref{Topggid}, $\mathrm{Soc}(f)$ 單當且僅當 $f$ 單. 極小滿態射 $i$ 的等價定義: 
+    \begin{enumerate}
+        \item $\xrightarrow i \ \xrightarrow f$ 單, 當且僅當 $f$ 單. 
+        \item $i$ 視作子模包含, 是本性擴張 (等價地, $\mathrm{coker}$ 餘盈餘).
+        \item 類似地, ``滿-單-單''分解必然是``同構-單-同構''. 
+    \end{enumerate}
+    稱 $M ↪ I(M)$ 是內射包, 當且僅當這是指向內射模的極小單態射. 跨度 $\mathrm{Soc}(M) ⊆ ? ⊆ I(M)$. \parnote{極大本性擴張}
+\end{definition}
+
+\begin{theorem}\label{Nakayama}
+    不可分解投射對象, 不可分解内射對象, 單對象一一對應. 
+    \begin{equation}
+        % https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXG1hdGhybXtpbmp9Il0sWzQsMCwiXFxtYXRocm17cHJvan0iXSxbMiwwLCJcXG1hdGhybXtzaW19Il0sWzAsMiwiXFxtYXRocm17U29jfSIsMCx7Im9mZnNldCI6LTV9XSxbMSwyLCJcXG1hdGhybXtUb3B9IiwyLHsib2Zmc2V0Ijo1fV0sWzIsMSwiUCgtKSIsMix7Im9mZnNldCI6NX1dLFsyLDAsIkkoLSkiLDAseyJvZmZzZXQiOi01fV1d
+\begin{tikzcd}[ampersand replacement=\&,sep=small]
+	{\mathrm{inj}} \&\& {\mathrm{sim}} \&\& {\mathrm{proj}}
+	\arrow["{\mathrm{Soc}}", shift left=5, from=1-1, to=1-3]
+	\arrow["{I(-)}", shift left=5, from=1-3, to=1-1]
+	\arrow["{P(-)}"', shift right=5, from=1-3, to=1-5]
+	\arrow["{\mathrm{Top}}"', shift right=5, from=1-5, to=1-3]
+\end{tikzcd}.
+    \end{equation}
+    中山函子 $ν = D(-,A) ≃ - ⊗ DA : \mathrm{End}(𝐦𝐨𝐝 _A)$ 直接對換不可分解投射模與內射模. \parnote{$ν$ 正合}  
+\end{theorem}
+
+\begin{definition}[基礎代數]
+    將 $A$ 寫作不可分解投射對象的直和, 當且僅當直和項彼此不同構, 稱 $A$ 爲基礎代數. 
+\end{definition}
+
+\begin{remark}
+    思想: 扔掉重數. 構造: $A$ 變成 $A^e := ∑ e_i A e_i$. 函子視角: Morita 等價, 模都一樣: \parnote{方便畫 quiver}
+    \begin{equation}
+        (- ⊗ Ae_r) : 𝐦𝐨𝐝_A ≃  𝐦𝐨𝐝 _{A^e} : (- ⊗ e_r A). 
+    \end{equation}
+\end{remark}

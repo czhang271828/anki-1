@@ -1,0 +1,14 @@
+{
+  "url": "http://localhost:8765",
+  "notetype": "BasicWithHighlightVSCode",
+  "ankiConnect": {
+    "version": 6
+  },
+  "cardTemplate": {
+    "Card 1": {
+      "front": "c:\\Users\\czhan\\Documents\\GitHub\\anki\\MATH\\Card 1\\front.html",
+      "back": "c:\\Users\\czhan\\Documents\\GitHub\\anki\\MATH\\Card 1\\back.html"
+    }
+  },
+  "cardCss": "c:\\Users\\czhan\\Documents\\GitHub\\anki\\MATH\\styling.css"
+}

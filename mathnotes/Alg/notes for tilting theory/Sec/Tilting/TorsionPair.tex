@@ -1,0 +1,209 @@
+\begin{abstract}
+    爲研究複雜環 $A$, 有時可以尋找一類斜置模 $T_A$, 使得 $\mathrm{End}(T_A)$ 是較爲簡單的代數, 同時 $𝐦𝐨𝐝 _A$ 與 $𝐦𝐨𝐝 _B$ 等價. 關於 Tilting 早期工作的文章見手冊 \cite{Angeleri_Hügel_Happel_Krause_2007}, 及其\href{https://www.mathematik.uni-muenchen.de/~tilting/}{對應的網站}. \cite{Keller1994} 使用 tilting 理論清晰地解釋一個導出等價問題 (Theorem 5), 十分有趣.
+
+本節介紹基本概念 torsion pair 和 tilting module. 解釋 tilting module 如何創造 torsion pair, 最後目標是 Brenner-Butler 定理 (\cite{Brenner1980GeneralizationsOT}). 
+\end{abstract}
+
+\subsubsection{扭對的基本性質, 結構, 以及等價定義}
+
+\begin{definition}[扭對]\label{torsionpari}
+    稱 $(ℱ, 𝒯)$ 是扭對, 當且僅當 $𝒯 ⟂_{\mathrm{Hom}} ℱ$, 且 $𝒯 ^{⟂ ⟂ } = 𝒯$, $ℱ^{⟂ ⟂ } = ℱ$. \parnote{Hom 垂直, 正交閉集}
+\begin{enumerate}
+    \item $ℱ$ 稱作無扭類 (torsion-free class); \parnote{類似自由群}
+    \item $𝒯$ 稱作扭類 (torsion class). \parnote{類似扭群}
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+    給定對象類 $𝒳$, 則 $(𝒳^{⟂}, {^⟂}(𝒳^⟂))$ 與 $((^⟂ 𝒳)^⟂ , {^⟂ }𝒳 )$ 是擾對; 給定 $A$ 的擾對 $(ℱ, 𝒯 )$, 則有 $DA$ 的擾對 $(D𝒯, Dℱ )$. 
+\end{remark}
+
+\begin{remark}
+    \begin{pinked}
+        順序選用 $(ℱ, 𝒯)$. 爲了符合 $\mathrm{Hom}(ℱ, 𝒯)$ 與 $\mathrm{Ext}^1(ℱ, 𝒯)$ 等順序. 
+    \end{pinked}
+\end{remark}
+
+\begin{theorem}[扭對結構: radical 函子 $t$]
+    稱 $t$ 是冪等根函子, 當且僅當 $t$ 是 $\mathrm{id}$ 的子函子, 且\parnote{$\mathrm{Rad}∘ \mathrm{Top} = 0$}
+\begin{equation}
+    t : \ \ [0 → tM → M → M / tM → 0] \ \  ⟹ \ \ [0 → tM = tM → 0 → 0].
+\end{equation}
+此時, 以下關於對象類 $𝒯$ 的論斷等價: 
+\begin{enumerate}
+    \item 存在擾對 $(ℱ , 𝒯)$, 換言之, $(^⟂𝒯)^⟂ = 𝒯$;
+    \item $𝒯$ 對餘極限 (商 + 餘積), 以及擴張封閉; \parnote{``扭模''}
+    \item 存在冪等根函子 $t$ 使得 $t|_𝒯 = \mathrm{id}$. 
+\end{enumerate}
+類似地, 以下關於對象類 $ℱ$ 的論斷等價: 
+\begin{enumerate}
+    \item 存在擾對 $(ℱ , 𝒯)$, 換言之, ${^⟂}(ℱ^⟂) = ℱ$;
+    \item $ℱ$ 對極限 (子 + 積), 以及擴張封閉; \parnote{``無扭模''}  
+    \item 存在冪等根函子 $t$ 使得 $t|_ℱ = 0$. 
+\end{enumerate}
+\end{theorem}
+
+\begin{remark}
+    冪等根函子建立如下映像: 
+    \begin{equation}
+        [0 → tM → M → M/tM → 0] ⟺ [0 → T → M → F → 0]. 
+    \end{equation}
+    對 $𝐚𝐛$ 等簡單範疇而言, 以上正合列可裂, 從而對象類就是 $𝒯⊕ ℱ$. 
+\end{remark}
+
+\begin{theorem}[可裂扭對的結構]
+    以下是可裂扭對 (有时记作 $ℱ ∨ 𝒯$) 的等價表述: 
+    \begin{enumerate}
+        \item 對象類就是 $𝒯⊕ ℱ$, 即所有 $M$ 分解作 $T ∈ 𝒯$ 與 $F ∈ ℱ$ 的直和; 
+        \item $ℱ ⟂_{\mathrm{Ext}^1} 𝒯$, 即所有 $0 → T → M → F → 0$ 可裂, 且垂直閉; 
+        \item $ℱ$ 關於 $τ$ 封閉, 此處 $τ$ 往``投射方向''走; 
+        \item $𝒯$ 關於 $τ⁻¹$ 封閉, 此處 $τ ⁻¹$ 往``內射方向''走,   
+    \end{enumerate}
+\end{theorem}
+
+\subsubsection{(預備定義) 斜置模生成扭對}
+
+\begin{definition}[預備記號: $\mathrm{Gen}$]
+    給定對象 $T$. 稱 $M ∈ \mathrm{Gen}(T)$, 當且僅當以下等價條件成立. 
+    \begin{enumerate}
+        \item 存在 $d ≥ 0$ 使得有滿射 $T^d ↠ M$; \parnote{像可達}
+        \item $(T, M) ⊗_{\mathrm{End}(T)} T → M,\ ∑ f⊗ x ↦ ∑ f(x)$ 是滿射. 
+    \end{enumerate}
+這一記號爲創造 $𝒯$ 服務.\parnote{$≈ 𝒯$}
+\end{definition}
+
+\begin{definition}[預備記號: $\mathrm{Cogen}$]
+    給定對象 $T$. 稱 $M ∈ \mathrm{Cogen}(T)$, 當且僅當以下等價條件成立. 
+    \begin{enumerate}
+        \item 存在 $d ≥ 0$ 使得有單射 $M ↪ T^d$. ; \parnote{泛函可分}
+        \item $M → ((M,T),T)_{\mathrm{End}(T)}, \ m ↦[g ↦ g(m)]$ 是單射. 
+    \end{enumerate}
+這一記號爲創造 $ℱ$ 服務. \parnote{$≈ ℱ$}
+\end{definition}
+
+\begin{definition}
+    我們關心正則模本身 $A ∈ \mathrm{Gen}(?)$, $A ∈ \mathrm{Cogen}(?)$. 稱 $M$ 是忠實的, 若以下等價命題成立: \parnote{忠實模}
+\begin{enumerate}
+    \item $A ↪ \mathrm{End}(M)$ 是單射; 右乘不同的 $a ∈ A$ 給出不同的態射; $\mathrm{Ann}_A(M)$ 是零理想; \parnote{環性質}
+    \item $A ∈ \mathrm{Cogen}(M)$; $DA ∈ \mathrm{Gen}(DM)$. \parnote{生成模性質}
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[(預備定義) 偏斜置模]\label{tilting}
+    稱 $T$ 是偏斜置 (partial tilting) $A$-模, 若以下兩點同時成立:
+    \begin{enumerate}
+        \item $p.\dim T ≤ 1$; \parnote{類似投射模}
+        \item $\mathrm{Ext}^1(T,T)=0$. \parnote{相對投射, 相對內射}
+    \end{enumerate} 
+\end{definition}
+
+\subsubsection{(偏) 斜置模生成扭對}
+
+\begin{abstract}
+    核心定理: 偏斜置模誘導扭對 $(ℱ, 𝒯)$; 左模對稱地誘導扭對 $(𝒳, 𝒴)$; $ℱ≃𝒳$ 與 $𝒯≃𝒴$.
+\end{abstract}
+
+\begin{theorem}[偏斜置模生成扭對]
+    給定偏斜置模 $T$, 則 
+    \begin{enumerate}
+        \item $\mathrm{Ext}^1 (T, \mathrm{Gen}(T)) = 0$; 
+        \item $\mathrm{Gen}(T)$ 是擾對的 $𝒯$-部分;
+        \begin{itemize}
+            \item 注: $M ∈ 𝒯$ 當且僅當 $(T, M) ⊗_{\mathrm{End}(T)} T → M, \ ∑ f ⊗ x ↦ ∑ f(x)$ 是雙射.
+        \end{itemize}
+        \item $\mathrm{Cogen}(τ T)$ 是擾對的 $ℱ$ 部分.
+    \end{enumerate}
+    \begin{pinked}
+        $(ℱ,𝒯) = (\mathrm{Cogen}(τ T), \mathrm{Gen}(T))$. 
+    \end{pinked}
+\end{theorem}
+
+\begin{definition}[斜置模]
+    稱偏斜置模 $T$ 是斜置的, 當且僅當 $\mathrm{Add}(T) = \mathrm{Add}(A)$. 等價地, 
+    \begin{enumerate}
+        \item $A ∈ \mathrm{Cogen} (T)$, 換言之, $T$ 是忠實模;
+        \item 任何 $M ∈ (T)^{⟂, 1}$ 通過 $T$ 有限表現, 即下一條;
+        \item $\mathrm{Gen}(T) = (T)^{⟂, 1}$; \parnote{$\mathrm{Ext}^1(T,-)$}
+        \item $\mathrm{Cogen}(T) = (τ T) ^{⟂, 0}$. \parnote{$\mathrm{Hom}(τT,-)$}
+    \end{enumerate} 
+\end{definition}
+
+\begin{remark}
+    ``偏斜置''包含了結構與性質, 扔掉``偏''無非篩選 (取全子範疇).
+\end{remark}
+
+\begin{theorem}[斜置模誘導扭對]
+    對斜置模 $T$, 其作爲偏斜置模誘導了扭對.
+    \begin{equation}
+        𝒯 = \mathrm{Gen}(T) = (T)^{⟂, 1}, \ ℱ = \mathrm{Cogen}(τ T) = (T)^{⟂, 0}.
+    \end{equation}
+\end{theorem}
+
+\begin{proposition}[$T$ 的左模結構, BB 定理]
+    取斜置模 $T$, 記 $B := \mathrm{End}(T)$. 此時 $T$ 是 $(B,A)$ 雙模. 
+    \begin{enumerate}
+        \item $T$ 作爲左 $B$-模, 也是斜置的; $A → \mathrm{End}_B(T)^{\mathrm{op}},\quad a ↦ [(-)⋅ a]$ 是代數同構. \parnote{雙側斜置}
+        \item 依照 $T$ 的雙側斜置結構, 得四類對象: 
+\begin{enumerate}
+    \item ($A$-扭元類) $𝒯 := \mathrm{Gen}(T) = \ker \mathrm{Ext}^1_A(T, -)$, 
+    \item ($A$-無扭元類) $ℱ := \mathrm{Cogen}(τ T) = \mathrm{Hom}_A(T, -)$, 
+    \item ($B$-扭元類) $𝒳 := D ℱ(_BT) = \ker \mathrm{Hom}_B(-, DT) = \ker (- ⊗ _BT)$, 
+    \item ($B$-無扭元類) $𝒴 := D 𝒯(_BT) = \ker \mathrm{Ext}_B(-, DT) = \ker \mathrm{Tor}_1^B (-, T)$. 
+\end{enumerate}
+        \item (BB) 對應關係 $ℱ  ↔ 𝒳$, $𝒯 ↔ 𝒴$\parnote{導出的核, 用零次函子鏈接, 反之亦然}
+        \begin{equation}
+            % https://q.uiver.app/#q=WzAsMTQsWzEsMiwiXFxtYXRocm17Q29nZW59KM+EIFQpICJdLFswLDIsIlxca2VyIFxcbWF0aHJte0hvbX1fQShULCAtKSJdLFsyLDIsIuKEsSAiXSxbMiwwLCLwnZKvICJdLFswLDAsIlxca2VyIFxcbWF0aHJte0V4dH1eMV9BKFQsIC0pIl0sWzEsMCwiXFxtYXRocm17R2VufShUKSAiXSxbMywyLCLwnZKzICJdLFs1LDIsIlxca2VyICgtIOKKlyBfQlQpIl0sWzQsMiwiXFxrZXIgXFxtYXRocm17SG9tfV9CKC0sIERUKSJdLFszLDAsIvCdkrQgIl0sWzUsMCwiXFxrZXIgXFxtYXRocm17VG9yfV8xXkIgKC0sIFQpIl0sWzQsMCwiXFxrZXIgXFxtYXRocm17RXh0fV9CKC0sIERUKSJdLFsxLDEsIvCdkKbwnZCo8J2QnV9BIl0sWzQsMSwi8J2QpvCdkKjwnZCdX0IiXSxbMiwwLCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDEsIiIsMCx7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsNSwiIiwwLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSw0LCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs2LDgsIiIsMCx7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzksMTEsIiIsMCx7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzExLDEwLCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs4LDcsIiIsMCx7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsNiwiXFxtYXRocm17RXh0fV9BXjEgKFQsIC0pIiwyLHsib2Zmc2V0Ijo1fV0sWzYsMiwiXFxtYXRocm17VG9yfV8xXkIoLSwgVCkiLDIseyJvZmZzZXQiOjV9XSxbOSwzLCIoLSDiipcgX0IgVCkiLDIseyJvZmZzZXQiOjV9XSxbMyw5LCJcXG1hdGhybXtIb219X0EoVCwgLSkiLDIseyJvZmZzZXQiOjV9XV0=
+\begin{tikzcd}[ampersand replacement=\&, sep = tiny]
+	{\ker \mathrm{Ext}^1_A(T, -)} \& {\mathrm{Gen}(T) } \& {𝒯 } \& {𝒴 } \& {\ker \mathrm{Ext}_B(-, DT)} \& {\ker \mathrm{Tor}_1^B (-, T)} \\
+	\& {𝐦𝐨𝐝_A} \&\&\& {𝐦𝐨𝐝_B} \\
+	{\ker \mathrm{Hom}_A(T, -)} \& {\mathrm{Cogen}(τ T) } \& {ℱ } \& {𝒳 } \& {\ker \mathrm{Hom}_B(-, DT)} \& {\ker (- ⊗ _BT)}
+	\arrow[equals, from=1-2, to=1-1]
+	\arrow[equals, from=1-3, to=1-2]
+	\arrow["{\mathrm{Hom}_A(T, -)}"', shift right=3, from=1-3, to=1-4]
+	\arrow["{(- ⊗ _B T)}"', shift right=3, from=1-4, to=1-3]
+	\arrow[equals, from=1-4, to=1-5]
+	\arrow[equals, from=1-5, to=1-6]
+	\arrow[equals, from=3-2, to=3-1]
+	\arrow[equals, from=3-3, to=3-2]
+	\arrow["{\mathrm{Ext}_A^1 (T, -)}"', shift right=3, from=3-3, to=3-4]
+	\arrow["{\mathrm{Tor}_1^B(-, T)}"', shift right=3, from=3-4, to=3-3]
+	\arrow[equals, from=3-4, to=3-5]
+	\arrow[equals, from=3-5, to=3-6]
+\end{tikzcd}.
+        \end{equation}
+        \item 假定 $M$ 是 $A$ 模, 且 $X$ 是 $B$ 模, 則有同構 \parnote{$T$ 類似投射}
+        \begin{enumerate}
+            \item $(T,M) ⊗ T ≃ M, \ ∑ f ⊗ t ↦ ∑ f(t)$, 以及
+            \item $X ≃ (T, X ⊗_B T), \ m ↦ [t ↦ m ⊗ t]$. 
+        \end{enumerate}
+        \item 作爲推論, 得混合係數公式: \parnote{來源 $≠$ 去向, 結果爲 $0$}
+        \begin{enumerate}
+            \item $\mathrm{Tor}_1^B (\mathrm{Hom}_A(T,M), T) = 0$, 
+            \item $\mathrm{Ext}^1_A(T,M) ⊗ _BT = 0$,
+            \item $\mathrm{Hom}_A(T, X) ⊗_B T = 0$,
+            \item $\mathrm{Ext}_A^1(T, X ⊗_B T) = 0$. 
+        \end{enumerate}
+        所謂``混合'', 一處 $⊗$ 一處 $\mathrm{Hom}$, 一處導出一處原是也. 結果均是 $0$. 
+        \item 存在類似``拓撲六函子''的兩條正合列, 以刻畫兩個範疇中的冪等根函子: 
+        \begin{enumerate}
+            \item $(𝒯, ℱ)$, $𝐦𝐨𝐝_A$ 中的扭對: 
+            \begin{equation}
+                0 → \underbracket{(T, M)_A ⊗_B T}\limits_{𝐦𝐨𝐝_A → 𝒴 → 𝒯} → M → \underbracket{\mathrm{Tor}_1 ^B(\mathrm{Ext}_A^1 (T,M), T)}\limits_{𝐦𝐨𝐝_A → 𝒳 → ℱ} → 0; 
+            \end{equation}
+            \item $(𝒳, 𝒴)$, $𝐦𝐨𝐝_B$ 中的扭對: 
+            \begin{equation}
+                0 → \underbracket{\mathrm{Ext}_A^1 (T, \mathrm{Tor}_1 ^B(X, T))}\limits_{𝐦𝐨𝐝_B → ℱ → 𝒳} → X → \underbracket{\mathrm{Hom}_A(T, X ⊗ _B T)}\limits_{𝐦𝐨𝐝_B → 𝒯 → 𝒴} → 0
+            \end{equation}
+        \end{enumerate}
+    \end{enumerate}
+\end{proposition}
+
+
+
+
+
+
+
+
+
+

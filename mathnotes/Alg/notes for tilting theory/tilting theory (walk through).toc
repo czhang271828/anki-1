@@ -1,0 +1,42 @@
+\babel@toc {english}{}
+\contentsline {section}{\numberline {1}代數基礎}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Artin 代數的簡易對象: 單模, Rad, Top, 冪等分解}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Artin 代數的基本對偶: 投射蓋, 內射包}{5}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}雜七雜八: Quiver 表示, 維度公式, [待歸類至別處]}{7}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}簡單的 AR 理論}{8}{subsection.1.4}%
+\contentsline {subsubsection}{\numberline {1.4.1}範疇的 Rad, 不可約態射}{8}{subsubsection.1.4.1}%
+\contentsline {subsubsection}{\numberline {1.4.2}極小態射}{9}{subsubsection.1.4.2}%
+\contentsline {subsubsection}{\numberline {1.4.3}AR 平移, $τ$}{10}{subsubsection.1.4.3}%
+\contentsline {subsubsection}{\numberline {1.4.4}幾乎可裂短正合列}{10}{subsubsection.1.4.4}%
+\contentsline {subsection}{\numberline {1.5}AR 大定理}{11}{subsection.1.5}%
+\contentsline {subsubsection}{\numberline {1.5.1}函子角度}{12}{subsubsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.6}一些 quiver 計算; Gabriel 定理}{13}{subsection.1.6}%
+\contentsline {subsubsection}{\numberline {1.6.1}箭圖表示的基本定理, Euler 二次型等}{13}{subsubsection.1.6.1}%
+\contentsline {subsubsection}{\numberline {1.6.2}幾何視角}{14}{subsubsection.1.6.2}%
+\contentsline {subsubsection}{\numberline {1.6.3}圖的結論: 一些線性代數}{15}{subsubsection.1.6.3}%
+\contentsline {subsection}{\numberline {1.7}總結: 有限生成模, 有限表現模, 投射模, 內射模, 平坦模等的結構}{16}{subsection.1.7}%
+\contentsline {subsubsection}{\numberline {1.7.1}有限表現模的結構}{16}{subsubsection.1.7.1}%
+\contentsline {subsubsection}{\numberline {1.7.2}有限生成模的結構}{18}{subsubsection.1.7.2}%
+\contentsline {subsubsection}{\numberline {1.7.3}內射模的結構}{18}{subsubsection.1.7.3}%
+\contentsline {subsubsection}{\numberline {1.7.4}平坦模的結構}{19}{subsubsection.1.7.4}%
+\contentsline {subsection}{\numberline {1.8}特征模理論}{21}{subsection.1.8}%
+\contentsline {subsection}{\numberline {1.9}投射模的結構定理 (簡單的 transfinite dévissage)}{21}{subsection.1.9}%
+\contentsline {subsubsection}{\numberline {1.9.1}$\mathrm {Ext}$ 與 $\mathrm {Tor}$ 的 Baer 和刻畫}{23}{subsubsection.1.9.1}%
+\contentsline {subsection}{\numberline {1.10}譜序列簡介}{32}{subsection.1.10}%
+\contentsline {subsubsection}{\numberline {1.10.1}譜序列的定義, 構造 I, 以及收斂性: 濾過復形}{32}{subsubsection.1.10.1}%
+\contentsline {subsubsection}{\numberline {1.10.2}譜序列的構造 II: 雙複形}{35}{subsubsection.1.10.2}%
+\contentsline {subsubsection}{\numberline {1.10.3}應用: AR 序列}{36}{subsubsection.1.10.3}%
+\contentsline {subsubsection}{\numberline {1.10.4}應用: 超同調代數}{38}{subsubsection.1.10.4}%
+\contentsline {subsubsection}{\numberline {1.10.5}合成函子的譜序列}{40}{subsubsection.1.10.5}%
+\contentsline {subsubsection}{\numberline {1.10.6}譜序列的構造 III: ``纖維化塔 ''(正合耦) 直接誘導譜序列}{43}{subsubsection.1.10.6}%
+\contentsline {section}{\numberline {2}Tilting theory}{46}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Torsion Pair}{46}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}扭對的基本性質, 結構, 以及等價定義}{46}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}(預備定義) 斜置模生成扭對}{47}{subsubsection.2.1.2}%
+\contentsline {subsubsection}{\numberline {2.1.3}(偏) 斜置模生成扭對}{47}{subsubsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.2}Some spectral sequence}{49}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}投射維度有限的斜置模 (斜置模的推廣)}{49}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}譜序列的應用}{51}{subsubsection.2.2.2}%
+\contentsline {section}{\numberline {3}First Section}{57}{section.3}%
+\contentsline {section}{\numberline {4}Terminologies (?)}{58}{section.4}%
+\contentsline {section}{References}{58}{section*.2}%

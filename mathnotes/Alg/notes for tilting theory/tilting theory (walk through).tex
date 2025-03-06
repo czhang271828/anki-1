@@ -1,0 +1,218 @@
+\documentclass[11pt]{ctexart}
+
+\usepackage[margin=2cm, right = 3cm ,a4paper]{geometry}
+\usepackage{amsthm, amssymb, mathrsfs, newclude, tikz-cd, tikz, ctex, stmaryrd, datetime} % 基本配置. 
+
+\usepackage{cite} 
+\usepackage[english]{babel}
+%Includes "References" in the table of contents
+\usepackage[nottoc]{tocbibind}
+% 使用 BiBTeX. 
+
+\usepackage{fontspec}
+\usepackage{unicode-math}
+
+\usepackage{quiver}
+
+\usepackage{changepage} % 局部縮進. 
+
+
+% Include the x-color package for color support
+\usepackage{xcolor}
+
+\usepackage{csvsimple}
+% 使用 csv 文件
+
+%\setmainfont{Caladea}
+
+%% 也可以选用其它字库:
+% \setCJKmainfont[%
+%   ItalicFont=AR PL KaitiM GB,
+%   BoldFont=Noto Sans CJK SC,
+% ]{Noto Serif CJK SC}
+% \setCJKsansfont{Noto Sans CJK SC}
+% \renewcommand{\kaishu}{\CJKfontspec{AR PL KaitiM GB}}
+
+\usepackage{parnotes}
+% Define the color for the margin notes
+\definecolor{mynotecolor}{rgb}{1, 0, 0} % Red color
+
+% Redefine \parnote to include the color
+\renewcommand{\parnote}[1]{\marginpar{\textcolor{mynotecolor}{\footnotesize #1}}}
+
+
+\usepackage[colorlinks = true,
+linkcolor = blue,
+urlcolor  = blue,
+citecolor = blue,
+anchorcolor = blue]{hyperref}
+
+% Define a new environment for red comments
+\usepackage{verbatim} % Required for the comment environment
+\usepackage{environ}
+
+\usepackage{mdframed} % Include mdframed for creating framed environments
+
+\definecolor{pinked}{RGB}{255,231,229} % Define a base color 
+% Define a new environment with a background color
+\newmdenv[
+  backgroundcolor=pinked, % Set the desired background color
+  linecolor=white, % Optional: Set the border line color
+  linewidth=1pt, % Optional: Set the border line width
+  roundcorner=5pt, % Optional: Set rounded corners
+  nobreak=true % Optional: Prevent page breaks within the environment
+]{pinked}
+
+\theoremstyle{definition}
+\newtheorem{qqq}{问题}[section]
+
+\newcommand{\ExternalLink}{%
+    \tikz[x=1.2ex, y=1.2ex, baseline=-0.05ex]{% 
+        \begin{scope}[x=1ex, y=1ex]
+            \clip (-0.1,-0.1) 
+                --++ (-0, 1.2) 
+                --++ (0.6, 0) 
+                --++ (0, -0.6) 
+                --++ (0.6, 0) 
+                --++ (0, -1);
+            \path[draw, 
+                line width = 0.5, 
+                rounded corners=0.5] 
+                (0,0) rectangle (1,1);
+        \end{scope}
+        \path[draw, line width = 0.5] (0.5, 0.5) 
+            -- (1, 1);
+        \path[draw, line width = 0.5] (0.6, 1) 
+            -- (1, 1) -- (1, 0.6);
+        }
+    }
+
+\NewEnviron{aaa}{~\\
+    \noindent {\textcolor{teal}{\textbf{解答}} \BODY }
+}
+
+\NewEnviron{llll}{
+    \noindent {~\\$\ExternalLink$ 外部链接 $\,\,\,$ \color{blue}\url{\BODY} }
+}
+
+% \renewcommand{\proofname}{证明}
+% \renewcommand\qedsymbol{${\boxed{\substack{\textit{完证}\\\textit{毕明}}}}$}
+% \let\oldproof\proof
+% \renewcommand{\proof}{\color{blue}\oldproof}
+
+
+
+
+\theoremstyle{definition}
+\newtheorem*{definition}{定义}
+\newtheorem*{proposition}{命题}
+\newtheorem*{theorem}{定理}
+\newtheorem*{notation}{记号}
+\newtheorem*{example}{例子}
+\newtheorem{exercise}{\textcolor{blue}{习题}}
+\theoremstyle{remark}
+\newtheorem*{remark}{备注}
+\newtheorem*{lemma}{引理}
+\newtheorem*{solution}{解答}
+\newtheorem*{corollary}{推论}
+
+\title{Tilting Theory Walk through}
+\author{ZCC}
+\date{\today}
+
+\setcounter{page}{0}
+
+\setlength\parindent{0pt}
+
+\begin{document}
+
+\maketitle
+
+\vspace{5cm} 
+
+\begin{abstract}
+    本文走馬觀花式地介紹 tilting 理論. 先從藍寶書 \cite{e1} 之以下幾節開始. 
+    \begin{center}
+        \begin{tabular}{|| c | c | l ||}%
+            \bfseries Sec & \bfseries SubSec & Title % specify table head
+            \csvreader[head to column names, separator=semicolon]{TOC-e1.csv}{}% use head of csv as column names
+            {\\\hline\ \Sec & \SubSec & \Title}% specify your columns here
+            \end{tabular}
+    \end{center}
+    
+\end{abstract}
+
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+
+\section{代數基礎}
+
+\subsection{Artin 代數的簡易對象: 單模, Rad, Top, 冪等分解}
+\input{Sec/Artin/Basics of Artin Algebra.tex}
+\subsection{Artin 代數的基本對偶: 投射蓋, 內射包}
+\input{Sec/Artin/ProjInj.tex}
+\subsection{雜七雜八: Quiver 表示, 維度公式, [待歸類至別處]}
+\input{Sec/Artin/QuiverRep.tex}
+\subsection{簡單的 AR 理論}
+\input{Sec/Artin/AR.tex}
+\subsection{一些 quiver 計算; Gabriel 定理}
+\input{Sec/Artin/Gab.tex}
+\subsection{總結: 有限生成模, 有限表現模, 投射模, 內射模, 平坦模等的結構}
+\input{Sec/Artin/投射內射平坦等.tex}
+
+\subsubsection{\texorpdfstring{$\mathrm{Ext}$}{PDFstring} 與 \texorpdfstring{$\mathrm{Tor}$}{PDFstring} 的 Baer 和刻畫}
+\input{Sec/Artin/ExtTor.tex}\newpage 
+\input{Sec/Artin/Ext group.tex}
+
+\subsection{譜序列簡介}
+\input{Sec/Tilting/SpectralSequence.tex}\newpage
+
+
+\section{Tilting theory}
+
+\subsection{Torsion Pair}
+\input{Sec/Tilting/TorsionPair.tex}
+\subsection{Some spectral sequence}
+\input{Sec/Tilting/Spect.tex}
+
+
+\newpage
+
+
+
+
+
+
+
+\section{First Section}
+This document is an example of BibTeX using in bibliography management. Three items are cited: \textit{The \LaTeX\ Companion} book \cite{latexcompanion}, the Einstein journal paper \cite{einstein}, and the Donald Knuth's website \cite{knuthwebsite}. The \LaTeX\ related items are \cite{latexcompanion,knuthwebsite}. 
+    
+
+\newpage
+
+
+\section{Terminologies (?)}
+
+此處是部分中英文詞彙對照. % 插入文件 ``voc.csv'' 
+
+\begin{center}
+    \begin{tabular}{|| c | c | c | l ||}%
+        \bfseries English & \bfseries 中文 & 出處 & 補註 % specify table head
+        \csvreader[head to column names, separator=semicolon]{voc.csv}{}% use head of csv as column names
+        {\\\hline\ \Eng & \CN & \REF & \NOT}% specify your columns here
+        \end{tabular}
+\end{center}
+
+\medskip
+
+%Sets the bibliography style to UNSRT and imports the 
+%bibliography file "sample.bib".
+\bibliographystyle{unsrt}
+\bibliography{sample}
+
+\end{document}

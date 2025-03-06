@@ -1,0 +1,116 @@
+\begin{abstract}
+    如何將群 $\mathrm{Tor}$ 中元素具體地取出來? 是否存在類似米田 $\mathrm{Ext}^n$-群的構造? 
+
+先給出 Abel 群中 $\mathrm{Tor}(A, X)$ 的構造. 
+\end{abstract}
+
+\begin{example}[Abel 群範疇中的簡單構造]
+    $\mathrm{Tor}_A(A, B)$ 就是扭元構成的群, 其中生成元形如三元組
+    \begin{equation}
+        \left\{(a, n, b) ∈ A × ℤ × B \quad ∣ \quad (an = 0) ∧ (nb = 0)\right\}. 
+    \end{equation} \parnote{左: 左群元素 \\ 中: 零化數乘 \\ 右: 右群元素}
+    對以上元素張成的自由 Abel 群, 考慮如下生成關係:  
+    \begin{enumerate}
+        \item (生成關係 I) $(-, n, b)$ 與 $(a, n, -)$ 都是 $ℤ$-線性映射, 即保持加法同態; 
+        \item (生成關係 II-l) 若 $(a, mn, b)$ 與 $(am, n, b)$ 都是生成元, 則兩者等同; 
+        \item (生成關係 II-r) 若 $(a, mn, b)$ 與 $(a, m, nb)$ 都是生成元, 則兩者等同.
+    \end{enumerate}
+\end{example}
+
+\begin{example}[$\mathrm{Tor}_ℤ(-,-)$ 的雙函子性]
+    加法結構, 零元等都是直接的. 下證明 $f : X → Y$ 給出良定義的
+    \begin{equation}
+        f_∗ : \mathrm{Tor}(A, X) → \mathrm{Tor}(A, Y),\quad (a, n, x) ↦ (a, n, f(x)). 
+    \end{equation}
+    按步就班地檢驗泛性質: 映射 $G(A × ℤ × X) → \mathrm{Tor}(A, Y)$ 將三種生成關係零化, 則來源下降至商空間 $\mathrm{Tor}(A, X)$. 這由群同態的定義直接保證. \parnote{驗證函子性} 另一側同理. 
+\end{example}
+
+\begin{example}
+    \parnote{第一處的核} 給定短正合列 $0 → A \overset f→ B \overset g→ C → 0$ 與 $-⊗X$, 則
+    \begin{equation}
+        \ker [f ⊗ X : A ⊗ X → B ⊗ Y] ⊆ A ⊗ X. 
+    \end{equation}
+    基於張量秩的一些考量, 這一核由秩 $1$ 的張量 $a ⊗ x$ 生成. 
+    \begin{itemize}
+        \item $a ⊗ x$ 應滿足 $f(a) ⊗ x = 0$. 由於 $f$ 是單射, 故存在 $f(a) = b ⋅ n$ 使得 $n ⋅ x = 0$. 同時 $c := g(b)$ 被 $n$ 零化. 
+        \item 三元組 $(c,n,x)$ ($cn = 0$ 且 $nx = 0$) 的某一等價類決定了 $a ⊗ x$. 形式地看, $a$ 可取作任意 $f⁻¹ (g⁻¹ (c) ⋅ n)$ 中元素, 實際上 $a ⊗ x$ 與原像的選取無關. \parnote{驗證!}
+    \end{itemize}
+\end{example}
+
+\begin{proposition}[第一處連接態射]
+    給定 $0 → A \xrightarrow f B \xrightarrow g C → 0$, 對任意 $X$ 總有長正合列 
+    \begin{equation}
+        0 → \mathrm{Tor}(A, X) → \mathrm{Tor}(B, X) → \mathrm{Tor}(C, X) \xrightarrow δ A ⊗ X → B ⊗ X → C ⊗ X → 0. 
+    \end{equation}
+    特別地, $δ : \{(c, n ,x) \} ↠ \{f⁻¹ (g⁻¹ (c) ⋅ n) ⊗ x\} ↪ A ⊗ X$. 
+\end{proposition}\parnote{證明!}
+
+\begin{definition}[生成對]
+    假定 $U$ 是範疇 $𝒜$ 的生成元. \parnote{$\mathrm{Hom}(U,-)$ 即 $∙ ∈ (-)$} 若存在反變函子 $K: 𝒜 → ℬ$ 與 $L: ℬ → 𝒜$ 使得存在生成元 $D = K(U)$ 與 $LK(U) L(D) = U$. 
+\end{definition}
+
+\begin{remark}
+    特例: $L, K = (-, R)$ 與 $U,D = R$.  
+\end{remark}
+
+\begin{definition}[生成對的 $\mathrm{Tor}$-群]
+    \begin{pinked}
+    一般的 Abel 範疇顯然沒有 Tor, 定義所謂 Tor 需要一些附加條件 (需要往模範疇處靠, 但不必像模範疇這般好).
+    \end{pinked}\parnote{待論證}
+    假定 $(U = L(D) ∈ 𝒜, D = K(U) ∈ ℬ)$ 是預張量範疇對. 此時的 $\mathrm{Tor}_n : 𝒜 × ℬ → 𝐁𝐢𝐠𝐀𝐛$ 定義如下. 選定大 Abel 群 $\mathrm{Tor}_n (G, C)$. 
+    \begin{enumerate}
+        \item 生成元選作三元組 $(μ, L_∙,ν) = (G\xleftarrow μ L_∙ ∣ DL_∙ \xrightarrow ν C)$. 其中, 
+        \begin{enumerate}
+            \item $L^∙ = [L_n → \cdots → L_0]$ 是有限生成的 $U$-復形, $μ:L → G$ 是鏈映射; 
+            \item $D(L)^∙ := [K(L_0) → \cdots → K(L_n)]$ 是對偶復形, $ν: D(L) → C$ 是鏈映射. 
+        \end{enumerate}
+        \item 等價關係: 對任意 $α : P_∙ → L_∙$, 總有
+        \begin{equation}
+            (G\xleftarrow{μ} L_∙ ∣ DL_∙ \xrightarrow {ν ∘ D(α)} C) ∼ (G\xleftarrow {μ ∘ α} P_∙ ∣ DP_∙ \xrightarrow {ν} C). 
+        \end{equation}
+        \item 驗證這是雙加法函子. 加法結構由如下 Baer 和給出
+        \begin{equation}
+            (μ, L^∙,ν) + (λ, K^∙,ι) := ((μ, λ), L^∙ ⊕ K^∙, (ν, ι)^T).  
+        \end{equation}
+    \end{enumerate} 
+    \begin{proof}
+        \parnote{待補充}
+    \end{proof}
+\end{definition}
+
+\begin{proposition}
+    證明存在長正合列. 
+    \begin{proof}
+        \parnote{待補充}
+    \end{proof}
+\end{proposition}
+
+\begin{example}
+    對模範疇, $\mathrm{Tor}_0 = ⊗$. 
+\end{example}
+
+\begin{proposition}[對稱定理]
+    $\mathrm{Tor}^{𝒜 ∣ ℬ}_∙(−, ∣) ≃ \mathrm{Tor}^{ℬ ∣ 𝒜}_∙(∣, −)$.
+\end{proposition}
+
+\begin{proposition}[對消公式]
+    存在如下``自然同態''. \parnote{待仔細刻畫}
+    \begin{enumerate}
+        \item $\mathrm{Ext}_{ℬ}^n(-, X) ⊗ \mathrm{Tor}^{𝒜 ∣ ℬ}_{n+k}(Y,-) → \mathrm{Tor}^{𝒜 ∣ ℬ}_{k}(Y,X)$. 
+        \item $\mathrm{Ext}_{ℬ}^n(X, -) ⊗ \mathrm{Tor}^{ℬ ∣ 𝒜}_{n+k}(-, Y) → \mathrm{Tor}^{ℬ ∣ 𝒜}_{k}(X, Y)$.
+        \item 嵌套公式? 
+    \end{enumerate}
+\parnote{廣義伴隨?}
+\end{proposition}
+
+
+
+
+
+
+
+
+
+
+
+

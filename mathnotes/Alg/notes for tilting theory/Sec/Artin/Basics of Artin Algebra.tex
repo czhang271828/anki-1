@@ -1,0 +1,120 @@
+\begin{notation}[Artin 代數上的有限表現模]\label{NotofArtinAlg}
+    除非單獨强調, 否則行文遵照以下約定. \parnote{Artin $↓$}
+    \begin{enumerate}
+        \item 默認所有域是代數閉域, 即 $k = \overline k$; 但特徵 $\mathrm{char}(k)$ 未必是零. \parnote{代數閉}
+        \item 默認所有代數是有限維的, 但不必交換, 記作範疇 $𝐚𝐥𝐠_k$. \parnote{f.d.}
+        \item 默認所有模都是有限生成右模, 記作 $𝐦𝐨𝐝_A$ ($A ∈ 𝐚𝐥𝐠_k$), 左模記作右 $A^{\mathrm{op}}$-模. \parnote{f.g. 右模}
+        \item 對於單一的模, 將之視作固定的集合. 此時的\textbf{子模與商模是直接通過集合定義的}, 子模與商模亦可直接談論大小, 並無``同構下唯一''之說. \parnote{子集商集}
+        \item 出於習慣, 將商模的子模表述做子模的商模, 稱作子商.
+    \end{enumerate}
+\end{notation}
+
+\begin{definition}[Jacobson 根]\label{Rad} 
+    暫置 $k$ 爲一般交換環. $\mathrm{Rad}(A)$ 等價定義 如下. \parnote{Rad ↓}
+\begin{enumerate}
+    \item $\mathrm{Rad}(A)$ 是一切極大左理想之交, 亦是一切極大右理想之交. \parnote{理想視角}
+    \begin{pinked}
+        $\mathrm{Rad}(A)$ 是\textbf{單邊定義的雙邊理想}; 但 $\mathrm{Rad}$ 未必是極大雙邊理的交 (見此 MSE 回答 \cite{775}).
+    \end{pinked}
+    \item $\mathrm{Rad}(A)$ 由符合以下等價性質的元素 $r$ 組成, \parnote{逆元視角}
+    \begin{enumerate}
+        \item 對任意 $a ∈ A$, 總有 $1-ar$ 可逆;
+        \item 對任意 $a ∈ A$, 總有 $1-ra$ 可逆;
+        \item 對任意 $a ∈ A$, 總有 $1-ar$ 存在右逆;
+        \item 對任意 $a ∈ A$, 總有 $1-ra$ 存在左逆.
+    \end{enumerate}
+    \begin{pinked}
+        $\mathrm{Rad}(A)$ 由\textbf{所謂的小量}構成. 正如 $x⋅f(x)$ 之於 $ℝ[x]$.
+    \end{pinked}
+    \item $\mathrm{Rad}(A)$ 是使得 $A / \mathrm{Rad}(A)$ 半單的最小模. \parnote{半單視角}
+\end{enumerate}
+
+\end{definition}
+
+\begin{definition}[頂]\label{Top}
+    藉由以上第三點, 定義 $\mathrm{Top}(A):=A / \mathrm{Rad}(A)$. 等價地, \parnote{Top ↓}
+    \begin{enumerate}
+        \item $\mathrm{Top}$ 是 $A$ 的極大半單商環,
+        \item $\mathrm{Top}$ 亦是 $A$ 極大半單商模.
+        \item \textbf{對交換代數而言}, $\mathrm{Rad}(A)$ 恰是所有冪零對象 (同埋 $0$) 組成的理想. \parnote{reduced}
+    \end{enumerate}
+    商去 $\mathrm{Rad}$ 所得的半單代數常記作 $A_\mathrm{red}$ ($A$-reduced). 
+\end{definition}
+
+\begin{theorem}
+    $A ↠ \mathrm{Top}(A)$ 是範疇 $𝐚𝐥𝐠_k$ 的可裂滿. 換言之, 
+    \begin{pinked}
+        $\mathrm{Top}$ 是半單的截面. (定理 1.6, \cite{e1})
+    \end{pinked}
+\end{theorem}
+
+\begin{proposition}[環的半單性: Wedderburn-Artin]
+    以下是 $A$ 半單的等價定義 (以分號記). \parnote{WA 定理}
+\begin{enumerate}
+    \item 所有 $𝐦𝐨𝐝_A$ 是半單 $A$-模; 所有 $𝐦𝐨𝐝_{A^{\mathrm{op}}}$ 是半單 $A^{\mathrm{op}}$-模;
+    \item $A$ 是半單左 $A$-模; $A$ 是半單左 $A^{\mathrm{op}}$-模;
+    \item (作爲 $A$-模, 下同) $\mathrm{Top}(A) = A$; $\mathrm{Rad}(A) = 0$; $\mathrm{Soc}(A) = A$;
+    \item $A$ 同構於矩陣乘法環 $∏ 𝕄_{m_i}(k)$.
+\end{enumerate}
+\begin{pinked}
+    半單無關左右之選取, 在允許足夠不變子空間時 (如代數閉域), 一切都是矩陣除環.
+\end{pinked}
+\end{proposition}
+
+\begin{proposition}[回顧模半單性]\label{semisimple}
+    總結以下重要而基本的定理. \parnote{半單定理}
+    \begin{enumerate}
+        \item 單對象的 Schur 引理: $(S_i , S_j ) ≃ k ⋅ \mathrm{id}⋅ δ _{i,j}$. \parnote{Schur}
+        \item Krull-Schmidt 定理: $𝐦𝐨𝐝_A$ 的任何對象唯一分解做不可分解對象的直和. \parnote{KS 範疇}
+        \item Jordan-Holder 定理: 合成列良定義. 合成列在同構在允許重數, 相差一個置換的意義下唯一. \parnote{$G_0$-群}
+    \end{enumerate} 
+\end{proposition}
+
+\begin{example}[冪等分解]
+    考慮 $1 ∈ A$ 的兩類冪等分解: 
+    \begin{enumerate}
+        \item (冪等分解) 存在極大的 $\{e_i\}_{i=1}^n$ 使得 $e_i^2 = e_i$ 恆成立 (同構下唯一). \parnote{頂點 $Q_0$}
+        \item (正交冪等分解) 存在極大的 $\{e_i\}_{i=1}^n$ 使得 $e_i^2 = e_i$ 恆成立, 且諸 $e_i$ 乘法交換 (同構下唯一). \parnote{連通分支}
+    \end{enumerate}
+    \begin{pinked}
+        說白了, 就是環的積與模的積之別. 
+    \end{pinked}
+\end{example}
+
+\begin{remark}
+    選定冪零理想 $I ⊆ A$, 則 $A/ I$ 的(正交)冪等元通過商映射 $A ↠ A / I$ 提升.  \parnote{冪等提升}
+
+    Formally smooth algebra (see \cite{BerestMehrle2017}), lifting along irreducible polynomials, lifting of $\triangle$ morphisms (See personal notes $\triangle$ 1.1.1.). 
+\end{remark}
+
+\begin{definition}
+    給定不可分解對象, 有 $M ≫ \mathrm{Top}(M) ≫ \mathrm{End}(S)$ 與 $M ≫ \mathrm{End}(M) ≫ k(\mathrm{End}(M))$ 兩條路可選. 最後指向是同一剩餘域 (自同態對主體部分貢獻的數乘). 
+    稱 $R$ 是局部環, 當且僅當以下等價定義成立. \parnote{局部環 ↓}
+    \begin{enumerate}
+        \item 存在最大左理想; 存在最大右理想; 
+        \item 所有非單位元恰好構成雙邊理想; \parnote{理想視角}
+        \item 對任意 $x ∈ R$, 有且僅有 $x$ 可逆或者 $(1-x)$ 可逆 (alternative); \parnote{逆元二擇}
+        \item 冪等元只有 $0$ 和 $1$; 
+        \item 剩餘域 $A/\mathrm{Rad}(A) ≃ k$. \parnote{視作單點}
+    \end{enumerate}
+\end{definition}
+
+\begin{example}[從單模到不可分解模]
+    局部環幫助檢視不可分解對象 $Ae$ 的自同態環, 因爲這等價於談論 $eAe$ 是局部環. 以下描述等價.
+\begin{enumerate}
+    \item $M$ 是不可分解模; 
+    \item $\mathrm{End}(M)$ 是局部環; 
+    \item 所有 $f : M → M$ 是同構或是冪零的. \parnote{Fitting}
+\end{enumerate}
+\end{example}
+
+\begin{remark}
+    不可分解對象與單對象一一對應 (相差一個 reduction). 本質上, $\mathrm{End}(S)$ 形如一維的 Jordan 塊, 但 $\mathrm{End}(M)$ 可以是高維的 Jordan 塊.
+\end{remark}
+
+
+
+
+
+
+

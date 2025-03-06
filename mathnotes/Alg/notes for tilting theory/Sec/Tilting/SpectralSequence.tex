@@ -1,0 +1,1202 @@
+\begin{abstract}
+    關於 Leray 早期工作, 層與譜序列嚆矢等參見 \cite{MR1775587}. 較 suite spectrale 之稱呼, anneau spectral 之稱更能體現其環結構. 
+
+\end{abstract}
+
+\subsubsection{譜序列的定義, 構造 I, 以及收斂性: 濾過復形}
+
+\begin{abstract}
+    先建立一條邏輯閉環: 用 $(A,d,F)$ 構造 $E$, 再證明其 $E_∞$ 收斂至 $(A,d,F)$. 往後加入``收斂至 $(A,d,F)$ 的譜序列''這一記號.  
+
+    這是一條清晰的路, 既不涉及正合耦, 又不涉及雙複形. 
+\end{abstract}
+
+\begin{definition}[(上) 同調譜序列]
+    先明確定向: $(1,0) = →$ 是往右, $(0,1) = ↑$ 是往上. 稱一組資料 $\{(E_r, d_r)\}$ 是同調譜序列, 若以下滿足. 
+    \begin{enumerate}
+        \item 凡 $E_r$ 均是 $(ℤ × ℤ)$-指標的對象, 凡 $d_r$ 均是 $(r,1-r)$ 朝向的態射, 滿足 $d_r ^2 =0$. 
+        \item 凡 $E_{r+1}$ 均是 $E_r$ 在各分量取同調群所得, 即 $E_{r+1} = H(E_r)$. 
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    箭頭朝向可以整體轉置. 稱上述同調的譜序列, 是以微分逐級傾斜. 假定 $E_0$ 的支撐集在滿足某種有限性, 則存在穩定項 $E_r = E_∞$. 
+\end{remark}
+
+\begin{example}[譜序列的構造 I: 濾過複形 (微分分次模)]\label{filteredcomplex}
+    給定微分分次模 $(A^∙ , d)$ (也就是上鏈複形). 稱 $F^∙(-)$ 是 $A^∙$ 的濾過, 當且僅當存在形如以下的 $(ℤ × ℤ)$-規格的交換圖\parnote{$↘$ 向减小 \\ $↑$ 向微分}
+\begin{equation}
+    % https://q.uiver.app/#q=WzAsOCxbMSwxLCJGXnBBXntwK3F9Il0sWzIsMiwiRl57cCsxfUFee3ArcX0iXSxbMCwwLCJGXntwLTF9QV57cCtxfSJdLFsxLDAsIkZee3B9QV57cCtxKzF9Il0sWzIsMSwiRl57cCsxfUFee3ArcSsxfSJdLFsxLDIsIkZee3B9QV57cCtxLTF9Il0sWzAsMSwiRl57cC0xfUFee3ArcS0xfSJdLFswLDIsIlxcYm94ZWR7XFx0ZXh0e+i8uOWFpX0oQSxGKX0iXSxbMCwyLCJcXHN1YnNldCIsMyx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMCwiXFxzdWJzZXQiLDMseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDMsIlxcc3Vic2V0IiwzLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSw2LCJcXHN1YnNldCIsMyx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzYsMl0sWzAsM10sWzUsMF0sWzEsNF1d
+\begin{tikzcd}[ampersand replacement=\&]
+	{F^{p-1}A^{p+q}} \& {F^{p}A^{p+q+1}} \\
+	{F^{p-1}A^{p+q-1}} \& {F^pA^{p+q}} \& {F^{p+1}A^{p+q+1}} \\
+	{\boxed{\text{輸入}(A,F)}} \& {F^{p}A^{p+q-1}} \& {F^{p+1}A^{p+q}}
+	\arrow[from=2-1, to=1-1]
+	\arrow["\subset"{marking, allow upside down}, dotted, no head, from=2-2, to=1-1]
+	\arrow[from=2-2, to=1-2]
+	\arrow["\subset"{marking, allow upside down}, dotted, no head, from=2-3, to=1-2]
+	\arrow["\subset"{marking, allow upside down}, dotted, no head, from=3-2, to=2-1]
+	\arrow[from=3-2, to=2-2]
+	\arrow["\subset"{marking, allow upside down}, dotted, no head, from=3-3, to=2-2]
+	\arrow[from=3-3, to=2-3]
+\end{tikzcd}.
+\end{equation}
+此時, 定義 $E_0^{p,q} = \frac{F^p A^{p+q}}{F^{p+1}A^{p+q}}$, 相應的微分繼承自 $d$. \parnote{$\frac{s(↘)}{t(↘)}$} 
+\begin{equation}
+    % https://q.uiver.app/#q=WzAsOCxbMSwxLCJcXGZyYWN7Rl5wQV57cCtxfX17Rl57cCsxfUFee3ArcX19Il0sWzIsMiwiXFxmcmFje0Zee3ArMX1BXntwK3F9fXtGXntwKzJ9QV57cCtxfX0iXSxbMCwwLCJcXGZyYWN7Rl57cC0xfUFee3ArcX19e0ZecEFee3ArcX19Il0sWzEsMCwiXFxmcmFje0Zee3B9QV57cCtxKzF9fXtGXntwKzF9QV57cCtxKzF9fSJdLFsyLDEsIlxcZnJhY3tGXntwKzF9QV57cCtxKzF9fXtGXntwKzJ9QV57cCtxKzF9fSJdLFsxLDIsIlxcZnJhY3tGXntwfUFee3ArcS0xfX17Rl57cCsxfUFee3ArcS0xfX0iXSxbMCwxLCJcXGZyYWN7Rl57cC0xfUFee3ArcS0xfX17Rl57cH1BXntwK3EtMX19Il0sWzAsMiwiXFxib3hlZHtFXzAoQSxGKX0iXSxbMSw0XSxbNSwwXSxbMCwzXSxbNiwyXV0=
+\begin{tikzcd}[ampersand replacement=\&]
+	{\frac{F^{p-1}A^{p+q}}{F^pA^{p+q}}} \& {\frac{F^{p}A^{p+q+1}}{F^{p+1}A^{p+q+1}}} \\
+	{\frac{F^{p-1}A^{p+q-1}}{F^{p}A^{p+q-1}}} \& {\frac{F^pA^{p+q}}{F^{p+1}A^{p+q}}} \& {\frac{F^{p+1}A^{p+q+1}}{F^{p+2}A^{p+q+1}}} \\
+	{\boxed{E_0(A,F)}} \& {\frac{F^{p}A^{p+q-1}}{F^{p+1}A^{p+q-1}}} \& {\frac{F^{p+1}A^{p+q}}{F^{p+2}A^{p+q}}}
+	\arrow[from=2-1, to=1-1]
+	\arrow[from=2-2, to=1-2]
+	\arrow[from=3-2, to=2-2]
+	\arrow[from=3-3, to=2-3]
+\end{tikzcd}.
+\end{equation}
+計算譜序列第一頁, 得 $E_1^{p,q} = H^{p+q}(F^pA / F^{p+1}A)$. \textbf{算第二頁? 我們卡住了: 微分需要人工定義!} \parnote{定義 $d_1$?}
+\begin{itemize}
+    \item 嘗試計算 $\frac{F^pA^{p+q}}{F^{p+1}A^{p+q}}$ 處同調群如下, 若將 $\ker$ 與 $\mathrm{im}$ 都看做商集 $\frac{F^pA^{p+q}}{F^{p+1}A^{p+q}}$ 的子集, 則 
+    \begin{equation}
+        E_1^{p,q} = H_0^{p,q} = \frac{[F^pA^{p+q} \quad ∩ \quad {\color{red}d^{-1}(F^{p+1}A^{p+q+1})}]\quad \bmod \quad F^{p+1}A^{p+q}}{[F^pA^{p+q} \quad ∩ \quad {\color{blue}d(F^{p}A^{p+q-1})}]\quad \bmod \quad F^{p+1}A^{p+q}}
+    \end{equation}
+    此處 $\bmod$ 亦可改作 $+$. 括號也可以省略: 模恆等式表明 $(U^♯ ∩ V) + U^♭ = U^♯ ∩ (V + U^♭)$. 
+    
+    將 $\boxed{F^pA^{p+q}}$ 處的濾過定位回複形, 得
+    \begin{equation}
+        % https://q.uiver.app/#q=WzAsNyxbMSwxLCJcXGJveGVke0ZecEFee3ArcX19Il0sWzIsMiwiRl57cCsxfUFee3ArcX0iXSxbMCwwLCJGXntwLTF9QV57cCtxfSJdLFsxLDAsIkZee3B9QV57cCtxKzF9IixbMjM1LDEwMCw2MCwxXV0sWzIsMSwiRl57cCsxfUFee3ArcSsxfSIsWzIzNSwxMDAsNjAsMV1dLFsxLDIsIkZee3B9QV57cCtxLTF9IixbMzU3LDEwMCw2MCwxXV0sWzAsMSwiRl57cC0xfUFee3ArcS0xfSIsWzM1NywxMDAsNjAsMV1dLFswLDIsIlxcc3Vic2V0IiwzLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwwLCJcXHN1YnNldCIsMyx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsMywiXFxzdWJzZXQiLDMseyJjb2xvdXIiOlsyMzUsMTAwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19LFsyMzUsMTAwLDYwLDFdXSxbNSw2LCJcXHN1YnNldCIsMyx7ImNvbG91ciI6WzAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX0sWzAsNjAsNjAsMV1dLFs2LDJdLFswLDNdLFs1LDBdLFsxLDRdXQ==
+\begin{tikzcd}[ampersand replacement=\&]
+	{F^{p-1}A^{p+q}} \& \textcolor{rgb,255:red,51;green,68;blue,255}{{F^{p}A^{p+q+1}}} \\
+	\textcolor{rgb,255:red,255;green,51;blue,61}{{F^{p-1}A^{p+q-1}}} \& {\boxed{F^pA^{p+q}}} \& \textcolor{rgb,255:red,51;green,68;blue,255}{{F^{p+1}A^{p+q+1}}} \\
+	\& \textcolor{rgb,255:red,255;green,51;blue,61}{{F^{p}A^{p+q-1}}} \& {F^{p+1}A^{p+q}}
+	\arrow[from=2-1, to=1-1]
+	\arrow["\subset"{marking, allow upside down}, dotted, no head, from=2-2, to=1-1]
+	\arrow[from=2-2, to=1-2]
+	\arrow["\subset"{marking, allow upside down}, color={rgb,255:red,51;green,68;blue,255}, dotted, no head, from=2-3, to=1-2]
+	\arrow["\subset"{marking, allow upside down}, color={rgb,255:red,214;green,92;blue,92}, dotted, no head, from=3-2, to=2-1]
+	\arrow[from=3-2, to=2-2]
+	\arrow["\subset"{marking, allow upside down}, dotted, no head, from=3-3, to=2-2]
+	\arrow[from=3-3, to=2-3]
+\end{tikzcd}.
+    \end{equation}
+\end{itemize}
+我們希望在 $(p,q)$-坐標處給出一族 $Z$ 與 $B$ 的濾過, 最好是以 $r$-爲指標的. 最終效果如下\parnote{$q$ 混在分次模的各分量中, 自行析出}
+\begin{enumerate}
+    \item ($Z$-部) $\underbracket{F^p ∩ d^{-1}(F^{p+1})}\limits_{Z_0^p} \quad ⊇ \quad \underbracket{F^p ∩ (d^{-1}(F^{p+r+1})) + F^{p+1}}\limits_{Z_r^p} \quad ⊇ \quad \underbracket{F^p ∩ (\ker d) + F^{p+1}}\limits_{Z_∞ ^p}$; 
+    \item ($B$-部) $\underbracket{F^p ∩ (\mathrm{im}\ d) + F^{p+1}}\limits_{B_∞^p} \quad ⊇ \quad \underbracket{F^p ∩ (d(F^{p-r})) + F^{p+1}}\limits_{B_r^p} \quad ⊇ \quad \underbracket{F^p ∩ (0) + F^{p+1}}\limits_{B_0 ^p}$; 
+    \item ($H$-群) $H_r = E_{r+1}$.  
+\end{enumerate}
+整合之, 得一條濾過鏈: 
+\begin{equation}
+    F^p ∩ d^{-1}(F^{p+1}) = \underbracket{Z_0 ^p ⊇ \cdots ⊇ Z_∞ ^p}\limits_{Z-\text{濾過}} = F^p ∩ (\ker d) + F^{p+1} ⊇  F^p ∩ (\mathrm{im} \  d) + F^{p+1} = \underbracket{B_∞ ^p ⊇ \cdots ⊇ B_0^p}\limits_{B-\text{濾過}} = F^{p+1}
+\end{equation}
+此時的微分如何選取? 先給出 $d_r : E_r → E_{r+1}$ 的滿-單分解. 由 Zassenhaus 引理的函子性, 
+\begin{align}
+    \frac{Z_{r-1} ^p}{Z_{r} ^p} &= \frac{F^p ∩ (d^{-1}(F^{p+r})) + F^{p+1}}{F^{p} ∩ (d^{-1}(F^{p+r+1})) + F^{p+1}} \\[6pt]
+    \frac{A^♯ ∩ {\color{red} X^♯} + A^♭}{A^♯ ∩ {\color{red} X^♭} + A^♭} \ \ &≃ \frac{d(F^p) ∩ {\color{red} F^{p+r}} + d(F^{p+1})}{d(F^{p}) ∩ {\color{red} F^{p+r+1}} + d(F^{p+1})} \\[6pt]
+    \frac{{\color{red} X^♯} ∩ A^♯ + {\color{red} X^♭}}{{\color{red} X^♯} ∩ A^♭ + {\color{red} X^♭}}  \ \  &≃ \frac{{\color{red} F^{p+r}} ∩ d(F^p) + {\color{red} F^{p+r+1}}}{{\color{red} F^{p+r}} ∩ d(F^{p+1}) + {\color{red} F^{p+r+1}}} \quad = \frac{B^{p+r}_r}{B^{p+r}_{r-1}}  
+\end{align}
+
+由以上, $E_r^p → E_r^{p+r}$ 自然繼承自 $d$, 即 \parnote{$B_{r-1} ⊆ Z_r$}
+\begin{equation}
+    E_r ^p = H_{r-1}^p = \frac{Z_{r-1}^p}{B_{r-1}^p} ↠ \frac{Z_{r-1}^p}{Z_{r}^p} ≃ \frac{B_{r-1}^{p+r}}{B_{r}^{p+r}} ↪ \frac{Z_{r}^{p+r}}{B_{r}^{p+r}} = E_{r+1} ^p. 
+\end{equation} 
+容易看出, $d_r$ 的朝向是右移 $(r,r-1)$. 
+\end{example}
+
+\begin{example}[收斂極限]
+    對以上濾過復形計算 $E_∞$, 得 ($≃$ 使用 Zassenhaus)
+    \begin{equation}
+        E_∞^p = \frac{F^p ∩ (\ker d) + F^{p+1}}{F^p ∩ (\mathrm{im} \ d) + F^{p+1}} ≃ \frac{(\ker d) ∩ F^p + (\mathrm{im} \ d)}{(\ker d) ∩ F^{p+1} + (\mathrm{im} \ d)}.
+    \end{equation}
+    考慮極端情況 $F^0 = \mathrm{id}$ 與 $F^1 = 0$, 則 $E_∞^p = \frac{\ker (d)}{\mathrm{im} \ d}$ 就是同調群. 一般地, $E_∞^{∙,q}$ 給出 $H^q(A)$ 的濾過. 
+\end{example}
+
+\begin{definition}[收斂]
+    稱 $(E, d)$ 收斂至複形 (微分分次模) $A$, 當且僅當\textbf{存在濾過} $F$ 使得
+    \begin{equation}
+        E_∞ ^{p,q} = \frac{F^p H^{p+q}(A)}{F^{p+1}H^{p+q}(A)} = \frac{(\ker d) ∩ F^p + (\mathrm{im} \ d)\quad \ \ \text{at $(p+q)$-th degree}}{(\ker d) ∩ F^{p+1} + (\mathrm{im} \ d)\quad \text{at $(p+q)$-th degree}}. 
+    \end{equation}
+    爲避免一些麻煩, 通常規定譜序列與複形濾過是有限型的. 
+\end{definition}
+
+\begin{theorem}
+    依照構造, $(A, d,F)$ 的譜序列收斂至 $(A,d)$. 
+\end{theorem}
+
+\begin{example}[計算示例: 同調代數基本定理]
+    給定濾過複形 $X ⊇ K ⊇ 0$, 譜序列收斂至 $E_2 = E_∞$: 
+    \begin{equation}
+        % https://q.uiver.app/#q=WzAsMjIsWzAsMSwiWF5wL0tecCJdLFswLDAsIlhee3ArMX0vS157cCsxfSJdLFswLDIsIlhee3AtMX0vS157cC0xfSJdLFsxLDAsIktee3ArMn0iXSxbMSwxLCJLXntwKzF9Il0sWzEsMiwiS15wIl0sWzAsMywiXFxib3hlZHtFXzB9Il0sWzMsMiwiSF57cC0xfShYL0spIl0sWzMsMSwiSF57cH0oWC9LKSJdLFszLDAsIkhee3ArMX0oWC9LKSJdLFs0LDIsIkhecCAoSykiXSxbNCwxLCJIXntwKzF9KEspIl0sWzQsMCwiSF57cCsyfShLKSJdLFszLDMsIlxcYm94ZWR7RV8xfSJdLFs2LDAsIlxca2VyIChcXGRlbHRhXntwKzF9KSJdLFs2LDEsIlxca2VyIChcXGRlbHRhXntwfSkiXSxbNiwyLCJcXGtlciAoXFxkZWx0YV57cC0xfSkiXSxbNywyLCJcXG1hdGhybXtjb2t9IChcXGRlbHRhXntwLTF9KSJdLFs3LDEsIlxcbWF0aHJte2Nva30gKFxcZGVsdGFee3B9KSJdLFs3LDAsIlxcbWF0aHJte2Nva30gKFxcZGVsdGFee3ArMX0pIl0sWzYsMywiXFxib3hlZHtFXzJ9Il0sWzcsMywiXFxib3hlZHtFX1xcaW5mdHl9Il0sWzIsMF0sWzAsMV0sWzUsNF0sWzQsM10sWzcsMTAsIlxcZGVsdGFee3AtMX0iXSxbOCwxMSwiXFxkZWx0YV57cH0iXSxbOSwxMiwiXFxkZWx0YV57cCsxfSJdLFsyMSwyMCwiIiwwLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+\begin{tikzcd}[ampersand replacement=\&, sep = small]
+	{X^{p+1}/K^{p+1}} \& {K^{p+2}} \&\& {H^{p+1}(X/K)} \& {H^{p+2}(K)} \&\& {\ker (\delta^{p+1})} \& {\mathrm{cok} (\delta^{p+1})} \\
+	{X^p/K^p} \& {K^{p+1}} \&\& {H^{p}(X/K)} \& {H^{p+1}(K)} \&\& {\ker (\delta^{p})} \& {\mathrm{cok} (\delta^{p})} \\
+	{X^{p-1}/K^{p-1}} \& {K^p} \&\& {H^{p-1}(X/K)} \& {H^p (K)} \&\& {\ker (\delta^{p-1})} \& {\mathrm{cok} (\delta^{p-1})} \\
+	{\boxed{E_0}} \&\&\& {\boxed{E_1}} \&\&\& {\boxed{E_2}} \& {\boxed{E_\infty}}
+	\arrow["{\delta^{p+1}}", from=1-4, to=1-5]
+	\arrow[from=2-1, to=1-1]
+	\arrow[from=2-2, to=1-2]
+	\arrow["{\delta^{p}}", from=2-4, to=2-5]
+	\arrow[from=3-1, to=2-1]
+	\arrow[from=3-2, to=2-2]
+	\arrow["{\delta^{p-1}}", from=3-4, to=3-5]
+	\arrow[equals, from=4-8, to=4-7]
+\end{tikzcd}.
+    \end{equation}
+    收斂終點即 $X$ 的分次同調群, $↘$ 向分別是商與子, 即 $H^p(X)/\mathrm{cok}(δ^{p-1}) ≃ \ker (δ^p)$. 此時得到連接態射組成的長正合列
+    \begin{equation}
+        \cdots → H^{p-1}(X/K) → H^{p}(K) → [\mathrm{coker}(δ ^{p-1})] → H^p (X) → [\ker (δ ^p)] → H^p(X/K) → H^{p+1}(K) → \cdots . 
+    \end{equation}
+\end{example}
+
+\begin{remark}
+    一個特殊技巧: 算至 $E_2$ 時, 即可預判所有 $(1,-1)$-朝向的箭頭至多有兩處支撐, 從而將全複形的同調群直接嵌入即可.  
+    \begin{equation}
+        % https://q.uiver.app/#q=WzAsNyxbMCwyLCJIXntwLTF9KFgvSykiXSxbMCwxLCJIXntwfShYL0spIl0sWzAsMCwiSF57cCsxfShYL0spIl0sWzIsMiwiSF5wIChLKSJdLFsyLDEsIkhee3ArMX0oSykiXSxbMiwwLCJIXntwKzJ9KEspIl0sWzEsMywiXFxib3hlZHtFXzF9Il0sWzAsMywiXFxkZWx0YV57cC0xfSJdLFsxLDQsIlxcZGVsdGFee3B9Il0sWzIsNSwiXFxkZWx0YV57cCsxfSJdLFs0LDIsIkhee3ArMX0gKFgpIiwxXSxbMywxLCJIXnAgKFgpIiwxXV0=
+\begin{tikzcd}[ampersand replacement=\&]
+	{H^{p+1}(X/K)} \&\& {H^{p+2}(K)} \\
+	{H^{p}(X/K)} \&\& {H^{p+1}(K)} \\
+	{H^{p-1}(X/K)} \&\& {H^p (K)} \\
+	\& {\boxed{E_2}}
+	\arrow["{\delta^{p+1}}", from=1-1, to=1-3]
+	\arrow["{\delta^{p}}", from=2-1, to=2-3]
+	\arrow["{H^{p+1} (X)}"{description}, from=2-3, to=1-1]
+	\arrow["{\delta^{p-1}}", from=3-1, to=3-3]
+	\arrow["{H^p (X)}"{description}, from=3-3, to=2-1]
+\end{tikzcd}.
+    \end{equation}
+\end{remark}
+
+\begin{example}[乘法結構]
+    \parnote{拓撲學: 譜序列是拿來乘的} 依照定義, 譜序列 $(E_r,d_r)$ 是一族滿足特殊條件的分次模. 依照動機
+    \begin{itemize}
+        \item $A_∞$-代數從 $H$ 還原原始信息, 揭示了同調群間 (且唯一的) 乘法結構. 關於 $A-∞$-代數的介紹見 \cite{keller2001introductionainfinityalgebrasmodules}. 
+    \end{itemize}
+
+    稱 $(E,d,μ ,ε )$ 是譜序列的一個乘法結構\parnote{$ε(p,q)$ 是符號}, 當且僅當 (假定 $d_0 \ ↑$): 
+    \begin{enumerate}
+        \item (初始設定) $(E_0,d,μ_0, ε)$ 是分次代數;
+        \item (誘導結果) 依照 $H = \frac{Z}{B} = \frac{\text{子分次代數}}{\text{分次雙邊理想}}$, 所有 $(E_r, d_r, μ _r, ε )$ 都是分次代數, $d_r$ 的次數爲 $(r,1-r)$; 
+        \item (相容條件) 分次模同構 $H^{p,q}(E_r) → E_{r+1}^{p,q}$ 建立了分次代數同構. 
+    \end{enumerate}
+特別地, 我們希望初始設定 $(E_0, d_0)$ 能夠誘導譜序列的乘法結構. 
+\end{example}
+
+\begin{theorem}[帶乘法結構的l濾過復形收斂定理]
+    假定 $(A, d, μ)$ 是濾過分次代數 $|d| = 1$, 則收斂定理中的譜序列帶有乘法結構
+    \begin{enumerate}
+        \item \cite{filteredcomplex} 構造譜序列的帶有自然的乘法結構 $(E, d, μ , ε)$, 其中 $μ_r$ 由商關係誘導, $ε(p,q) = p+q$. 
+        \item 收斂終點 $E_∞{p,q} ≃ (F^p H^{p+q})/ (F^{p+1} H^{p+q})$ 是分次模的同構, 同時也是分次代數的同構.
+    \end{enumerate}
+    \begin{proof}
+        取代表元進行驗證即可. 關鍵使用了諸 $B_r$ 的雙邊理想性. 
+    \end{proof}
+\end{theorem}
+
+
+\subsubsection{譜序列的構造 II: 雙複形}
+
+\begin{definition}[雙複形]
+    稱 $(A,d)$ 是雙復形, 若 $A$ 是 $(ℤ× ℤ)$-分次模, $d = \{d_→ , d_↑\}$ 滿足 \parnote{$\mathrm{Tot}(X)$ $=$ $\mathrm{Tot}(X^T)$}
+    \begin{equation}
+        d_→ : A^{p,q} → A^{p+1, q}, d_↑ : A^{p,q} → A^{p, q+1},\quad d_↑ ∘ d_↑ = d_→ ∘ d_→ = 0, d_→ ∘ d_↑ = d_↑ ∘ d_→.
+    \end{equation}
+    有時 (時常) 規定 $I := →$, $II := ↑$. 
+\end{definition}
+
+\begin{remark}
+    \begin{pinked}
+    特別注釋: 有些定義要求中間方塊交換, 微分時不給出 $(± 1)$-分次. 
+    \end{pinked}
+\end{remark}
+
+\begin{example}[動機: double counting]
+    願景: 先取橫向微分的同調群, 縱向的譜序列收斂至 $\mathrm{Tot}(X)$; 若先取縱向微分, 橫向譜序列亦收斂至 $\mathrm{Tot}(X)$. 
+    
+    先假定 $X$ 支撐有限. 顯然 
+    \begin{equation}
+        \left(\frac{F_→ ^p \mathrm{Tot}(X)}{F_→ ^{p+1} \mathrm{Tot}(X)}\right)^{p+q} ≃ X^{p+q} ≃ \left(\frac{F_↑ ^q \mathrm{Tot}(X)}{F_↑ ^{q+1} \mathrm{Tot}(X)}\right)^{p+q}.
+    \end{equation}
+    從而 ${_→}E_1^{p,q}=H^{p,q}(\mathrm{Tot}(X), F_→)$ 與 ${_↑}E_1^{p,q}=H^{p,q}(\mathrm{Tot}(X), F_↑)$ 都是收斂至 $\mathrm{Tot}(X)$ 的.  
+\end{example}
+
+\begin{theorem}
+    以上 ${_→}E$ 與 ${_↑}E$ 有更好的性質: 在雙復形微分的自然誘導下, 
+    \begin{enumerate}
+        \item ${_→}E_2$ 恰是 $H_→(X)$ 的同調群, 換言之, ${_→}E_2^{p,q} = H\left(H_↑^{p,q-1}(X) → H_↑^{p,q}(X) → H_↑^{p,q+1}(X)\right)$; 
+        \item ${_↑}E_2$ 恰是 $H_↑(X)$ 的同調群, 換言之, ${_↑}E_2^{p,q} = H\left(H_→^{p-1,q}(X) → H_→^{p,q}(X) → H_→^{p+1,q}(X)\right)$. 
+    \end{enumerate}
+    \begin{proof}
+        追圖即可. 
+    \end{proof}
+\end{theorem}
+
+\begin{remark}
+    這告訴我們, 存在兩個收斂至 $\mathrm{Tot}(X)$ 的譜序列, 第二頁分別是雙複形的``橫向同調群的縱向同調群''與``縱向同調群的橫向同調群''. 
+\end{remark}
+
+\begin{example}[強形式蛇引理]
+    給定正合列的同態 $f : X → Y$, 則範性質確定的典範態射 $\mathrm{ker}(f)[-1] → \mathrm{cok}(f)[1]$ 是擬同構. 
+    \begin{proof}
+        考慮縱向同調群, 計算橫向譜序列得 
+\begin{equation}
+    % https://q.uiver.app/#q=WzAsMzUsWzIsMSwiWF57bi0xfSJdLFszLDEsIlhee259Il0sWzQsMSwiWF57bisxfSJdLFsyLDAsIllee24tMX0iXSxbMywwLCJZXntufSJdLFs0LDAsIllee24rMX0iXSxbMSwxLCJYXntuLTJ9Il0sWzEsMCwiWV57bi0yfSJdLFs1LDAsIllee24rMn0iXSxbNSwxLCJYXntuKzJ9Il0sWzAsMSwiXFxib3hlZHtYX1xcdXBhcnJvdyB9Il0sWzEsMiwiXFxrZXIoZl57bi0yfSkiXSxbMiwyLCJcXGtlcihmXntuLTF9KSJdLFszLDIsIlxca2VyKGZee259KSJdLFs0LDIsIlxca2VyKGZee24rMX0pIl0sWzUsMiwiXFxrZXIoZl57bisyfSkiXSxbMSwzLCJcXG1hdGhybXtjb2t9KGZee24tMn0pIl0sWzIsMywiXFxtYXRocm17Y29rfShmXntuLTF9KSJdLFszLDMsIlxcbWF0aHJte2Nva30oZl57bn0pIl0sWzQsMywiXFxtYXRocm17Y29rfShmXntuKzF9KSJdLFs1LDMsIlxcbWF0aHJte2Nva30oZl57bisyfSkiXSxbMCwyLCJcXGJveGVke0hfXFx1cGFycm93IChYKX0iXSxbMCwzLCJcXGJveGVke3tfXFx0byB9RV8xfSJdLFswLDUsIlxcYm94ZWR7e19cXHRvIH1FXzJ9Il0sWzEsNCwiSF57bi0yfShcXGtlcikiXSxbMiw0LCJIXntuLTF9KFxca2VyKSJdLFszLDQsIkhee259KFxca2VyKSJdLFs0LDQsIkhee24rMX0oXFxrZXIpIl0sWzUsNCwiSF57bisyfShcXGtlcikiXSxbMSw1LCJIXntuLTJ9KFxcbWF0aHJte2Nva30pIl0sWzIsNSwiSF57bi0xfShcXG1hdGhybXtjb2t9KSJdLFszLDUsIkhee259KFxcbWF0aHJte2Nva30pIl0sWzQsNSwiSF57bisxfShcXG1hdGhybXtjb2t9KSJdLFs1LDUsIkhee24rMn0oXFxtYXRocm17Y29rfSkiXSxbMCw0LCJcXGJveGVke0hfXFx0byAoSF9cXHVwYXJyb3cgKFgpKX0iXSxbMCwzLCJmXntuLTF9Il0sWzEsNCwiZl57bn0iXSxbMiw1LCJmXntuKzF9Il0sWzYsNywiZl57bi0yfSJdLFs5LDgsImZee24rMn0iXSxbMTEsMTJdLFsxMiwxM10sWzEzLDE0XSxbMTQsMTVdLFsxNiwxN10sWzE3LDE4XSxbMTgsMTldLFsxOSwyMF0sWzIxLDIyLCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyNCwzMSwiXFx2YXJlcHNpbG9uIF57bi0xfSIsMV0sWzI1LDMyLCJcXHZhcmVwc2lsb24gXntufSIsMV0sWzI2LDMzLCJcXHZhcmVwc2lsb24gXntuKzF9IiwxXV0=
+\begin{tikzcd}[ampersand replacement=\&, sep = small]
+	\& {Y^{n-2}} \& {Y^{n-1}} \& {Y^{n}} \& {Y^{n+1}} \& {Y^{n+2}} \\
+	{\boxed{X_\uparrow }} \& {X^{n-2}} \& {X^{n-1}} \& {X^{n}} \& {X^{n+1}} \& {X^{n+2}} \\
+	{\boxed{H_\uparrow (X)}} \& {\ker(f^{n-2})} \& {\ker(f^{n-1})} \& {\ker(f^{n})} \& {\ker(f^{n+1})} \& {\ker(f^{n+2})} \\
+	{\boxed{{_\to }E_1}} \& {\mathrm{cok}(f^{n-2})} \& {\mathrm{cok}(f^{n-1})} \& {\mathrm{cok}(f^{n})} \& {\mathrm{cok}(f^{n+1})} \& {\mathrm{cok}(f^{n+2})} \\
+	{\boxed{H_\to (H_\uparrow (X))}} \& {H^{n-2}(\ker)} \& {H^{n-1}(\ker)} \& {H^{n}(\ker)} \& {H^{n+1}(\ker)} \& {H^{n+2}(\ker)} \\
+	{\boxed{{_\to }E_2}} \& {H^{n-2}(\mathrm{cok})} \& {H^{n-1}(\mathrm{cok})} \& {H^{n}(\mathrm{cok})} \& {H^{n+1}(\mathrm{cok})} \& {H^{n+2}(\mathrm{cok})}
+	\arrow["{f^{n-2}}", from=2-2, to=1-2]
+	\arrow["{f^{n-1}}", from=2-3, to=1-3]
+	\arrow["{f^{n}}", from=2-4, to=1-4]
+	\arrow["{f^{n+1}}", from=2-5, to=1-5]
+	\arrow["{f^{n+2}}", from=2-6, to=1-6]
+	\arrow[equals, from=3-1, to=4-1]
+	\arrow[from=3-2, to=3-3]
+	\arrow[from=3-3, to=3-4]
+	\arrow[from=3-4, to=3-5]
+	\arrow[from=3-5, to=3-6]
+	\arrow[from=4-2, to=4-3]
+	\arrow[from=4-3, to=4-4]
+	\arrow[from=4-4, to=4-5]
+	\arrow[from=4-5, to=4-6]
+	\arrow["{\varepsilon ^{n-1}}"{description}, from=5-2, to=6-4]
+	\arrow["{\varepsilon ^{n}}"{description}, from=5-3, to=6-5]
+	\arrow["{\varepsilon ^{n+1}}"{description}, from=5-4, to=6-6]
+\end{tikzcd}
+\end{equation}
+    ${_→}E_3 = {_→}E_∞$, 因此 $0 → \mathrm{cok}(ε^{n-1}) → ? → \ker(ε ^n) → 0$ 是 $H(\mathrm{Tot})=0$ 的濾過. 故 $ε$ 是同構. 
+    \end{proof}
+\end{example}
+
+\begin{theorem}[复形态射基本定理]
+        若 $f^\bullet:Y^\bullet\to X^\bullet$ 是双边无界的复形的同态, 则存在复形 (可取作全复形) $E$ 使得下图是正合列的交换图
+        \begin{equation}
+            % https://q.uiver.app/#q=WzAsMTIsWzQsMCwiSF57a30oRV5cXGJ1bGxldCkiXSxbMywxLCJIXmsoXFxtYXRocm17a2VyfShmXlxcYnVsbGV0KSkiXSxbMiwxLCJIXntrLTJ9KFxcbWF0aHJte2Nva30oZl5cXGJ1bGxldCkpIl0sWzUsMCwiSF57a30oWV5cXGJ1bGxldCkiXSxbMSwwLCJIXntrLTF9KEVeXFxidWxsZXQpIl0sWzMsMCwiSF57ay0xfShYXlxcYnVsbGV0KSJdLFsyLDAsIkhee2stMX0oWV5cXGJ1bGxldCkiXSxbMCwwLCJIXntrLTJ9KFheXFxidWxsZXQpIl0sWzAsMSwiSF57ay0xfShcXG1hdGhybXtrZXJ9KGZeXFxidWxsZXQpKSJdLFs0LDEsIkhee2t9KEVeXFxidWxsZXQpIl0sWzEsMSwiSF57ay0xfShFXlxcYnVsbGV0KSJdLFs1LDEsIkhee2stMX0oXFxtYXRocm17Y29rfShmXlxcYnVsbGV0KSkiXSxbMiwxXSxbMCwzXSxbNCw2XSxbNiw1XSxbNSwwXSxbNyw0XSxbOCwxMF0sWzEwLDJdLFsxLDldLFs0LDEwLCIiLDIseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDksIiIsMix7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzksMTFdXQ==
+            \begin{tikzcd}[ampersand replacement=\&, row sep = small]
+                {H^{k-2}(X^\bullet)} \& {H^{k-1}(E^\bullet)} \& {H^{k-1}(Y^\bullet)} \& {H^{k-1}(X^\bullet)} \& {H^{k}(E^\bullet)} \& {H^{k}(Y^\bullet)} \\
+                {H^{k-1}(\mathrm{ker}(f^\bullet))} \& {H^{k-1}(E^\bullet)} \& {H^{k-2}(\mathrm{cok}(f^\bullet))} \& {H^k(\mathrm{ker}(f^\bullet))} \& {H^{k}(E^\bullet)} \& {H^{k-1}(\mathrm{cok}(f^\bullet))}
+                \arrow[from=1-1, to=1-2]
+                \arrow[from=1-2, to=1-3]
+                \arrow[Rightarrow, no head, from=1-2, to=2-2]
+                \arrow[from=1-3, to=1-4]
+                \arrow[from=1-4, to=1-5]
+                \arrow[from=1-5, to=1-6]
+                \arrow[Rightarrow, no head, from=1-5, to=2-5]
+                \arrow[from=2-1, to=2-2]
+                \arrow[from=2-2, to=2-3]
+                \arrow[from=2-3, to=2-4]
+                \arrow[from=2-4, to=2-5]
+                \arrow[from=2-5, to=2-6]
+            \end{tikzcd}
+        \end{equation}
+        \begin{proof}
+            视 $2\times n$ 方块为全复形 $E^\bullet$, 依次计算 $E^\bullet$ 各阶同调群的横向与纵向滤过即可.
+            \end{proof}
+\end{theorem}
+
+
+    \begin{example}[收斂性定理的``反例'']\parnote{必須強調有界!}
+        假定雙復形或濾過復形是 $(→ , ↑)$ 朝向的. 若對任意 $s$, 復形在一切 $\{(p,q) ∣ p+q = s\}$ 僅有限項非零, 則譜序列在有限步後必然穩定. \parnote{逐點收斂即可, 不必一致收斂} 常見的例子是``二/四象限-型譜序列''. 特別地, 
+        \begin{equation}
+            % https://q.uiver.app/#q=WzAsMTIsWzMsMiwiXFxtYXRoYmIgWiJdLFs0LDIsIlxcbWF0aGJiIFoiXSxbMywxLCJcXG1hdGhiYiBaIl0sWzIsMSwiXFxtYXRoYmIgWiJdLFsyLDAsIlxcbWF0aGJiIFoiXSxbMiwyLCIwIl0sWzEsMSwiMCJdLFszLDAsIjAiXSxbNCwxLCIwIl0sWzUsMiwiMCJdLFsxLDAsIlxcbWF0aGJiIFoiXSxbMCwwLCIwIl0sWzAsMSwiIiwwLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwyLCIiLDIseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDIsIiIsMCx7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsNCwiIiwyLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTAsNCwiIiwwLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCw3XSxbNiwzXSxbNSwzXSxbMiw4XSxbMSw4XSxbMiw3XSxbMSw5XSxbNSwwXSxbMTEsMTBdLFs2LDEwXV0=
+\begin{tikzcd}[ampersand replacement=\&, sep = small]
+	0 \& {\mathbb Z} \& {\mathbb Z} \& 0 \\
+	\& 0 \& {\mathbb Z} \& {\mathbb Z} \& 0 \\
+	\&\& 0 \& {\mathbb Z} \& {\mathbb Z} \& 0
+	\arrow[from=1-1, to=1-2]
+	\arrow[equals, from=1-2, to=1-3]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=2-2, to=1-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow[equals, from=2-3, to=1-3]
+	\arrow[equals, from=2-3, to=2-4]
+	\arrow[from=2-4, to=1-4]
+	\arrow[from=2-4, to=2-5]
+	\arrow[from=3-3, to=2-3]
+	\arrow[from=3-3, to=3-4]
+	\arrow[equals, from=3-4, to=2-4]
+	\arrow[equals, from=3-4, to=3-5]
+	\arrow[from=3-5, to=2-5]
+	\arrow[from=3-5, to=3-6]
+\end{tikzcd}
+        \end{equation}
+        中無界的復形各行列正合, 故譜序列收斂至 $0$; 但全復形的是微分爲 $0$ 的非零復形, 從而非正合.  
+    \end{example}
+    
+\subsubsection{應用: AR 序列}
+
+\begin{theorem}[Auslander defeat]
+    選定好一些的代數 (例如有限維代數), 則任意短正合列 $0 → K → X → Y → 0$, 則有長正合列
+    \begin{equation}
+        0 → (-, K) → (-, X) → (-, Y) → \mathrm{Tr}(-) ⊗ K → \mathrm{Tr}(-) ⊗ X → \mathrm{Tr}(-) ⊗ Y → 0.
+    \end{equation}
+    \begin{proof}
+        取 $0 → ν (M) → ν (P_0) → ν (P_1) → \mathrm{Tr}(M) → 0$, 使用蛇引理. 
+    \end{proof}
+\end{theorem}
+
+\begin{theorem}[穩定 Hom]
+    對賦值 $Y ⊗ X^t → (X, Y),\quad y⊗f ↦ [x ↦ y⋅ f(x)]$, 有正合列
+    \begin{equation}
+        0 → \mathrm{Tor}_2(\mathrm{Tr}(X), Y) → Y ⊗ X^t → (X, Y) → \mathrm{Tor}_1(\mathrm{Tr}(X), Y) → 0.
+    \end{equation}
+    特別地, $\mathrm{Tor}_1(\mathrm{Tr}(M), N) = \underline{\mathrm{Hom}(M,N)}$. 
+    \begin{proof}
+        對 $M$ 取平坦分解 (投射分解) $F^{-1} → F^0 → M → 0$, 類似取 $Q → N$. 此時
+        \begin{equation}
+            % https://q.uiver.app/#q=WzAsMjcsWzIsMCwiKEZeey0xfSledFxcb3RpbWVzIFFeey0xfSJdLFszLDAsIihGXnstMX0pXnRcXG90aW1lcyBRXnswfSJdLFszLDEsIihGXnswfSledFxcb3RpbWVzIFFeezB9Il0sWzIsMSwiKEZeezB9KV50XFxvdGltZXMgUV57LTF9Il0sWzEsMSwiKEZeezB9KV50XFxvdGltZXMgUV57LTJ9Il0sWzEsMCwiKEZeey0xfSledFxcb3RpbWVzIFFeey0yfSJdLFswLDAsIlxcY2RvdHMiXSxbMCwxLCJcXGNkb3RzIl0sWzQsMSwiXFxib3hlZHtFXzB9Il0sWzAsMiwiXFxjZG90cyAiXSxbMywyLCJcXG1hdGhybXtUcn0oTSlcXG90aW1lcyBRXjAiXSxbMywzLCJNXnRcXG90aW1lcyBRXnswfSJdLFsyLDIsIlxcbWF0aHJte1RyfShNKVxcb3RpbWVzIFFeey0xfSJdLFsxLDIsIlxcbWF0aHJte1RyfShNKVxcb3RpbWVzIFFeey0yfSJdLFsyLDMsIk1edFxcb3RpbWVzIFFeey0xfSJdLFsxLDMsIk1edFxcb3RpbWVzIFFeey0yfSJdLFswLDMsIlxcY2RvdHMiXSxbNCwzLCJcXGJveGVke0VfMX0iXSxbMyw0LCJcXG1hdGhybXtUcn0oTSlcXG90aW1lcyBOIl0sWzIsNCwiXFxtYXRocm17VG9yfV8xKFxcbWF0aHJte1RyfShNKSwgTikiXSxbMSw0LCJcXG1hdGhybXtUb3J9XzIoXFxtYXRocm17VHJ9KE0pLCBOKSJdLFswLDQsIlxcY2RvdHMiXSxbMyw1LCJNXnRcXG90aW1lcyBOIl0sWzIsNSwiXFxtYXRocm17VG9yfV8xKE1edCwgTikiXSxbMSw1LCJcXG1hdGhybXtUb3J9XzIoTV50LCBOKSJdLFswLDUsIlxcY2RvdHMgIl0sWzQsNSwiXFxib3hlZHtFXzJ9Il0sWzQsNV0sWzMsMF0sWzIsMV0sWzcsNl0sWzksMTNdLFsxMywxMl0sWzEyLDEwXSxbMTYsMTVdLFsxNSwxNF0sWzE0LDExXSxbMjAsMjJdLFsyMSwyM11d
+\begin{tikzcd}[ampersand replacement=\&,sep=tiny]
+	\cdots \& {(F^{-1})^t\otimes Q^{-2}} \& {(F^{-1})^t\otimes Q^{-1}} \& {(F^{-1})^t\otimes Q^{0}} \\
+	\cdots \& {(F^{0})^t\otimes Q^{-2}} \& {(F^{0})^t\otimes Q^{-1}} \& {(F^{0})^t\otimes Q^{0}} \& {\boxed{E_0}} \\
+	{\cdots } \& {\mathrm{Tr}(M)\otimes Q^{-2}} \& {\mathrm{Tr}(M)\otimes Q^{-1}} \& {\mathrm{Tr}(M)\otimes Q^0} \\
+	\cdots \& {M^t\otimes Q^{-2}} \& {M^t\otimes Q^{-1}} \& {M^t\otimes Q^{0}} \& {\boxed{E_1}} \\
+	\cdots \& {\mathrm{Tor}_2(\mathrm{Tr}(M), N)} \& {\mathrm{Tor}_1(\mathrm{Tr}(M), N)} \& {\mathrm{Tr}(M)\otimes N} \\
+	{\cdots } \& {\mathrm{Tor}_2(M^t, N)} \& {\mathrm{Tor}_1(M^t, N)} \& {M^t\otimes N} \& {\boxed{E_2}}
+	\arrow[from=2-1, to=1-1]
+	\arrow[from=2-2, to=1-2]
+	\arrow[from=2-3, to=1-3]
+	\arrow[from=2-4, to=1-4]
+	\arrow[from=3-1, to=3-2]
+	\arrow[from=3-2, to=3-3]
+	\arrow[from=3-3, to=3-4]
+	\arrow[from=4-1, to=4-2]
+	\arrow[from=4-2, to=4-3]
+	\arrow[from=4-3, to=4-4]
+	\arrow[from=5-1, to=6-3]
+	\arrow[from=5-2, to=6-4]
+\end{tikzcd}.
+        \end{equation}
+        $E_2$ 收斂至全復形的同調群; 或是將 $E_0$ 箭頭該做橫向, 得 $E_1 = \begin{tikzcd}[ampersand replacement=\&, sep = small]
+            {(F^{-1})^t\otimes N} \\
+            {(F^{0})^t\otimes N}
+            \arrow[from=2-1, to=1-1]
+        \end{tikzcd}$, 相應地, 
+\begin{enumerate}
+    \item $E_2$ 上項 $\mathrm{cok}[(F^0)^t → (F^{-1})^t] ⊗ N = \mathrm{Tr}(M) ⊗ N$; 
+    \item $E_2$ 下項 $\ker [(F^0, N) → (F^{-1}, N)] = (M, N)$. 
+\end{enumerate}
+        雙復形的全同調群 $[\mathrm{Tr}(M)⊗ N\quad \mathrm{Tor}_1(\mathrm{Tr}(M), N)\quad \cdots \quad ]$. ``配上'' $E_2$ 的濾過, 得到
+        \begin{equation}
+            % https://q.uiver.app/#q=WzAsMTAsWzMsMCwiXFxtYXRocm17VHJ9KE0pXFxvdGltZXMgTiJdLFsyLDAsIlxcbWF0aHJte1Rvcn1fMShcXG1hdGhybXtUcn0oTSksIE4pIl0sWzEsMCwiXFxtYXRocm17VG9yfV8yKFxcbWF0aHJte1RyfShNKSwgTikiXSxbMCwwLCJcXGNkb3RzIl0sWzMsMiwiTV50XFxvdGltZXMgTiJdLFsyLDIsIlxcbWF0aHJte1Rvcn1fMShNXnQsIE4pIl0sWzEsMiwiXFxtYXRocm17VG9yfV8yKE1edCwgTikiXSxbMCwyLCJcXGNkb3RzICJdLFs0LDIsIjAiXSxbNSwyLCIwIl0sWzIsNF0sWzMsNV0sWzEsOF0sWzgsMCwiSF8wIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV0sWzQsMSwiSF8xIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV0sWzUsMiwiSF8yIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV0sWzYsMywiSF8zIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV0sWzAsOV1d
+\begin{tikzcd}[ampersand replacement=\&,sep=tiny]
+	\cdots \& {\mathrm{Tor}_2(\mathrm{Tr}(M), N)} \& {\mathrm{Tor}_1(\mathrm{Tr}(M), N)} \& {\mathrm{Tr}(M)\otimes N} \\
+	\\
+	{\cdots } \& {\mathrm{Tor}_2(M^t, N)} \& {\mathrm{Tor}_1(M^t, N)} \& {M^t\otimes N} \& 0 \& 0
+	\arrow[from=1-1, to=3-3]
+	\arrow[from=1-2, to=3-4]
+	\arrow[from=1-3, to=3-5]
+	\arrow[from=1-4, to=3-6]
+	\arrow["{H_3}"{description}, dotted, from=3-2, to=1-1]
+	\arrow["{H_2}"{description}, dotted, from=3-3, to=1-2]
+	\arrow["{H_1}"{description}, dotted, from=3-4, to=1-3]
+	\arrow["{H_0}"{description}, dotted, from=3-5, to=1-4]
+\end{tikzcd}.
+        \end{equation}
+        $H_0$ 處顯然. $H_1$ 對應四項長正合列
+
+        最後說明 $\underline{(M, N)} ≃ \mathrm{Tor}_1(\mathrm{Tr}(M), N)$. \parnote{穩定 Hom} 取投射蓋 $p : Q^0 → N$, 穩定 Hom 即 $\mathrm{coker}(M, p)$. 
+        \begin{equation}
+            % https://q.uiver.app/#q=WzAsOCxbMSwxLCJNXnRcXG90aW1lcyBOIl0sWzIsMSwiKE0sIE4pIl0sWzEsMCwiTV50IFxcb3RpbWVzIFAiXSxbMywxLCJcXG1hdGhybXtjb2t9KHApIl0sWzEsMiwiMCJdLFszLDIsIlxcdW5kZXJsaW5lIHsoTSwgTil9Il0sWzIsMCwiMCJdLFswLDEsIlxcdmRvdHMgIl0sWzAsMV0sWzIsMCwiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzIsMV0sWzAsNF0sWzEsNV0sWzEsM10sWzQsNSwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzUsMywiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzMsNiwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzcsMF0sWzcsNCwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+\begin{tikzcd}[ampersand replacement=\&,sep=small]
+	\& {M^t \otimes P} \& 0 \\
+	{\vdots } \& {M^t\otimes N} \& {(M, N)} \& {\mathrm{cok}(p)} \\
+	\& 0 \&\& {\underline {(M, N)}}
+	\arrow[two heads, from=1-2, to=2-2]
+	\arrow[from=1-2, to=2-3]
+	\arrow[from=2-1, to=2-2]
+	\arrow[dashed, from=2-1, to=3-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-2, to=3-2]
+	\arrow[from=2-3, to=2-4]
+	\arrow[from=2-3, to=3-4]
+	\arrow[dashed, from=2-4, to=1-3]
+	\arrow[dashed, from=3-2, to=3-4]
+	\arrow[dashed, from=3-4, to=2-4]
+\end{tikzcd}
+        \end{equation}
+        對上述符合態射使用小-蛇引理, 得同構 $\underline {(M, N)} ≃ \mathrm{cok}(p)$. 
+    \end{proof}
+\end{theorem}
+
+\begin{theorem}[穩定 Tensor ?]
+    有典範四項正合列 
+    \begin{equation}
+        0 → \mathrm{Ext}^1(\mathrm{Tr}(M), N) → N ⊗ M → (M^t, N) → \mathrm{Ext}^2(\mathrm{Tr}(M), N) → 0. 
+    \end{equation}
+    依照 $M ≃ (M^t)^t$, 得正合列的同構 
+    \begin{equation}
+        % https://q.uiver.app/#q=WzAsMTIsWzEsMCwiXFxtYXRocm17VG9yfV8yKFxcbWF0aHJte1RyfShNKSwgTikiXSxbNCwwLCJcXG1hdGhybXtUb3J9XzEoXFxtYXRocm17VHJ9KE0pLCBOKSJdLFszLDAsIihNLCBOKSAiXSxbMiwwLCJOIOKKlyBNXnQgIl0sWzMsMSwiKE0sIE4pIl0sWzIsMSwiTiDiipcgTV50ICJdLFsxLDEsIlxcbWF0aHJte0V4dH1eMShcXG1hdGhybXtUcn0oTV50KSwgTikiXSxbNCwxLCJcXG1hdGhybXtFeHR9XjIoXFxtYXRocm17VHJ9KE1edCksIE4pIl0sWzAsMCwiMCJdLFs1LDAsIjAiXSxbMCwxLCIwIl0sWzUsMSwiMCJdLFs4LDBdLFswLDNdLFszLDJdLFsyLDFdLFsxLDldLFsxMCw2XSxbNiw1XSxbNSw0XSxbNCw3XSxbNywxMV0sWzMsNSwiIiwxLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiw0LCIiLDEseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDYsIlxcc2ltZXEgIiwyXSxbMSw3LCJcXHNpbWVxICIsMl1d
+\begin{tikzcd}[ampersand replacement=\&,sep=small]
+	0 \& {\mathrm{Tor}_2(\mathrm{Tr}(M), N)} \& {N ⊗ M^t } \& {(M, N) } \& {\mathrm{Tor}_1(\mathrm{Tr}(M), N)} \& 0 \\
+	0 \& {\mathrm{Ext}^1(\mathrm{Tr}(M^t), N)} \& {N ⊗ M^t } \& {(M, N)} \& {\mathrm{Ext}^2(\mathrm{Tr}(M^t), N)} \& 0
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow["{\simeq }"', from=1-2, to=2-2]
+	\arrow[from=1-3, to=1-4]
+	\arrow[equals, from=1-3, to=2-3]
+	\arrow[from=1-4, to=1-5]
+	\arrow[equals, from=1-4, to=2-4]
+	\arrow[from=1-5, to=1-6]
+	\arrow["{\simeq }"', from=1-5, to=2-5]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+	\arrow[from=2-5, to=2-6]
+\end{tikzcd}.
+    \end{equation}
+\end{theorem}
+
+\subsubsection{應用: 超同調代數}
+
+\begin{remark}
+    同調代數的一個重要構造是對象的投射消解與內射餘消解, 如果將對象換上組合性質 (通過 $𝒜 → C(𝒜)$), 能否繼續建立相應的投射分解? 
+\end{remark}
+
+\begin{theorem}[Eilenburg-Cartan 消解, 超-投射分解/內射分解]
+    給定復形 $X^∙$ (坐標 $(0,∙ )$), 則存在投射複形的消解
+    \begin{equation}
+        [\cdots → P^{-1, ∙} →P^{0, ∙} →X^∙ → 0]\quad =: \quad [P → X → 0].
+    \end{equation} 
+    特別地, 若 $P$ 關於 $↘ ↖$ 方向有限, 則 $\mathrm{Tot}(P) → X$ 是擬同構. 
+    \begin{proof}
+        對復形 $X^{p-1} → X^p → X^{p+1}$ 之中項提出 $0 → \mathrm{ker}(d^p) → X^p → \mathrm{im}(d^p) → 0$, 轉化得 $0 → \mathrm{im}(d^{p-1}) → \mathrm{ker}(d^p) → H^p(X) → 0$. 更清晰地, 有下圖
+\begin{equation}
+    % https://q.uiver.app/#q=WzAsMTIsWzAsMCwiWF57cC0xfSJdLFs0LDAsIlhecCJdLFs4LDAsIlhee3ArMX0iXSxbMiwwLCJcXG1hdGhybXtpbX0oZF57cC0xfSkiXSxbNiwwLCJcXG1hdGhybXtpbX0oZF57cH0pIl0sWzEsMSwiXFxtYXRocm17Y29rfShkXntwLTJ9KSJdLFszLDEsIlxca2VyIChkXnApIl0sWzcsMSwiXFxrZXIgKGRee3ArMX0pIl0sWzUsMSwiXFxtYXRocm17Y29rfShkXntwLTF9KSJdLFswLDIsIkhee3AtMX0oWCkiXSxbNCwyLCJIXntwfShYKSJdLFs4LDIsIkhee3ArMX0oWCkiXSxbOSw1LCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFs1LDMsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFszLDYsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzYsMTAsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFsxMCw4LCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFs4LDQsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFs0LDcsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzcsMTEsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFswLDUsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9LCJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbMSw4LCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifSwiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzYsMSwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifSwiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV0sWzcsMiwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifSwiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV0sWzAsMywiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn0sImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFsxLDQsIiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9LCJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbMywxLCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9LCJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifX19XSxbNCwyLCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9LCJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifX19XV0=
+\begin{tikzcd}[ampersand replacement=\&, sep = tiny]
+	{X^{p-1}} \&\& {\mathrm{im}(d^{p-1})} \&\& {X^p} \&\& {\mathrm{im}(d^{p})} \&\& {X^{p+1}} \\
+	\& {\mathrm{cok}(d^{p-2})} \&\& {\ker (d^p)} \&\& {\mathrm{cok}(d^{p-1})} \&\& {\ker (d^{p+1})} \\
+	{H^{p-1}(X)} \&\&\&\& {H^{p}(X)} \&\&\&\& {H^{p+1}(X)}
+	\arrow[dotted, two heads, from=1-1, to=1-3]
+	\arrow[dotted, two heads, from=1-1, to=2-2]
+	\arrow[dotted, hook, from=1-3, to=1-5]
+	\arrow[hook, from=1-3, to=2-4]
+	\arrow[dotted, two heads, from=1-5, to=1-7]
+	\arrow[dotted, two heads, from=1-5, to=2-6]
+	\arrow[dotted, hook, from=1-7, to=1-9]
+	\arrow[hook, from=1-7, to=2-8]
+	\arrow[two heads, from=2-2, to=1-3]
+	\arrow[dotted, hook, from=2-4, to=1-5]
+	\arrow[two heads, from=2-4, to=3-5]
+	\arrow[two heads, from=2-6, to=1-7]
+	\arrow[dotted, hook, from=2-8, to=1-9]
+	\arrow[two heads, from=2-8, to=3-9]
+	\arrow[hook, from=3-1, to=2-2]
+	\arrow[hook, from=3-5, to=2-6]
+\end{tikzcd}
+\end{equation}
+        先對 $H$ 與 $\mathrm{im}$ 進行投射分解, 使用馬蹄引理構造 $\ker$ 或 $\mathrm{cok}$ 的投射分解, 最後再使用一次馬蹄引理構造 $X$ 的投射分解即可. \textbf{構造出的 $I^{p, ∙}$ 甚至都是可裂的!}\parnote{超可裂消解}
+
+        雙復形 $P$ 所有橫行在 $p ≠ 0$ 時正合, $p=0$ 處的同調群恰好是 $X$. 假若該雙復形在 $↘ ↖$ 方向有限, 由譜序列收斂性定理知 $H(X) = {↑}E_2 ⇒ H(\mathrm{Tot}(P))$, 因此 $\mathrm{Tot}(P) → X$ 誘導了擬同構. 
+    \end{proof}
+\end{theorem}
+
+\begin{definition}[超-導出函子]
+    對左正合函子 $F : 𝒜 → ℬ$ 考察 $i$-次右導出, 實際上是復合函子
+\begin{equation}
+    [R^i F] = [𝒜 ↪ D(𝒜) \xrightarrow {RF} D(ℬ) \xrightarrow{H^i(-)}ℬ]. 
+\end{equation}
+將第一處 $↪$ 捨去, 可定義 $R^i F :D(𝒜) → ℬ$. 右正合的左導出亦然. 
+\end{definition}
+
+\begin{example}[Kunneth 譜序列]
+    給定上有界復形 $C$ 與可裂超投射分解 $P → C$. \parnote{可裂!} 此時, $R^{i}F(C) = R^{i}F(\mathrm{Tot}(P))$. 可以計算以下譜序列
+\begin{equation}
+    % https://q.uiver.app/#q=WzAsMjMsWzEsMSwiRihJXnswLHB9KSJdLFsxLDIsIkYoSV57MCxwLTF9KSJdLFsxLDAsIkYoSV57MCxwKzF9KSJdLFswLDAsIkYoSV57LTEscCsxfSkiXSxbMCwxLCJGKEleey0xLHB9KSJdLFswLDIsIkYoSV57LTEscC0xfSkiXSxbMCwzLCJcXGJveGVke0VfMH0iXSxbMiwzLCJcXGJveGVke0VfMX0iXSxbMiwyLCJGKEheey0xLHAtMX0oSSkpIl0sWzIsMSwiRihIXnstMSxwfShJKSkiXSxbMiwwLCJGKEheey0xLHArMX0oSSkpIl0sWzMsMiwiRihIXnswLHAtMX0oSSkpIl0sWzMsMSwiRihIXnswLHB9KEkpKSJdLFszLDAsIkYoSF57MCxwLTF9KEkpKSJdLFs0LDAsIlJeMUYoSF57cCsxfShDKSkiXSxbNCwxLCJSXjFGKEhee3B9KEMpKSJdLFs0LDIsIlJeMUYoSF57cC0xfShDKSkiXSxbNSwwLCJGKEhee3ArMX0oQykpIl0sWzUsMSwiRihIXntwfShDKSkiXSxbNSwyLCJGKEhee3AtMX0oQykpIl0sWzYsMSwiMCJdLFs2LDIsIjAiXSxbNCwzLCJcXGJveGVke0VfMn0iXSxbMSwwXSxbMCwyXSxbNSw0XSxbNCwzXSxbMTAsMTNdLFs5LDEyXSxbOCwxMV0sWzE0LDIwXSxbMTUsMjFdXQ==
+\begin{tikzcd}[ampersand replacement=\&, sep = small]
+	{F(I^{-1,p+1})} \& {F(I^{0,p+1})} \& {F(H^{-1,p+1}(I))} \& {F(H^{0,p-1}(I))} \& {R^1F(H^{p+1}(C))} \& {F(H^{p+1}(C))} \\
+	{F(I^{-1,p})} \& {F(I^{0,p})} \& {F(H^{-1,p}(I))} \& {F(H^{0,p}(I))} \& {R^1F(H^{p}(C))} \& {F(H^{p}(C))} \& 0 \\
+	{F(I^{-1,p-1})} \& {F(I^{0,p-1})} \& {F(H^{-1,p-1}(I))} \& {F(H^{0,p-1}(I))} \& {R^1F(H^{p-1}(C))} \& {F(H^{p-1}(C))} \& 0 \\
+	{\boxed{E_0}} \&\& {\boxed{E_1}} \&\& {\boxed{E_2}}
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=1-5, to=2-7]
+	\arrow[from=2-1, to=1-1]
+	\arrow[from=2-2, to=1-2]
+	\arrow[from=2-3, to=2-4]
+	\arrow[from=2-5, to=3-7]
+	\arrow[from=3-1, to=2-1]
+	\arrow[from=3-2, to=2-2]
+	\arrow[from=3-3, to=3-4]
+\end{tikzcd}.
+\end{equation}
+特別地, $E_1$ 使用了消解的可裂性, 即 $FH = HF$. 綜上, $R^{q}F(H^p(C))$ 給出 $R^{p+q}F(C)$ 的濾過 \parnote{$p$ 位置反了, 今後再改吧}
+\end{example}
+
+\begin{theorem}[Kunneth 譜序列定理]
+選用此處 (\cite{rotman2008introduction}) 版本. 稱 $X$ 是正 (負) 的復形, 當且僅當 $X$ 的非零像僅能落在 $ℤ_{>0}$ ($ℤ_{<0}$) 分支. 
+\begin{enumerate}
+    \item 記 $A$ 與 $C$ 均是負的復形, 且 $A$ 或 $C$ 一者平坦, 則有譜序列\parnote{第一象限}
+    \begin{equation}
+        E^{p,q}_2 = ∐ _{s + t = q} \mathrm{Tor}_p (H^s(A), H^t(C)) ⇒ H^{p+q} (\mathrm{Tot}(A⊗C)); 
+    \end{equation}
+    \item 記 $A$ 是負復形, $C$ 是正復形, 假定 $A$ 投射或 $C$ 內射, 則有第三象限譜序列 
+    \begin{equation}
+        E_2 ^{p,q} = ∐ _{s + t = q} \mathrm{Ext}^p (H^{-s}(A), H^t(C)) ⇒ H^{p+q} (ℋ(A,C)). 
+    \end{equation}
+\end{enumerate}
+\begin{proof}
+    對第一問, 不妨假設 $C$ 平坦, 此時 $C ⊗ -$ 是復形至復形的函子. 記 $F → A$ 是平坦分解 (投射分解), 對雙復形 $∐ _{i+j = p}(F^{q,i} ⊗ C^j)$ 計算譜序列得
+    \begin{equation}
+        % https://q.uiver.app/#q=WzAsMzYsWzIsNywiXFxjb3Byb2QgX3tpK2ogPSBwfShBXmkgXFxvdGltZXMgQ15qICkiXSxbMyw3LCJcXGNvcHJvZCBfe2kraiA9IHArMX0oQV5pIFxcb3RpbWVzIENeaiApIl0sWzEsNywiXFxjb3Byb2QgX3tpK2ogPSBwLTF9KEFeaSBcXG90aW1lcyBDXmogKSJdLFswLDcsIlxcYm94ZWR7RV8xfSJdLFswLDYsIlxcYm94ZWR7RV8yfSJdLFsxLDYsIkhee3AtMX0oQSBcXG90aW1lcyBDKSJdLFsyLDYsIkhee3B9KEEgXFxvdGltZXMgQykiXSxbMyw2LCJIXntwKzF9KEEgXFxvdGltZXMgQykiXSxbMSw4LCJcXGNvcHJvZCBfe2kraiA9IHAtMX0oRl57MCxpfSBcXG90aW1lcyBDXmogKSJdLFsyLDgsIlxcY29wcm9kIF97aStqID0gcH0oRl57MCxpfSBcXG90aW1lcyBDXmogKSJdLFszLDgsIlxcY29wcm9kIF97aStqID0gcCsxfShGXnswLGl9IFxcb3RpbWVzIENeaiApIl0sWzEsOSwiXFxjb3Byb2QgX3tpK2ogPSBwLTF9KEZeey0xLGl9IFxcb3RpbWVzIENeaiApIl0sWzIsOSwiXFxjb3Byb2QgX3tpK2ogPSBwfShGXnstMSxpfSBcXG90aW1lcyBDXmogKSJdLFszLDksIlxcY29wcm9kIF97aStqID0gcCsxfShGXnstMSxpfSBcXG90aW1lcyBDXmogKSJdLFszLDUsIlxcY29wcm9kIF97aStqID0gcCsxfShGXnstMSxpfSBcXG90aW1lcyBDXmogKSJdLFszLDQsIlxcY29wcm9kIF97aStqID0gcCsxfShGXnswLGl9IFxcb3RpbWVzIENeaiApIl0sWzIsNSwiXFxjb3Byb2QgX3tpK2ogPSBwfShGXnstMSxpfSBcXG90aW1lcyBDXmogKSJdLFsyLDQsIlxcY29wcm9kIF97aStqID0gcH0oRl57MCxpfSBcXG90aW1lcyBDXmogKSJdLFsxLDUsIlxcY29wcm9kIF97aStqID0gcC0xfShGXnstMSxpfSBcXG90aW1lcyBDXmogKSJdLFsxLDQsIlxcY29wcm9kIF97aStqID0gcC0xfShGXnswLGl9IFxcb3RpbWVzIENeaiApIl0sWzEsMywiXFxjb3Byb2QgX3tpK2ogPSBwLTF9KEZeey0xLCBpfVxcb3RpbWVzIEheaiAoQykpIl0sWzIsMywiXFxjb3Byb2QgX3tpK2ogPSBwfShGXnstMSwgaX1cXG90aW1lcyBIXmogKEMpKSJdLFszLDMsIlxcY29wcm9kIF97aStqID0gcCsxfShGXnstMSwgaX1cXG90aW1lcyBIXmogKEMpKSJdLFsxLDIsIlxcY29wcm9kIF97aStqID0gcC0xfShGXnswLCBpfVxcb3RpbWVzIEheaiAoQykpIl0sWzIsMiwiXFxjb3Byb2QgX3tpK2ogPSBwfShGXnswLCBpfVxcb3RpbWVzIEheaiAoQykpIl0sWzMsMiwiXFxjb3Byb2QgX3tpK2ogPSBwKzF9KEZeezAsIGl9XFxvdGltZXMgSF5qIChDKSkiXSxbMSwwLCJcXGNvcHJvZCBfe2kraiA9IHAtMX0oQV5pIFxcb3RpbWVzIEheaiAoQykpIl0sWzIsMCwiXFxjb3Byb2QgX3tpK2ogPSBwfShBXmkgXFxvdGltZXMgSF5qIChDKSkiXSxbMywwLCJcXGNvcHJvZCBfe2kraiA9IHArMX0oQV5pIFxcb3RpbWVzIEheaiAoQykpIl0sWzEsMSwiXFxjb3Byb2QgX3tpK2ogPSBwLTF9XFxtYXRocm17VG9yfV8xKEFeaSwgSF5qIChDKSkiXSxbMiwxLCJcXGNvcHJvZCBfe2kraiA9IHB9XFxtYXRocm17VG9yfV8xKEFeaSwgSF5qIChDKSkiXSxbMywxLCJcXGNvcHJvZCBfe2kraiA9IHArMX1cXG1hdGhybXtUb3J9XzEoQV5pLCBIXmogKEMpKSJdLFswLDgsIlxcYm94ZWR7RV8wIH0iXSxbNCw0LCJcXGJveGVke0VfMCB9Il0sWzQsMiwiXFxib3hlZHtFXzF9Il0sWzQsMCwiXFxib3hlZHtFXzJ9Il0sWzIsMF0sWzAsMV0sWzEyLDldLFsxMSw4XSxbMTgsMTZdLFsxNiwxNF0sWzE5LDE3XSxbMTcsMTVdLFsyMiwyNV0sWzIxLDI0XSxbMjAsMjNdLFsxMywxMF0sWzMyLDMsIiIsMix7ImxldmVsIjoyfV0sWzMsNCwiIiwyLHsibGV2ZWwiOjJ9XSxbMzMsMzQsIiIsMix7ImxldmVsIjoyfV0sWzM0LDM1LCIiLDIseyJsZXZlbCI6Mn1dXQ==
+\begin{tikzcd}[ampersand replacement=\&,sep=tiny]
+	\& {\coprod _{i+j = p-1}(A^i \otimes H^j (C))} \& {\coprod _{i+j = p}(A^i \otimes H^j (C))} \& {\coprod _{i+j = p+1}(A^i \otimes H^j (C))} \& {\boxed{E_2}} \\
+	\& {\coprod _{i+j = p-1}\mathrm{Tor}_1(A^i, H^j (C))} \& {\coprod _{i+j = p}\mathrm{Tor}_1(A^i, H^j (C))} \& {\coprod _{i+j = p+1}\mathrm{Tor}_1(A^i, H^j (C))} \\
+	\& {\coprod _{i+j = p-1}(F^{0, i}\otimes H^j (C))} \& {\coprod _{i+j = p}(F^{0, i}\otimes H^j (C))} \& {\coprod _{i+j = p+1}(F^{0, i}\otimes H^j (C))} \& {\boxed{E_1}} \\
+	\& {\coprod _{i+j = p-1}(F^{-1, i}\otimes H^j (C))} \& {\coprod _{i+j = p}(F^{-1, i}\otimes H^j (C))} \& {\coprod _{i+j = p+1}(F^{-1, i}\otimes H^j (C))} \\
+	\& {\coprod _{i+j = p-1}(F^{0,i} \otimes C^j )} \& {\coprod _{i+j = p}(F^{0,i} \otimes C^j )} \& {\coprod _{i+j = p+1}(F^{0,i} \otimes C^j )} \& {\boxed{E_0 }} \\
+	\& {\coprod _{i+j = p-1}(F^{-1,i} \otimes C^j )} \& {\coprod _{i+j = p}(F^{-1,i} \otimes C^j )} \& {\coprod _{i+j = p+1}(F^{-1,i} \otimes C^j )} \\
+	{\boxed{E_2}} \& {H^{p-1}(A \otimes C)} \& {H^{p}(A \otimes C)} \& {H^{p+1}(A \otimes C)} \\
+	{\boxed{E_1}} \& {\coprod _{i+j = p-1}(A^i \otimes C^j )} \& {\coprod _{i+j = p}(A^i \otimes C^j )} \& {\coprod _{i+j = p+1}(A^i \otimes C^j )} \\
+	{\boxed{E_0 }} \& {\coprod _{i+j = p-1}(F^{0,i} \otimes C^j )} \& {\coprod _{i+j = p}(F^{0,i} \otimes C^j )} \& {\coprod _{i+j = p+1}(F^{0,i} \otimes C^j )} \\
+	\& {\coprod _{i+j = p-1}(F^{-1,i} \otimes C^j )} \& {\coprod _{i+j = p}(F^{-1,i} \otimes C^j )} \& {\coprod _{i+j = p+1}(F^{-1,i} \otimes C^j )}
+	\arrow[Rightarrow, from=3-5, to=1-5]
+	\arrow[from=4-2, to=3-2]
+	\arrow[from=4-3, to=3-3]
+	\arrow[from=4-4, to=3-4]
+	\arrow[from=5-2, to=5-3]
+	\arrow[from=5-3, to=5-4]
+	\arrow[Rightarrow, from=5-5, to=3-5]
+	\arrow[from=6-2, to=6-3]
+	\arrow[from=6-3, to=6-4]
+	\arrow[Rightarrow, from=8-1, to=7-1]
+	\arrow[from=8-2, to=8-3]
+	\arrow[from=8-3, to=8-4]
+	\arrow[Rightarrow, from=9-1, to=8-1]
+	\arrow[from=10-2, to=9-2]
+	\arrow[from=10-3, to=9-3]
+	\arrow[from=10-4, to=9-4]
+\end{tikzcd}. 
+    \end{equation}
+    略去第二問的圖表, 證明框架如下. 
+    \begin{enumerate}
+        \item 若 $A$ 投射, 取 $C$ 的投射分解 $C → I$. 計算 $∐ _{i + j = p} ℋ (A^{-i}, I^{q, j})$ 的兩向的譜序列, 得
+        \begin{equation}
+            ∐ _{i + j = p} \mathrm{Ext}^q(H^{-i}(A), H^j(C)) ⇒ H^{p+q}(ℋ(A,C)). 
+        \end{equation}
+        \item 若 $C$ 內射, 取 $A$ 的投射分解 $P → A$. 計算 $∐ _{i + j = p} ℋ (P^{-q, -i}, C^{j})$ 的兩向的譜序列, 得
+        \begin{equation}
+            ∐ _{i + j = p} \mathrm{Ext}^q(H^{-i}(A), H^j(C)) ⇒ H^{p+q}(ℋ(A,C)). 
+        \end{equation}
+    \end{enumerate}
+\end{proof}
+\end{theorem}
+
+\begin{remark}
+    Kunneth 譜序列處在是第一或第三象限, 從而滿足有界性. 一般地, 若規定整體維度有限, 則相應的譜序列的支撐在一個長條內, 從而也滿足一些收斂性定理. 
+\end{remark}
+
+\begin{example}[Kunneth 公式]
+    若 Kunneth 譜序列中的``高階導出函子''均消失, 則全復形同調群之濾過會無比簡單. 
+    \begin{enumerate}
+        \item 若 $\mathrm{Tor}_{≥ 2}(H(A), -)=0$ 或 $\mathrm{Tor}_{≥ 2}(-, H(C))=0$, 則 
+        \begin{equation}
+            0 → ∐ _{i+j = p}(H^i (A) ⊗ H^j (C)) → H^p (A ⊗ C) → ∐ _{i+j = p+1}\mathrm{Tor}_1(H^i (A) ⊗ H^j (C)) → 0
+        \end{equation}
+        \item 若 $\mathrm{Ext}^{≥ 2} (H^{-i} (A), -)=0$ 或 $\mathrm{Ext}^{≥ 2} (-, H^{-i} (C))=0$, 則 
+        \begin{equation}
+            0 → ∐ _{i+j = p+1}\mathrm{Ext}^1(H^{-i} (A) , H^j (C)) → H^p (A ⊗ C) → ∐ _{i+j = p}\mathrm{Hom}(H^{-i} (A) ⊗ H^j (C)) → 0
+        \end{equation}
+    \end{enumerate}
+    若 $X$ 與 $\mathrm{im}(d)$ 均是投射/內射/平坦對象, 則 $\mathrm{Ext}^{≥ 2}(H,-)$/$\mathrm{Ext}^{≥ 2}(-, H)$/$\mathrm{Tor}_{≥ 2}(H,-)$ 消失. \parnote{何時可裂? }
+\end{example}
+
+
+\subsubsection{合成函子的譜序列}
+
+
+
+\begin{theorem}[Grothendieck 譜序列]
+    假定 $𝒜\xrightarrow F ℬ \xrightarrow G 𝒞$ 是 Abel 範疇間的左正合函子. 假定
+    \begin{enumerate}
+        \item $𝒜$ 有足夠投射對象, 即任意 $X ∈ A$ 存在投射分解; 
+        \item 對投射對象 $P ∈ 𝒜$, 像 $F(P)$ 關於右導出 $R^{≥ 1} G$ 消失. 
+    \end{enumerate}
+此時存在收斂的譜序列:
+    \begin{equation}
+        E_2^{p,q} := R^pG (R^q F(X)) ⇒ (R^{p+q} (G ∘ F)) (X).  
+    \end{equation}
+\begin{proof}
+    記 $X$ 的投射分解 $Q → X$ ($x$-負半軸), 繼而依馬蹄引理取 $F(Q)$ 的投射分解, 得行可裂雙復形 $P$. 示意圖如下: 
+    \begin{equation}
+        % https://q.uiver.app/#q=WzAsMTYsWzMsMCwiRlgiLFszMCw2MCw2MCwxXV0sWzIsMCwiRlFeMCIsWzE4MCw2MCw2MCwxXV0sWzEsMCwiRlFeey0xfSIsWzE4MCw2MCw2MCwxXV0sWzAsMCwiRlFeey0yfSIsWzE4MCw2MCw2MCwxXV0sWzAsMSwiUF57LTIsMH0iXSxbMiwxLCJQXnswLDB9Il0sWzEsMSwiUF57LTEsMH0iXSxbMiwyLCJQXnswLC0xfSJdLFsyLDMsIlBeezAsLTJ9Il0sWzEsMiwiUF57LTEsLTF9Il0sWzEsMywiUF57LTEsLTJ9Il0sWzAsMiwiUF57LTIsLTF9Il0sWzAsMywiUF57LTIsLTJ9Il0sWzMsMSwiUF57MSwwfSIsWzE4MCw2MCw2MCwxXV0sWzMsMiwiUF57MSwtMX0iLFsxODAsNjAsNjAsMV1dLFszLDMsIlBeezEsLTJ9IixbMTgwLDYwLDYwLDFdXSxbNCw2XSxbNiw1XSxbMTEsOV0sWzksN10sWzEyLDEwXSxbMTAsOF0sWzEyLDExXSxbMTEsNF0sWzEwLDldLFs5LDZdLFs4LDddLFs3LDVdLFszLDIsIiIsMSx7ImNvbG91ciI6WzE4MCw2MCw2MF19XSxbMiwxLCIiLDEseyJjb2xvdXIiOlsxODAsNjAsNjBdfV0sWzEsMCwiIiwxLHsiY29sb3VyIjpbMTgwLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV0sWzE1LDE0LCIiLDEseyJjb2xvdXIiOlsxODAsNjAsNjBdfV0sWzE0LDEzLCIiLDEseyJjb2xvdXIiOlsxODAsNjAsNjBdfV0sWzEzLDAsIiIsMSx7ImNvbG91ciI6WzE4MCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9fX1dLFs0LDMsIiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9fX1dLFs2LDIsIiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9fX1dLFs1LDEsIiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9fX1dLFs3LDE0LCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifX19XSxbNSwxMywiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV0sWzgsMTUsIiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9fX1dXQ==
+\begin{tikzcd}[ampersand replacement=\&, sep = small]
+	\textcolor{rgb,255:red,92;green,214;blue,214}{{FQ^{-2}}} \& \textcolor{rgb,255:red,92;green,214;blue,214}{{FQ^{-1}}} \& \textcolor{rgb,255:red,92;green,214;blue,214}{{FQ^0}} \& \textcolor{rgb,255:red,214;green,153;blue,92}{FX} \\
+	{P^{-2,0}} \& {P^{-1,0}} \& {P^{0,0}} \& \textcolor{rgb,255:red,92;green,214;blue,214}{{P^{1,0}}} \\
+	{P^{-2,-1}} \& {P^{-1,-1}} \& {P^{0,-1}} \& \textcolor{rgb,255:red,92;green,214;blue,214}{{P^{1,-1}}} \\
+	{P^{-2,-2}} \& {P^{-1,-2}} \& {P^{0,-2}} \& \textcolor{rgb,255:red,92;green,214;blue,214}{{P^{1,-2}}}
+	\arrow[color={rgb,255:red,92;green,214;blue,214}, from=1-1, to=1-2]
+	\arrow[color={rgb,255:red,92;green,214;blue,214}, from=1-2, to=1-3]
+	\arrow[color={rgb,255:red,92;green,214;blue,214}, dotted, from=1-3, to=1-4]
+	\arrow[dotted, from=2-1, to=1-1]
+	\arrow[from=2-1, to=2-2]
+	\arrow[dotted, from=2-2, to=1-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow[dotted, from=2-3, to=1-3]
+	\arrow[dotted, from=2-3, to=2-4]
+	\arrow[color={rgb,255:red,92;green,214;blue,214}, dotted, from=2-4, to=1-4]
+	\arrow[from=3-1, to=2-1]
+	\arrow[from=3-1, to=3-2]
+	\arrow[from=3-2, to=2-2]
+	\arrow[from=3-2, to=3-3]
+	\arrow[from=3-3, to=2-3]
+	\arrow[dotted, from=3-3, to=3-4]
+	\arrow[color={rgb,255:red,92;green,214;blue,214}, from=3-4, to=2-4]
+	\arrow[from=4-1, to=3-1]
+	\arrow[from=4-1, to=4-2]
+	\arrow[from=4-2, to=3-2]
+	\arrow[from=4-2, to=4-3]
+	\arrow[from=4-3, to=3-3]
+	\arrow[dotted, from=4-3, to=4-4]
+	\arrow[color={rgb,255:red,92;green,214;blue,214}, from=4-4, to=3-4]
+\end{tikzcd}.
+    \end{equation}
+    繼而取 $G(P)$ 的雙向譜序列.
+    \begin{enumerate}
+        \item ($→$) 得 $E_2$ 如下: 
+        \begin{equation}
+            % https://q.uiver.app/#q=WzAsNDcsWzQsMCwiR0ZYIixbMzAsNjAsNjAsMV1dLFszLDAsIkdGUV4wIixbMTgwLDYwLDYwLDFdXSxbMiwwLCJHRlFeey0xfSIsWzE4MCw2MCw2MCwxXV0sWzEsMCwiR0ZRXnstMn0iLFsxODAsNjAsNjAsMV1dLFsxLDEsIkcoUF57LTIsMH0pIl0sWzMsMSwiRyhQXnswLDB9KSJdLFsyLDEsIkcoUF57LTEsMH0pIl0sWzMsMiwiRyhQXnswLC0xfSkiXSxbMywzLCJHKFBeezAsLTJ9KSJdLFsyLDIsIkcoUF57LTEsLTF9KSJdLFsyLDMsIkcoUF57LTEsLTJ9KSJdLFsxLDIsIkcoUF57LTIsLTF9KSJdLFsxLDMsIkcoUF57LTIsLTJ9KSJdLFs0LDEsIkcoUF57MSwwfSkiLFsxODAsNjAsNjAsMV1dLFs0LDIsIkcoUF57MSwtMX0pIixbMTgwLDYwLDYwLDFdXSxbNCwzLCJHKFBeezEsLTJ9KSIsWzE4MCw2MCw2MCwxXV0sWzAsMywiXFxib3hlZHtFXzB9Il0sWzAsNywiXFxib3hlZHtFXzF9Il0sWzQsNSwiRyhQXnsxLDB9KSIsWzE4MCw2MCw2MCwxXV0sWzQsNiwiRyhQXnsxLC0xfSkiLFsxODAsNjAsNjAsMV1dLFs0LDcsIkcoUF57MSwtMn0pIixbMTgwLDYwLDYwLDFdXSxbNCw0LCJHRlgiLFszMCw2MCw2MCwxXV0sWzMsNSwiRyhIX1xcdG8gXnswLDB9KSJdLFszLDYsIkcoSF9cXHRvIF57MCwtMX0pIl0sWzMsNywiRyhIX1xcdG8gXnswLC0yfSkiXSxbMiw1LCJHKEhfXFx0byBeey0xLDB9KSJdLFsyLDYsIkcoSF9cXHRvIF57LTEsLTF9KSJdLFsyLDcsIkcoSF9cXHRvIF57LTEsLTJ9KSJdLFsxLDUsIkcoSF9cXHRvIF57LTIsMH0pIl0sWzEsNiwiRyhIX1xcdG8gXnstMiwtMX0pIl0sWzEsNywiRyhIX1xcdG8gXnstMiwtMn0pIl0sWzMsOCwiRyhGWCkiXSxbMiw4LCJHKFJeMUZYKSJdLFsxLDgsIkcoUl4yRlgpIl0sWzMsOSwiKFJeMUcpKEZYKSJdLFszLDEwLCIoUl4yRykoRlgpIl0sWzIsOSwiKFJeMUcpKFJeMUZYKSJdLFsxLDksIihSXjFHKShSXjJGWCkiXSxbMiwxMCwiKFJeMkcpKFJeMUZYKSJdLFsxLDEwLCIoUl4yRykoUl4yRlgpIl0sWzAsMTAsIlxcYm94ZWR7RV8yfSJdLFs0LDEwLCIwIl0sWzQsOCwiMCJdLFs0LDksIjAiXSxbMyw0LCJHRlgiLFsxODAsNjAsNjAsMV1dLFsyLDQsIkcoUl4xIEZYKSIsWzE4MCw2MCw2MCwxXV0sWzEsNCwiRyhSXjIgRlgpIixbMTgwLDYwLDYwLDFdXSxbNCw2XSxbNiw1XSxbMTEsOV0sWzksN10sWzEyLDEwXSxbMTAsOF0sWzMsMiwiIiwxLHsiY29sb3VyIjpbMTgwLDYwLDYwXX1dLFsyLDEsIiIsMSx7ImNvbG91ciI6WzE4MCw2MCw2MF19XSxbMSwwLCIiLDEseyJjb2xvdXIiOlsxODAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifX19XSxbNywxNCwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV0sWzUsMTMsIiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9fX1dLFs4LDE1LCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifX19XSxbMjAsMTldLFsxOSwxOF0sWzI0LDIzXSxbMjMsMjJdLFsyNywyNl0sWzI2LDI1XSxbMzAsMjldLFsyOSwyOF0sWzIyLDE4LCIiLDEseyJsZXZlbCI6Miwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMjMsMTksIiIsMSx7ImxldmVsIjoyLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyNCwyMCwiIiwxLHsibGV2ZWwiOjIsInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzE4LDIxLCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifX19XSxbMzUsMzJdLFszOCwzM10sWzQxLDMxXSxbMjgsNDYsIiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9fX1dLFsyNSw0NSwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV0sWzIyLDQ0LCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifX19XV0=
+\begin{tikzcd}[ampersand replacement=\&, sep = tiny]
+	\& \textcolor{rgb,255:red,92;green,214;blue,214}{{GFQ^{-2}}} \& \textcolor{rgb,255:red,92;green,214;blue,214}{{GFQ^{-1}}} \& \textcolor{rgb,255:red,92;green,214;blue,214}{{GFQ^0}} \& \textcolor{rgb,255:red,214;green,153;blue,92}{GFX} \\
+	\& {G(P^{-2,0})} \& {G(P^{-1,0})} \& {G(P^{0,0})} \& \textcolor{rgb,255:red,92;green,214;blue,214}{{G(P^{1,0})}} \\
+	\& {G(P^{-2,-1})} \& {G(P^{-1,-1})} \& {G(P^{0,-1})} \& \textcolor{rgb,255:red,92;green,214;blue,214}{{G(P^{1,-1})}} \\
+	{\boxed{E_0}} \& {G(P^{-2,-2})} \& {G(P^{-1,-2})} \& {G(P^{0,-2})} \& \textcolor{rgb,255:red,92;green,214;blue,214}{{G(P^{1,-2})}} \\
+	\& \textcolor{rgb,255:red,92;green,214;blue,214}{{G(R^2 FX)}} \& \textcolor{rgb,255:red,92;green,214;blue,214}{{G(R^1 FX)}} \& \textcolor{rgb,255:red,92;green,214;blue,214}{GFX} \& \textcolor{rgb,255:red,214;green,153;blue,92}{GFX} \\
+	\& {G(H_\to ^{-2,0})} \& {G(H_\to ^{-1,0})} \& {G(H_\to ^{0,0})} \& \textcolor{rgb,255:red,92;green,214;blue,214}{{G(P^{1,0})}} \\
+	\& {G(H_\to ^{-2,-1})} \& {G(H_\to ^{-1,-1})} \& {G(H_\to ^{0,-1})} \& \textcolor{rgb,255:red,92;green,214;blue,214}{{G(P^{1,-1})}} \\
+	{\boxed{E_1}} \& {G(H_\to ^{-2,-2})} \& {G(H_\to ^{-1,-2})} \& {G(H_\to ^{0,-2})} \& \textcolor{rgb,255:red,92;green,214;blue,214}{{G(P^{1,-2})}} \\
+	\& {G(R^2FX)} \& {G(R^1FX)} \& {G(FX)} \& 0 \\
+	\& {(R^1G)(R^2FX)} \& {(R^1G)(R^1FX)} \& {(R^1G)(FX)} \& 0 \\
+	{\boxed{E_2}} \& {(R^2G)(R^2FX)} \& {(R^2G)(R^1FX)} \& {(R^2G)(FX)} \& 0
+	\arrow[color={rgb,255:red,92;green,214;blue,214}, from=1-2, to=1-3]
+	\arrow[color={rgb,255:red,92;green,214;blue,214}, from=1-3, to=1-4]
+	\arrow[color={rgb,255:red,92;green,214;blue,214}, dotted, from=1-4, to=1-5]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-3, to=2-4]
+	\arrow[dotted, from=2-4, to=2-5]
+	\arrow[from=3-2, to=3-3]
+	\arrow[from=3-3, to=3-4]
+	\arrow[dotted, from=3-4, to=3-5]
+	\arrow[from=4-2, to=4-3]
+	\arrow[from=4-3, to=4-4]
+	\arrow[dotted, from=4-4, to=4-5]
+	\arrow[dotted, from=6-2, to=5-2]
+	\arrow[dotted, from=6-3, to=5-3]
+	\arrow[dotted, from=6-4, to=5-4]
+	\arrow[equals, dotted, from=6-4, to=6-5]
+	\arrow[dotted, from=6-5, to=5-5]
+	\arrow[from=7-2, to=6-2]
+	\arrow[from=7-3, to=6-3]
+	\arrow[from=7-4, to=6-4]
+	\arrow[equals, dotted, from=7-4, to=7-5]
+	\arrow[from=7-5, to=6-5]
+	\arrow[from=8-2, to=7-2]
+	\arrow[from=8-3, to=7-3]
+	\arrow[from=8-4, to=7-4]
+	\arrow[equals, dotted, from=8-4, to=8-5]
+	\arrow[from=8-5, to=7-5]
+	\arrow[from=11-3, to=9-2]
+	\arrow[from=11-4, to=9-3]
+	\arrow[from=11-5, to=9-4]
+\end{tikzcd}.
+        \end{equation}
+        $E_0 ⇒ E_1$ 是由于 $P$ 横向可裂. $E_1 ⇒ E_2$ 是由於 $H^{p, ∙} → G(R^pFX)$ 是投射分解, 詳細而言 
+        \begin{enumerate}
+            \item 所有 $H^{p,q}$ 均是 $P$ 的直和項, 從而是投射對象; 
+            \item 若干列投射分解 $[P ↑ Q]$ 取上同調所得的 $[H_→(P) ↑ H_→(Q)]$ 仍是若干列投射分解. \parnote{不用證明! \\ CE-分解自帶!}
+        \end{enumerate}
+        此時 $E_2$ 確實是圖中所述, $E_2^{p,q}=R^{-q}G(R^{-p}FX)$. 
+        \item ($↑$) $E_2$ 的計算比較簡單: 
+\begin{equation}
+    % https://q.uiver.app/#q=WzAsMzAsWzQsMiwiRyhQXnsxLC0xfSkiLFsxODAsNjAsNjAsMV1dLFszLDMsIkcoUF57MCwtMn0pIl0sWzQsMywiRyhQXnsxLC0yfSkiLFsxODAsNjAsNjAsMV1dLFsyLDIsIkcoUF57LTEsLTF9KSJdLFszLDIsIkcoUF57MCwtMX0pIl0sWzIsMywiRyhQXnstMSwtMn0pIl0sWzEsMywiRyhQXnstMiwtMn0pIl0sWzEsMiwiRyhQXnstMiwtMX0pIl0sWzEsMSwiRyhQXnstMiwwfSkiXSxbMiwxLCJHKFBeey0xLDB9KSJdLFszLDEsIkcoUF57MCwwfSkiXSxbNCwxLCJHKFBeezEsMH0pIixbMTgwLDYwLDYwLDFdXSxbNCwwLCJHRlgiLFszMCw2MCw2MCwxXV0sWzMsMCwiR0ZRXjAiLFsxODAsNjAsNjAsMV1dLFsyLDAsIkdGUV57LTF9IixbMTgwLDYwLDYwLDFdXSxbMSwwLCJHRlFeey0yfSIsWzE4MCw2MCw2MCwxXV0sWzAsMywiXFxib3hlZHtFXzB9Il0sWzMsNCwiR0ZRXjAiXSxbMyw1LCIoUl4xRylGUV4wIixbMCwwLDc1LDFdXSxbMiw0LCJHRlFeMSJdLFsxLDQsIkdGUV4yIl0sWzIsNSwiKFJeMUcpRlFeMSIsWzAsMCw3NSwxXV0sWzEsNSwiKFJeMUcpRlFeMiIsWzAsMCw3NSwxXV0sWzAsNSwiXFxib3hlZHtFXzF9Il0sWzQsNSwiXFx0ZXh0e+a2iOWksX0iLFswLDAsNzUsMV1dLFs0LDQsIkdGWCIsWzMwLDYwLDYwLDFdXSxbMyw2LCIoR0YpWCJdLFsyLDYsIlJeMShHRilYIl0sWzEsNiwiUl4yKEdGKVgiXSxbMCw2LCJcXGJveGVke0VfMn0iXSxbMiwwLCIiLDEseyJjb2xvdXIiOlsxODAsNjAsNjBdfV0sWzEsNF0sWzUsM10sWzYsN10sWzAsMTEsIiIsMSx7ImNvbG91ciI6WzE4MCw2MCw2MF19XSxbNCwxMF0sWzMsOV0sWzcsOF0sWzExLDEyLCIiLDEseyJjb2xvdXIiOlsxODAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifX19XSxbMTAsMTMsIiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9fX1dLFs5LDE0LCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifX19XSxbOCwxNSwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV0sWzIwLDE5XSxbMTksMTddLFsyMiwyMSwiIiwwLHsiY29sb3VyIjpbMCwwLDc1XX1dLFsyMSwxOCwiIiwwLHsiY29sb3VyIjpbMCwwLDc1XX1dLFsxNywyNSwiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV1d
+\begin{tikzcd}[ampersand replacement=\&, sep = small]
+	\& \textcolor{rgb,255:red,92;green,214;blue,214}{{GFQ^{-2}}} \& \textcolor{rgb,255:red,92;green,214;blue,214}{{GFQ^{-1}}} \& \textcolor{rgb,255:red,92;green,214;blue,214}{{GFQ^0}} \& \textcolor{rgb,255:red,214;green,153;blue,92}{GFX} \\
+	\& {G(P^{-2,0})} \& {G(P^{-1,0})} \& {G(P^{0,0})} \& \textcolor{rgb,255:red,92;green,214;blue,214}{{G(P^{1,0})}} \\
+	\& {G(P^{-2,-1})} \& {G(P^{-1,-1})} \& {G(P^{0,-1})} \& \textcolor{rgb,255:red,92;green,214;blue,214}{{G(P^{1,-1})}} \\
+	{\boxed{E_0}} \& {G(P^{-2,-2})} \& {G(P^{-1,-2})} \& {G(P^{0,-2})} \& \textcolor{rgb,255:red,92;green,214;blue,214}{{G(P^{1,-2})}} \\
+	\& {GFQ^2} \& {GFQ^1} \& {GFQ^0} \& \textcolor{rgb,255:red,214;green,153;blue,92}{GFX} \\
+	{\boxed{E_1}} \& \textcolor{rgb,255:red,191;green,191;blue,191}{{(R^1G)FQ^2}} \& \textcolor{rgb,255:red,191;green,191;blue,191}{{(R^1G)FQ^1}} \& \textcolor{rgb,255:red,191;green,191;blue,191}{{(R^1G)FQ^0}} \& \textcolor{rgb,255:red,191;green,191;blue,191}{{\text{消失}}} \\
+	{\boxed{E_2}} \& {R^2(GF)X} \& {R^1(GF)X} \& {(GF)X}
+	\arrow[dotted, from=2-2, to=1-2]
+	\arrow[dotted, from=2-3, to=1-3]
+	\arrow[dotted, from=2-4, to=1-4]
+	\arrow[color={rgb,255:red,92;green,214;blue,214}, dotted, from=2-5, to=1-5]
+	\arrow[from=3-2, to=2-2]
+	\arrow[from=3-3, to=2-3]
+	\arrow[from=3-4, to=2-4]
+	\arrow[color={rgb,255:red,92;green,214;blue,214}, from=3-5, to=2-5]
+	\arrow[from=4-2, to=3-2]
+	\arrow[from=4-3, to=3-3]
+	\arrow[from=4-4, to=3-4]
+	\arrow[color={rgb,255:red,92;green,214;blue,214}, from=4-5, to=3-5]
+	\arrow[from=5-2, to=5-3]
+	\arrow[from=5-3, to=5-4]
+	\arrow[dotted, from=5-4, to=5-5]
+	\arrow[color={rgb,255:red,191;green,191;blue,191}, from=6-2, to=6-3]
+	\arrow[color={rgb,255:red,191;green,191;blue,191}, from=6-3, to=6-4]
+\end{tikzcd}.
+\end{equation}
+        此處依照假定, $(R^{≥}G)(FQ^0)$ 消失. $E_2 = E_∞$ 穩定.  
+    \end{enumerate}
+\end{proof}
+\end{theorem}
+
+\begin{remark}
+    若觀察 Hom 與 $⊗$-函子, 則``奇怪的假定''是很自然的. 
+\end{remark}
+
+\begin{example}[前幾項]
+    考慮下圖: 
+    \begin{equation}
+        % https://q.uiver.app/#q=WzAsMTQsWzIsNCwiRyhGWCkiXSxbMiwyLCJHKFJeMUZYKSJdLFsyLDAsIkcoUl4yRlgpIl0sWzMsNCwiKFJeMUcpKEZYKSJdLFs0LDQsIihSXjJHKShGWCkiXSxbMywyLCIoUl4xRykoUl4xRlgpIl0sWzMsMCwiKFJeMUcpKFJeMkZYKSJdLFs0LDIsIihSXjJHKShSXjFGWCkiXSxbNCwwLCIoUl4yRykoUl4yRlgpIl0sWzUsNCwiKFJeM0cpKEZYKSJdLFs1LDIsIihSXjNHKShSXjFGWCkiXSxbMSwyLCIwIl0sWzEsMCwiMCJdLFswLDIsIjAiXSxbNCwxXSxbNywyXSxbOSw1XSxbMTAsNl0sWzMsMTFdLFs1LDEyXSxbMTEsMCwiR0ZYIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzAsMTNdLFsxLDMsIlJeMShHRilYIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzUsNCwiUl4yKEdGKVgiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+\begin{tikzcd}[ampersand replacement=\&, sep = small ]
+	\& 0 \& {G(R^2FX)} \& {(R^1G)(R^2FX)} \& {(R^2G)(R^2FX)} \\
+	\\
+	0 \& 0 \& {G(R^1FX)} \& {(R^1G)(R^1FX)} \& {(R^2G)(R^1FX)} \& {(R^3G)(R^1FX)} \\
+	\\
+	\&\& {G(FX)} \& {(R^1G)(FX)} \& {(R^2G)(FX)} \& {(R^3G)(FX)}
+	\arrow["GFX"{description}, dashed, from=3-2, to=5-3]
+	\arrow["{R^1(GF)X}"{description}, dashed, from=3-3, to=5-4]
+	\arrow[from=3-4, to=1-2]
+	\arrow["{R^2(GF)X}"{description}, dashed, from=3-4, to=5-5]
+	\arrow[from=3-5, to=1-3]
+	\arrow[from=3-6, to=1-4]
+	\arrow[from=5-3, to=3-1]
+	\arrow[from=5-4, to=3-2]
+	\arrow[from=5-5, to=3-3]
+	\arrow[from=5-6, to=3-4]
+\end{tikzcd}.
+    \end{equation}
+    此時有五項正合列 
+    \begin{equation}
+        R^2(GF)X → (R^2G)(FX) → G(R^1FX) → R^1(GF)X → (R^1G)(FX) → 0. 
+    \end{equation}
+\begin{enumerate}
+    \item 若進一步要求 $R^{≥ 2}FX = 0$, 則可以進一步左接``三週期''長正合列 
+    \begin{equation}
+        \cdots → (R^kG)(R^1FX) → R^{k+1}(GF)X → (R^{k+1}G)(FX) → \cdots  
+    \end{equation}
+    簡單地寫作 $(GF)^2 → G^2F → GF^1 → (GF)^1 → G^1F → 0$. \parnote{縱有界}
+    \item 若進一步要求 $R^{≥ 2}G = 0$, 則有短正合列 (復合函子求導法則)\parnote{橫有界}
+    \begin{equation}
+        0 → GF^{k+1} → (GF)^{k+1} → G^1 F^k → 0. 
+    \end{equation}
+\end{enumerate}
+\end{example}
+
+\begin{remark}
+    類似地, 左導出函子適合 $0 → F^1R → (FR)^1 → FR^1 → F^2R → (FR)^2$
+\end{remark}
+
+\begin{example}[函子符合求導: 雙模結構]
+    假定 $M$ 是 $(A,B)$-雙模, $N$ 是 $(B,C)$-雙模, 則有右正合函子 
+    \begin{equation}
+        𝐦𝐨𝐝_A \xrightarrow{- ⊗ M} 𝐦𝐨𝐝_B \xrightarrow{- ⊗ N} 𝐦𝐨𝐝_C. 
+    \end{equation}
+    此時 $\mathrm{Tor}^{-q}_B(\mathrm{Tor}^{-p}_A(-, M), N) ⇒ \mathrm{Tor}_A^{p+q} (-, M ⊗ N)$. 左導出的前五項
+    \begin{align}
+        0 → \mathrm{Tor}_A^1(-, M) ⊗_B N → \mathrm{Tor}_A^1(-, M ⊗_B N) → \mathrm{Tor}_B^1(- ⊗_A M, N) → \\ 
+        → \mathrm{Tor}_A^2(-, M) ⊗_B N → \mathrm{Tor}_A^2(-, M ⊗_B N). 
+    \end{align}
+    此時有一些特例可探索. 
+    \begin{enumerate}
+        \item $M$ 作爲 $A$-模, 其平坦維數 $≤ 1$. 此時有三週期長正合列 (略). 
+        \item 若 $M = B$, 其左 $A$-模結構由環同態 $A → B$ 實現, 則又有一些可玩的 (例如整體維數 $≤ 1$, 或更直接的). \parnote{faithful flat?}
+        \item 依照拓撲學習慣, 時常引入 PID 環. 此時得各種萬有係數定理. 
+    \end{enumerate}
+    另有 $(X, -) \& (Y, -)$, 以及 $(-, X) \& (- ⊗ Y)$ 兩種推廣. 
+\end{example}
+
+\begin{example}
+    群的 MacLane 四項正合列. \parnote{補充?}
+\end{example}
+
+\begin{example}[Grothendieck 譜序列的自然性]
+	譜序列 (分次復形定義) 誘導的態射是自然的. 如何刻畫 Grothendieck 譜序列的前五項是一個問題. 例如, 給定內射分解誘導的 
+	\begin{equation}
+		0 → (R^1G)FX → R^1(GF)X → G(R^1F)X → (R^2G)FX → R^2(GF)X . 
+	\end{equation}
+	\begin{enumerate}
+		\item 態射 $(R^pG)FX → R^p(GF)X$ 由投射分解誘導的復形態射 $F[X → I] ⇒ [FX → J]$ 給出: 
+		\begin{equation}
+			% https://q.uiver.app/#q=WzAsMTYsWzAsMSwiRlgiXSxbMSwxLCJKXjAgIl0sWzIsMSwiSl4xIl0sWzAsMCwiRlgiXSxbMSwwLCJGSV4wICJdLFsyLDAsIkZJXjEiXSxbMywwLCJcXGNkb3RzICJdLFszLDEsIlxcY2RvdHMgIl0sWzQsMSwiSl5wIl0sWzQsMCwiRklecCAiXSxbNSwwLCJGSV5cXGJ1bGxldCAiXSxbNSwxLCJKXlxcYnVsbGV0ICJdLFs2LDAsIkdGIEleXFxidWxsZXQgIl0sWzYsMSwiR0peXFxidWxsZXQgIl0sWzcsMCwiSF5wIChHRkleXFxidWxsZXQgKSJdLFs3LDEsIkhecChHSl5cXGJ1bGxldCkiXSxbMCwxLCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifX19XSxbMSwyXSxbMyw0LCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifX19XSxbNCw1XSxbMywwLCIiLDEseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDEsIiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs1LDIsIiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs1LDZdLFsyLDddLFs2LDldLFs5LDgsIiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs3LDhdLFsxMCwxMSwiXFx0aGV0YSAiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMTIsMTMsIkcoXFx0aGV0YSkiXSxbMTQsMTUsIkhecCAoRyhcXHRoZXRhKSkiXV0=
+\begin{tikzcd}[ampersand replacement=\&, sep = small]
+	FX \& {FI^0 } \& {FI^1} \& {\cdots } \& {FI^p } \& {FI^\bullet } \& {GF I^\bullet } \& {H^p (GFI^\bullet )} \\
+	FX \& {J^0 } \& {J^1} \& {\cdots } \& {J^p} \& {J^\bullet } \& {GJ^\bullet } \& {H^p(GJ^\bullet)}
+	\arrow[dotted, from=1-1, to=1-2]
+	\arrow[equals, from=1-1, to=2-1]
+	\arrow[from=1-2, to=1-3]
+	\arrow[dashed, from=1-2, to=2-2]
+	\arrow[from=1-3, to=1-4]
+	\arrow[dashed, from=1-3, to=2-3]
+	\arrow[from=1-4, to=1-5]
+	\arrow[dashed, from=1-5, to=2-5]
+	\arrow["{\theta }"', dashed, from=1-6, to=2-6]
+	\arrow["{G(\theta)}", from=1-7, to=2-7]
+	\arrow["{H^p (G(\theta))}", from=1-8, to=2-8]
+	\arrow[dotted, from=2-1, to=2-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+\end{tikzcd}.
+		\end{equation}
+		此處 $H^p (G(θ)) : (R^pG)FX → R^p(GF)X$. 
+		\item 態射 $R^p(GF) → G(R^p F)$ 由 Kan 延拓的泛性質給出: 
+		\begin{equation}
+			% https://q.uiver.app/#q=WzAsNSxbNCwwLCJcXG1hdGhzY3IgQyJdLFs0LDEsIkRcXG1hdGhzY3IgQyJdLFsyLDAsIlxcbWF0aHNjciBCIl0sWzIsMSwiRCBcXG1hdGhzY3IgQiJdLFswLDAsIlxcbWF0aHNjciBBIl0sWzAsMV0sWzIsM10sWzIsMCwiRyJdLFszLDEsIkRHIiwyXSxbNCwyLCJGIl0sWzQsMywiUl5cXGJ1bGxldCBGIiwyXSxbNCwxLCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifX19XV0=
+\begin{tikzcd}[ampersand replacement=\&, sep = small]
+	{\mathscr A} \&\& {\mathscr B} \&\& {\mathscr C} \\
+	\&\& {D \mathscr B} \&\& {D\mathscr C}
+	\arrow["F", from=1-1, to=1-3]
+	\arrow["{R^\bullet F}"', from=1-1, to=2-3]
+	\arrow[dotted, from=1-1, to=2-5]
+	\arrow["G", from=1-3, to=1-5]
+	\arrow[from=1-3, to=2-3]
+	\arrow[from=1-5, to=2-5]
+	\arrow["DG"', from=2-3, to=2-5]
+\end{tikzcd}.
+		\end{equation}
+		特別地, 自然變換 $α ∘ (GF)^∙ ⇒ DG ∘ (R^∙ F)$ 給出 $H^p(α_X) : (GF)^p X→ G(F^p X)$. 
+		\item 態射 $G(R^1 F)X → (R^2 G)(FX)$ 由內射分解 $FI^∙ → J^∙$ 作用 $G$ 後給出. 特別地, 
+		\begin{equation}
+			% https://q.uiver.app/#q=WzAsMTMsWzUsMCwiRyhSXjEgRilYIl0sWzUsMywiKFJeMiBHKShGWCkiXSxbMCwyLCJHRlgiXSxbMiwyLCJHSl4xIl0sWzMsMiwiR0peMiJdLFsxLDIsIkdKXjAiXSxbNCwyLCJHSl4zIl0sWzMsMywiSF4yIChHSl5cXGJ1bGxldCkiXSxbMywwLCJHSF4xKEZJXlxcYnVsbGV0ICkiXSxbMywxLCJHRkleMSJdLFsyLDEsIkdGSV4wIl0sWzQsMSwiR0ZJXjIiXSxbMSwxLCJHRlgiXSxbMCwxLCJIXjEoXFxzaWdtYSApIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzUsM10sWzQsNl0sWzMsNF0sWzEwLDldLFs5LDExXSxbMiw1XSxbMTIsMTBdLFs5LDQsIlxcc2lnbWFeMSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsxMiw1XSxbMTAsMywiXFxzaWdtYSBeMCIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs4LDAsIiIsMix7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzcsMSwiIiwwLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+\begin{tikzcd}[ampersand replacement=\&,sep=small]
+	\&\&\& {GH^1(FI^\bullet )} \&\& {G(R^1 F)X} \\
+	\& GFX \& {GFI^0} \& {GFI^1} \& {GFI^2} \\
+	GFX \& {GJ^0} \& {GJ^1} \& {GJ^2} \& {GJ^3} \\
+	\&\&\& {H^2 (GJ^\bullet)} \&\& {(R^2 G)(FX)}
+	\arrow[equals, from=1-4, to=1-6]
+	\arrow["{H^1(\sigma )}", dashed, from=1-6, to=4-6]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-2, to=3-2]
+	\arrow[from=2-3, to=2-4]
+	\arrow["{\sigma ^0}", dashed, from=2-3, to=3-3]
+	\arrow[from=2-4, to=2-5]
+	\arrow["{\sigma^1}", dashed, from=2-4, to=3-4]
+	\arrow[from=3-1, to=3-2]
+	\arrow[from=3-2, to=3-3]
+	\arrow[from=3-3, to=3-4]
+	\arrow[from=3-4, to=3-5]
+	\arrow[equals, from=4-4, to=4-6]
+\end{tikzcd}.
+		\end{equation}
+	\end{enumerate}
+\end{example}
+
+
+
+\subsubsection{譜序列的構造 III: ``纖維化塔 ''(正合耦) 直接誘導譜序列}
+
+\begin{abstract}
+	Given a tower of fibrations of homotopy types, its degreewise homotopy groups naturally form an exact couple. The induced spectral sequence is the spectral sequence of the tower. 觀點來自 \cite{nlab:spectral_sequence_of_a_tower_of_fibrations}.  
+
+	主要是爲了 Adams 濾過系統服務. 暫時不大常用. 
+\end{abstract}
+
+\begin{example}[正合耦]
+    給定短正合列 $0 → X \xrightarrow f X \xrightarrow g Y → 0$, 則有``基本定理''導出的長正合列. 
+    \begin{equation}
+        % https://q.uiver.app/#q=WzAsMTQsWzEsMiwiSF57bi0xfShYKSJdLFsxLDAsIkhee24tMX0oWCkiXSxbMywxLCJIXntuLTF9KFkpIl0sWzIsMiwiSF57bn0oWCkiXSxbMiwwLCJIXntufShYKSJdLFs0LDEsIkhee259KFkpIl0sWzMsMiwiSF57bisxfShYKSJdLFszLDAsIkhee24rMX0oWCkiXSxbNSwxLCJcXGNkb3RzICJdLFsyLDEsIkhee24tMn0oWSkiXSxbMCwwLCJcXGNkb3RzICJdLFs2LDAsIkgoWCkiXSxbNiwyLCJIKFgpIl0sWzcsMSwiSChZKSJdLFswLDFdLFsxLDJdLFsyLDNdLFszLDRdLFs0LDVdLFs1LDZdLFs2LDddLFs3LDhdLFs5LDBdLFsxMCw5XSxbMTIsMTEsImYiXSxbMTEsMTMsImciXSxbMTMsMTIsIlxcZGVsdGEgIl1d
+\begin{tikzcd}[ampersand replacement=\&, sep = small]
+	{\cdots } \& {H^{n-1}(X)} \& {H^{n}(X)} \& {H^{n+1}(X)} \&\&\& {H(X)} \\
+	\&\& {H^{n-2}(Y)} \& {H^{n-1}(Y)} \& {H^{n}(Y)} \& {\cdots } \&\& {H(Y)} \\
+	\& {H^{n-1}(X)} \& {H^{n}(X)} \& {H^{n+1}(X)} \&\&\& {H(X)}
+	\arrow[from=1-1, to=2-3]
+	\arrow[from=1-2, to=2-4]
+	\arrow[from=1-3, to=2-5]
+	\arrow[from=1-4, to=2-6]
+	\arrow["g", from=1-7, to=2-8]
+	\arrow[from=2-3, to=3-2]
+	\arrow[from=2-4, to=3-3]
+	\arrow[from=2-5, to=3-4]
+	\arrow["{\delta }", from=2-8, to=3-7]
+	\arrow[from=3-2, to=1-2]
+	\arrow[from=3-3, to=1-3]
+	\arrow[from=3-4, to=1-4]
+	\arrow["f", from=3-7, to=1-7]
+\end{tikzcd}.
+    \end{equation}
+    如果用``微分分次模''一筆帶過, 則得到一個 $3$-circle 態射鏈. 
+\end{example}
+
+\begin{definition}
+    給定給定 (分次) 模 $(D,E)$ 與態射 $(i,j,k)$. 稱 $(D,E,i,j,k)$ 是正合耦, 當且僅當 
+    \begin{equation}
+        % https://q.uiver.app/#q=WzAsMyxbMCwwLCJEIl0sWzIsMCwiRCJdLFsxLDEsIkUiXSxbMCwxLCJpIl0sWzEsMiwiaiJdLFsyLDAsImsiXV0=
+\begin{tikzcd}[ampersand replacement=\&, sep= small]
+	D \&\& D \\
+	\& E
+	\arrow["i", from=1-1, to=1-3]
+	\arrow["j", from=1-3, to=2-2]
+	\arrow["k", from=2-2, to=1-1]
+\end{tikzcd}, 
+    \end{equation}
+    其中三處 $\mathrm{im} = \ker$. \parnote{用 $D$ 濾過 $E$}
+\end{definition}
+
+\begin{example}[導出正合耦]
+    大正合耦 $(D,E, i,j,k)$ 給出外微分 $(j ∘ k) : E → E$. 此時導出外側小正合耦: 
+    \begin{equation}
+% https://q.uiver.app/#q=WzAsNixbMiwxLCJEIl0sWzQsMSwiRCJdLFszLDIsIkUiXSxbMCwwLCJcXG1hdGhybXtpbX0oaSkiXSxbNiwwLCJcXG1hdGhybXtpbX0oaSkiXSxbMywzLCJIKEUsIGsgXFxjaXJjIGopIl0sWzAsMSwiaSJdLFsxLDIsImoiXSxbMiwwLCJrIl0sWzMsNCwiZCBcXG1hcHN0byBpKGQpIl0sWzMsMCwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJib3R0b20ifX19XSxbNCwxLCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6ImJvdHRvbSJ9fX1dLFs0LDUsImkoZCkgXFxtYXBzdG8gaihkKSJdLFs1LDMsImUgXFxtYXBzdG8gayhlKSJdXQ==
+\begin{tikzcd}[ampersand replacement=\&, sep = small]
+	{\mathrm{im}(i)} \&\&\&\&\&\& {\mathrm{im}(i)} \\
+	\&\& D \&\& D \\
+	\&\&\& E \\
+	\&\&\& {H(E, k \circ j)}
+	\arrow["{d \mapsto i(d)}", from=1-1, to=1-7]
+	\arrow[hook', from=1-1, to=2-3]
+	\arrow[hook', from=1-7, to=2-5]
+	\arrow["{i(d) \mapsto j(d)}", from=1-7, to=4-4]
+	\arrow["i", from=2-3, to=2-5]
+	\arrow["j", from=2-5, to=3-4]
+	\arrow["k", from=3-4, to=2-3]
+	\arrow["{e \mapsto k(e)}", from=4-4, to=1-1]
+\end{tikzcd}.
+    \end{equation}
+    \begin{enumerate}
+        \item (良定義) 對象 $D' = \mathrm{im}(i)$, $E' = H((j ∘ k): E → E)$, 態射 $k'$ 良定義, 因爲 $k : (j ∘ k)(e) ↦ 0$, 態射 $j'$ 良定義, 因為 $j|_{\mathrm{im}(i)}=0$. 
+        \item (左 $D'$ 處正合性) 核 $\mathrm{im}(i) ∩ \ker (i)$, 像 $k(\ker (k ∘ j))= \ker (j) ∩ \mathrm{im}(k) = \mathrm{im}(i) ∩ \ker (i)$.  
+        \item (右 $D'$ 處正合性) 核 $\{i(d) ∣ j(d) ∈ \mathrm{im}(j ∘ k)\} = \frac{\{x ∣ j(x) ∈ \mathrm{im}(j ∘ k)\}}{\ker (i)} ≃ \frac{j^{-1}(\mathrm{im}(j ∘ k))}{\ker (i)} = \frac{\mathrm{im}(k) + \ker (j)}{\mathrm{ker}(i)}$ (第一同構定理), 繼而 $\frac{\mathrm{im}(k) + \ker (j)}{\mathrm{ker}(i)} = \frac{\ker (i) + \mathrm{im}(i)}{\ker(i)} ≃ i(\mathrm{im}(i))$ (第一同構定理). 故核等於像. 
+        \item ($E$ 處正合性) 核 $\frac{\ker (k) ∩ \ker (j ∘ k)}{\mathrm{im}(j ∘ k)} ≃ \frac{\ker (k)}{\mathrm{im}(j ∘ k)} = \frac{\mathrm{im}(j)}{\mathrm{im}(j ∘ k)}$, 像 $\mathrm{im}(j')=\frac{\mathrm{im}(j)}{\mathrm{im}(j ∘ k)}$. 
+    \end{enumerate}
+\end{example}
+
+\begin{definition}[$n$-次導出]
+    給定正合耦 $ℰ = (D,E,i,j,k)$, 記 $()^1 = ()'$. 歸納地給出 $ℰ ^n$. 稱正合耦是冪零的, 若 $i :D → D$ 冪零. 
+\end{definition}
+
+\begin{theorem}[正合耦誘導譜序列]
+    給定微分分次雙模 $(D,E)$, 若存在正合耦 $(D,E, i,j,k)$, 其態射次數分別是 
+    \begin{equation}
+        % https://q.uiver.app/#q=WzAsMyxbMCwwLCJEIl0sWzIsMCwiRCJdLFsxLDEsIkUiXSxbMCwxLCJpKC0xLDEpIl0sWzEsMiwiaigwLDApIl0sWzIsMCwiaygxLDApIl1d
+\begin{tikzcd}[ampersand replacement=\&, sep = small]
+	D \&\& D \\
+	\& E
+	\arrow["{i(-1,1)}", from=1-1, to=1-3]
+	\arrow["{j(0,0)}", from=1-3, to=2-2]
+	\arrow["{k(1,0)}", from=2-2, to=1-1]
+\end{tikzcd},
+    \end{equation}
+則 $(E, (j ∘ k))$ 是譜序列. 
+\begin{equation}
+    % https://q.uiver.app/#q=WzAsMTAsWzAsMiwiRF57cCxxfSJdLFsyLDIsIkRee3ArMSxxfSJdLFs0LDIsIkRee3ArMixxfSJdLFswLDAsIkRee3AscSsxfSJdLFsyLDAsIkRee3ArMSxxKzF9Il0sWzQsMCwiRF57cCsyLHErMX0iXSxbMSwzLCJFXntwLHF9Il0sWzEsMSwiRV57cCxxKzF9Il0sWzMsMSwiRV57cCsxLHErMX0iXSxbMywzLCJFXntwKzEscSsxfSJdLFswLDFdLFsxLDJdLFswLDNdLFsxLDMsImkiLDIseyJjdXJ2ZSI6LTUsInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsyLDQsImkiLDIseyJjdXJ2ZSI6LTUsInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFszLDRdLFs0LDVdLFsxLDRdLFsyLDVdLFswLDYsImoiLDJdLFs2LDEsImsiLDJdLFszLDcsImoiLDJdLFs3LDQsImsiLDJdLFs0LDgsImoiLDJdLFs4LDUsImsiLDJdLFsxLDksImoiLDJdLFs5LDIsImsiLDJdXQ==
+\begin{tikzcd}[ampersand replacement=\&, sep = small]
+	{D^{p,q+1}} \&\& {D^{p+1,q+1}} \&\& {D^{p+2,q+1}} \\
+	\& {E^{p,q+1}} \&\& {E^{p+1,q+1}} \\
+	{D^{p,q}} \&\& {D^{p+1,q}} \&\& {D^{p+2,q}} \\
+	\& {E^{p,q}} \&\& {E^{p+1,q+1}}
+	\arrow[from=1-1, to=1-3]
+	\arrow["j"', from=1-1, to=2-2]
+	\arrow[from=1-3, to=1-5]
+	\arrow["j"', from=1-3, to=2-4]
+	\arrow["k"', from=2-2, to=1-3]
+	\arrow["k"', from=2-4, to=1-5]
+	\arrow[from=3-1, to=1-1]
+	\arrow[from=3-1, to=3-3]
+	\arrow["j"', from=3-1, to=4-2]
+	\arrow["i"', curve={height=-30pt}, dashed, from=3-3, to=1-1]
+	\arrow[from=3-3, to=1-3]
+	\arrow[from=3-3, to=3-5]
+	\arrow["j"', from=3-3, to=4-4]
+	\arrow["i"', curve={height=-30pt}, dashed, from=3-5, to=1-3]
+	\arrow[from=3-5, to=1-5]
+	\arrow["k"', from=4-2, to=3-3]
+	\arrow["k"', from=4-4, to=3-5]
+\end{tikzcd}.
+\end{equation}
+沿 $↑$ 方向投影, 大致得 $% https://q.uiver.app/#q=WzAsNSxbMCwwLCJEXntwLFxcYnVsbGV0fSJdLFsyLDAsIkRee3ArMSxcXGJ1bGxldH0iXSxbNCwwLCJEXntwKzIsXFxidWxsZXR9Il0sWzEsMSwiRV57cCxcXGJ1bGxldH0iXSxbMywxLCJFXntwKzEsXFxidWxsZXR9Il0sWzEsMCwiaSIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsyLDEsImkiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMCwzLCJqIiwyXSxbMywxLCJrIiwyXSxbMSw0LCJqIiwyXSxbNCwyLCJrIiwyXV0=
+\begin{tikzcd}[ampersand replacement=\&,sep=small]
+	{D^{p,\bullet}} \&\& {D^{p+1,\bullet}} \&\& {D^{p+2,\bullet}} \\
+	\& {E^{p,\bullet}} \&\& {E^{p+1,\bullet}}
+	\arrow["j"', from=1-1, to=2-2]
+	\arrow["i"', dashed, from=1-3, to=1-1]
+	\arrow["j"', from=1-3, to=2-4]
+	\arrow["i"', dashed, from=1-5, to=1-3]
+	\arrow["k"', from=2-2, to=1-3]
+	\arrow["k"', from=2-4, to=1-5]
+\end{tikzcd}$. 
+\begin{proof}
+    暫時從略, 看著容易接受. 
+\end{proof}
+\end{theorem}
+
+\begin{definition}[有足夠的投射類的三角範疇]
+    這是相對同調代數 (\cite{eilenberg1965foundations}) 的三角範疇版本. 稱 $(𝒯 ,𝒫 , 𝒩 )$ 是有足夠投射對象的三角範疇, 當且僅當 
+    \begin{enumerate}
+        \item (資料) $𝒯$ 是三角範疇, $𝒫$ 是對象類, $𝒩$ 是態射類; 
+        \item (三角封閉) $𝒯$ 與 $𝒫$ 關於三角雙向平移 $[±]$-封閉; 
+        \item (垂直關係) 關於 $\mathrm{Hom}_𝒯(-,-)$, 恰有 $𝒫^⟂ = 𝒩$ 與 $𝒫 = {^⟂}𝒩$; 
+        \begin{itemize}
+            \item $𝒫$-消失態射恰是 $𝒩$; $𝒩$-投射對象恰是 $𝒫$. 
+        \end{itemize}
+        \item (足夠投射) 任意 $X$ 可嵌入好三角 $P → X \xrightarrow i Y$, 其中 $P ∈ 𝒫$ 且 $i ∈ 𝒩$. 
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    以上條件可以適當減弱. 同時, 以下三者彼此確定 (\cite{CHRISTENSEN1998284})
+    \begin{enumerate}
+        \item 有足夠投射對象的 $(𝒫, 𝒩)$-垂直對, 垂直條件是 $(P,i)=0$; 
+        \item 有足夠投射對象的 $(𝒫, ℰ)$-垂直對, 垂直條件是 $(P,e)$ 爲滿態射; 
+        \item 有足夠投射對象的 $(𝒫, 𝒞)$-垂直對, 垂直條件是 $(P,C^∙)= [∙ → ∙ → ∙]$ 在中間項正合. 
+    \end{enumerate}
+\end{remark}
+
+\begin{proposition}[一些封閉性條件]
+    $𝒩$ 是範疇的雙邊理想, 關於極限封閉; $ℰ$ 關於``滿態射性二推三'', 形變收縮核, 極限封閉; $𝒫$ 關於餘極限, 直和項 (形變收縮核) 封閉. \parnote{證明見筆記}
+\end{proposition}
+
+\begin{example}[如何構造 $(𝒫 , 𝒩)$-對?]
+    一種方法: 選用 J.P. May 公理體系 (\cite{JPMayAdd01}) 下的幺半三角範疇, 找到不必滿足結合律的乘法對象 $M$, 則有誘導的內射對. 改用餘乘對象, 則有投射對. \parnote{單位 spec $𝕊$ 給出 Phantom 態射}
+\end{example}
+
+\begin{proposition}[$(𝒫 , 𝒩)$-對的 Bool 運算]
+    給定一組 $(𝒫 _α , 𝒩 _α )$, 則 $(\mathrm{Sum}({∐ _{α}𝒫 _α}) , ⋂_α 𝒩 _α)$ 也是 $(𝒫, 𝒩)$-對. \parnote{直接驗證}
+\end{proposition}
+
+\begin{proposition}[$(𝒫 , 𝒩 )$-對的三角運算]
+    給定一族 $(𝒫 _i, 𝒩 _i)$, 則 $ (𝒫 _1 ⋆ 𝒫 _2 , 𝒩 _2 ∘ 𝒩 _1)$ 的新的 $(𝒫_1 ⋆ 𝒫 _2)$ 對. 其中, 對象類的運算定義作
+    \begin{equation}
+        𝒳 ⋆ 𝒴 := \{A ∣ ∃ X ∈ 𝒳 \ ∃ Y ∈ 𝒴 \ ∃ [X → A → Y] =: Δ \ (Δ \  \text{是好三角})\}. 
+    \end{equation}
+    \begin{proof}
+        細節從略. 主要原理是八面體公理
+        \begin{equation}
+            % https://q.uiver.app/#q=WzAsMTIsWzEsMSwiUF8xIl0sWzMsMSwiUF8yIl0sWzIsMSwiPyJdLFsyLDIsIlgiXSxbMiwzLCJCIl0sWzEsMiwiWCJdLFsxLDMsIkEiXSxbMCwxLCJQXzJbLTFdIl0sWzEsMCwiQVstMV0iXSxbMiwwLCJCWy0xXSJdLFswLDAsIlBfMlstMV0iXSxbMywwLCJQXzIiXSxbMiwzXSxbMyw0LCJmXzIgXFxjaXJjIGZfMSJdLFszLDUsIiIsMSx7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsMl0sWzIsMV0sWzUsNiwiZl8xIiwyXSxbMCw1XSxbNiw0LCJmXzIiLDJdLFs4LDksImZfMlstMV0iXSxbNywwXSxbMTAsNywiIiwxLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTAsOF0sWzExLDEsIiIsMSx7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzksMTFdLFs5LDJdLFs4LDBdXQ==
+\begin{tikzcd}[ampersand replacement=\&]
+	{P_2[-1]} \& {A[-1]} \& {B[-1]} \& {P_2} \\
+	{P_2[-1]} \& {P_1} \& {?} \& {P_2} \\
+	\& X \& X \\
+	\& A \& B
+	\arrow[from=1-1, to=1-2]
+	\arrow[equals, from=1-1, to=2-1]
+	\arrow["{f_2[-1]}", from=1-2, to=1-3]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=1-3, to=2-3]
+	\arrow[equals, from=1-4, to=2-4]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-2, to=3-2]
+	\arrow[from=2-3, to=2-4]
+	\arrow[from=2-3, to=3-3]
+	\arrow["{f_1}"', from=3-2, to=4-2]
+	\arrow[equals, from=3-3, to=3-2]
+	\arrow["{f_2 \circ f_1}", from=3-3, to=4-3]
+	\arrow["{f_2}"', from=4-2, to=4-3]
+\end{tikzcd}.
+        \end{equation}
+    \end{proof}
+\end{proposition}
+
+\begin{remark}
+    結合律 $(𝒳 ⋆ 𝒴) ⋆ 𝒵 = 𝒳 ⋆ (𝒴 ⋆ 𝒵)$ 也是八面體公理的推論. 
+\end{remark}
+
+\begin{definition}[三角的 Adams 投射分解]
+    給定對象 $X = X^0$, 則有``投射覆蓋''的好三角 $P^0 → X^0 → X^{-1}$. 繼而考慮 $P^{-1} → X^{-1} → X^{-2}$ 等等, 最終得
+    \begin{equation}
+        % https://q.uiver.app/#q=WzAsOCxbMCwwLCJYXjAiXSxbMSwxLCJQXjAiXSxbMiwwLCJYXnstMX0iXSxbMywxLCJQXnstMX0iXSxbNCwwLCJYXnstMn0iXSxbNywwLCJcXGNkb3RzIl0sWzUsMSwiUF57LTJ9Il0sWzYsMCwiWF57LTN9Il0sWzEsMF0sWzAsMl0sWzMsMl0sWzIsNF0sWzQsN10sWzcsNV0sWzYsNF0sWzIsMSwiIiwxLHsiY29sb3VyIjpbMjQwLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzQsMywiIiwxLHsiY29sb3VyIjpbMjQwLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzcsNiwiIiwxLHsiY29sb3VyIjpbMjQwLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV1d
+\begin{tikzcd}[ampersand replacement=\&, sep = small]
+	{X^0} \&\& {X^{-1}} \&\& {X^{-2}} \&\& {X^{-3}} \& \cdots \\
+	\& {P^0} \&\& {P^{-1}} \&\& {P^{-2}}
+	\arrow[from=1-1, to=1-3]
+	\arrow[from=1-3, to=1-5]
+	\arrow["\shortmid"{marking, text={rgb,255:red,92;green,92;blue,214}}, color={rgb,255:red,92;green,92;blue,214}, from=1-3, to=2-2]
+	\arrow[from=1-5, to=1-7]
+	\arrow["\shortmid"{marking, text={rgb,255:red,92;green,92;blue,214}}, color={rgb,255:red,92;green,92;blue,214}, from=1-5, to=2-4]
+	\arrow[from=1-7, to=1-8]
+	\arrow["\shortmid"{marking, text={rgb,255:red,92;green,92;blue,214}}, color={rgb,255:red,92;green,92;blue,214}, from=1-7, to=2-6]
+	\arrow[from=2-2, to=1-1]
+	\arrow[from=2-4, to=1-3]
+	\arrow[from=2-6, to=1-5]
+\end{tikzcd}.
+    \end{equation}
+    特別地, 每一好三角在 $(P, -)$ 分裂做一族短正合列 ($P^∙$-對邊斷開), 因此有 $(P,-)$-相對投射分解 
+    \begin{equation}
+        \cdots → P^{-2}[-2] → P^{-1}[-1] → P^0 → X → 0. 
+    \end{equation}
+\end{definition}
+
+\begin{proposition}[Adams 分解的逆命題]
+    若 $X$ 存在 $𝒫$-相對投射分解, 即 
+    \begin{enumerate}
+        \item 一族態射鏈 $θ : 𝒫 → X → 0$, 不必正合; 
+        \item 對任意 $P ∈ 𝒫$, $(P, θ)$ 是長正合列. 
+    \end{enumerate}
+    此時存在 Adams 投射分解系統. 
+    \begin{proof}
+        考慮長 $𝒫$-正合列 $\cdots → P_2 → P_1 → P_0 → X → 0$. 
+        \begin{enumerate}
+            \item 取好三角 $P(X) → X \xrightarrow {f} Y$. 由滿態射 $(P(X),P_0) ↠ (P(X), X)$ 得提升 $P_0 → X$
+            \begin{equation}
+                % https://q.uiver.app/#q=WzAsOCxbMCwxLCJQKFgpIl0sWzEsMSwiWCJdLFsyLDEsIlkiXSxbMSwwLCJQXzAiXSxbMCwwLCJQKFgpIl0sWzEsMiwiWF57LTF9Il0sWzIsMCwiXFxidWxsZXQiXSxbMiwyLCJYXnstMX0iXSxbMCwxXSxbMSwyLCJmIl0sWzMsMV0sWzQsMCwiIiwxLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCwzLCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMSw1XSxbMyw2XSxbNiwyXSxbMiw3XSxbNSw3LCIiLDEseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+\begin{tikzcd}[ampersand replacement=\&]
+	{P(X)} \& {P_0} \& \bullet \\
+	{P(X)} \& X \& Y \\
+	\& {X^{-1}} \& {X^{-1}}
+	\arrow[dashed, from=1-1, to=1-2]
+	\arrow[equals, from=1-1, to=2-1]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=1-3, to=2-3]
+	\arrow[from=2-1, to=2-2]
+	\arrow["f", from=2-2, to=2-3]
+	\arrow[from=2-2, to=3-2]
+	\arrow[from=2-3, to=3-3]
+	\arrow[equals, from=3-2, to=3-3]
+\end{tikzcd}.
+            \end{equation}
+            上圖 (八面體公理的局部) 給出 $P_0 → X^0 \xrightarrow{∈ 𝒩} X^{-1}$. 
+            \item 繼而證明 $P(X^{-1}) → X^{-1}$ 通過 $P_1[1]$ 分解. 實際上, $X^{-1}$ 是正合列的 $𝒫$-相對 syzygy. 因此, 後繼歸納與初始設定的證明步驟相同. 
+    \end{enumerate}
+    \end{proof}
+\end{proposition}
+
+\begin{theorem}
+    Adams-投射分解系統和 $𝒫$-相對投射分解互相轉換. $𝒫$-相對投射分解的復形同態延拓至 Adams 投射分解系統. \parnote{態射範疇!}
+\end{theorem}
+
+\begin{example}[Adams 濾過]
+    相對 syzygy $X^{-n}$, 上同調函子 $H$ 的導出, 
+    \textcolor{red}{有用時再補上吧}
+\end{example}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

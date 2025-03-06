@@ -1,0 +1,54 @@
+<div style="display:none">\(
+\newcommand{\cat}[1] {\mathrm{#1}}
+\newcommand{\catobj}[1] {\operatorname{Obj}(\mathrm{#1})}
+\newcommand{\cathom}[1] {\operatorname{Hom}_{\cat{#1}}}
+\)</div>
+
+<div id='front'>
+<div id='deck'>
+{{Deck}}
+</div>
+{{#Title}}
+<h1>{{Title}}</h1>
+{{/Title}}
+
+{{cloze:Text}}
+</div>
+
+<script>
+// https://jsfiddle.net/topospeaker/bhnmLxge/10/
+function reformatBlockMathJaxInCloze() {
+    var mathBlocks = document.querySelectorAll('span.cloze .MJXc-display');
+    console.log(mathBlocks.length);
+    for(var i = 0; i < mathBlocks.length; i++) {
+        cloze = mathBlocks[i].closest('span.cloze');
+        cloze.style.display = 'block';
+        cloze.style.textAlign = 'center';
+        mathBlocks[i].style.display = 'inline';
+        mathBlocks[i].style.paddingLeft = '3em';
+        mathBlocks[i].style.paddingRight = '3em';
+        mathBlocks[i].style.lineHeight = '3em';
+    }
+  console.log("ran");
+
+}
+
+setTimeout(function() {MathJax.Hub.Queue(reformatBlockMathJaxInCloze)}, 0);
+/* Failed attempts:
+window.onload = function() {MathJax.Hub.Queue(reformatBlockMathJaxInCloze)};
+
+
+document.addEventListener('load', 
+   (event)=> {
+       MathJax.Hub.Queue(reformatBlockMathJaxInCloze);
+   });
+
+window.addEventListener('load', (event) => {
+    reformatBlockMathJaxInCloze();
+setTimeout(function() {MathJax.Hub.Queue(reformatBlockMathJaxInCloze)}, 1000);
+});
+
+MathJax.Hub.Register.StartupHook("End",function () {
+    reformatBlockMathJaxInCloze();
+}); */
+</script>
